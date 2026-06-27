@@ -1,0 +1,405 @@
+{
+  "project": "Pokemon Roguelite Fan Game",
+  "description": "Juego roguelite web inspirado en PokeRogue + Pokemon Overlord. Batalla auto por filas (Overlord), mapa tipo Slay the Spire, Pokédex persistente (PokeRogue). Stack: Phaser 3 + TypeScript + Vite.",
+  "rules": [
+    "Una feature a la vez (max 1 en in_progress)",
+    "Tests obligatorios (vitest) para cerrar cualquier feature de lógica",
+    "Estados válidos: pending | in_progress | done | blocked",
+    "Actualizar progress/current.md continuamente, no retroactivamente",
+    "Correr init.sh antes de comenzar y al cerrar sesión"
+  ],
+  "features": [
+    {
+      "id": "F01",
+      "phase": 1,
+      "title": "Setup del proyecto: Vite + Phaser 3 + TypeScript",
+      "status": "pending",
+      "description": "Inicializar el proyecto con Vite, Phaser 3 y TypeScript. Configurar vitest para tests. Verificar que el juego arranca con una escena vacía.",
+      "acceptance_criteria": [
+        "npm run dev levanta el servidor sin errores",
+        "npm run build genera dist/ sin errores",
+        "npm test pasa (al menos un test dummy)",
+        "Phaser carga en el navegador con una escena negra básica",
+        "tsconfig.json con strict mode activado"
+      ],
+      "files_to_create": [
+        "package.json", "vite.config.ts", "tsconfig.json",
+        "index.html", "src/main.ts", "src/scenes/BootScene.ts",
+        "tests/setup.test.ts"
+      ]
+    },
+    {
+      "id": "F02",
+      "phase": 1,
+      "title": "Sistema de assets: carga de sprites Pokemon",
+      "status": "pending",
+      "description": "Sistema para cargar y acceder a los sprites PNG de las carpetas Pokemon/ y Shiny/. Los sprites siguen el patrón NUMBER.png, NUMBER-shiny.png, NUMBER-form.png.",
+      "acceptance_criteria": [
+        "AssetLoader.ts carga sprites por ID de Pokemon",
+        "Soporta formas: base, shiny, mega, gmax, formas regionales",
+        "Sprite fallback si el archivo no existe",
+        "Test: getSpritePath(1) === 'assets/pokemon/1.png'",
+        "Test: getSpritePath(1, 'shiny') === 'assets/pokemon/1-shiny.png'"
+      ],
+      "files_to_create": [
+        "src/systems/AssetLoader.ts",
+        "tests/asset-loader.test.ts"
+      ]
+    },
+    {
+      "id": "F03",
+      "phase": 1,
+      "title": "Datos Gen 1: 151 Pokemon con stats, tipos y rareza",
+      "status": "pending",
+      "description": "Archivo de datos con los 151 Pokemon de Gen 1. Cada Pokemon incluye stats base, tipos, rareza (1-5), slots de movimientos iniciales, rasgo/habilidad y datos de evolución.",
+      "acceptance_criteria": [
+        "gen1.ts exporta exactamente 151 entradas (id 1-151)",
+        "Cada Pokemon tiene: id, name, types, rarity, baseStats (hp/atk/def/spatk/spdef/spd), slots, trait, learnset, evolve",
+        "Test: todos tienen al menos 1 move en slot1",
+        "Test: stats de hp >= 1 para todos",
+        "Test: evolve.level > 0 cuando existe cadena evolutiva"
+      ],
+      "files_to_create": [
+        "src/data/gen1.ts",
+        "src/types/Pokemon.ts",
+        "tests/gen1.test.ts"
+      ]
+    },
+    {
+      "id": "F04",
+      "phase": 1,
+      "title": "Datos de movimientos Gen 1",
+      "status": "pending",
+      "description": "Catálogo de movimientos (moves) usados por los 151 Pokemon. Cada move tiene tipo, categoría (físico/especial/status), potencia, precisión y efecto.",
+      "acceptance_criteria": [
+        "moves.ts exporta al menos 80 movimientos de Gen 1",
+        "Cada move tiene: id, name, type, category, power, accuracy, effect",
+        "Test: todos los moves referenciados en gen1.ts existen en moves.ts",
+        "Test: moves de categoría 'status' tienen power === 0"
+      ],
+      "files_to_create": [
+        "src/data/moves.ts",
+        "src/types/Move.ts",
+        "tests/moves.test.ts"
+      ]
+    },
+    {
+      "id": "F05",
+      "phase": 1,
+      "title": "Sistema de IVs y stats calculados",
+      "status": "pending",
+      "description": "Función para generar IVs aleatorios al capturar un Pokemon, y función para calcular stats reales a partir de stats base + IVs + nivel.",
+      "acceptance_criteria": [
+        "generateIVs() retorna objeto con 6 valores en rango [0, 31]",
+        "calculateStat(base, iv, level) es determinista",
+        "Test: mismo seed siempre genera mismos IVs",
+        "Test: stat calculado crece con el nivel",
+        "Test: IV=31 siempre da stat mayor que IV=0"
+      ],
+      "files_to_create": [
+        "src/systems/IVSystem.ts",
+        "tests/iv-system.test.ts"
+      ]
+    },
+    {
+      "id": "F06",
+      "phase": 2,
+      "title": "Escena: Pantalla Pokédex / Selección de starter",
+      "status": "pending",
+      "description": "Pantalla de selección estilo PokeRogue: grid de sprites (coloreados=capturado, silueta oscura=no capturado), filtros por tipo/gen, panel de detalle al seleccionar. Al iniciar un nuevo run, el jugador elige su Pokemon inicial de su colección.",
+      "acceptance_criteria": [
+        "Grid muestra los 151 Pokemon de Gen 1",
+        "Pokemon no capturados aparecen como silueta oscura",
+        "Click en Pokemon capturado muestra panel de detalle (sprite, stats, moves)",
+        "Filtros funcionales: por tipo y por estado (capturado/no capturado)",
+        "Botón 'Elegir' disponible solo para Pokemon capturados",
+        "Al inicio del juego: Bulbasaur, Charmander y Squirtle están siempre disponibles"
+      ],
+      "files_to_create": [
+        "src/scenes/PokedexScene.ts",
+        "src/ui/PokemonGrid.ts",
+        "src/ui/PokemonDetail.ts",
+        "src/ui/FilterBar.ts"
+      ]
+    },
+    {
+      "id": "F07",
+      "phase": 2,
+      "title": "Pantalla de gestión del equipo (3 Pokemon + formación)",
+      "status": "pending",
+      "description": "UI para seleccionar los 3 Pokemon del equipo activo y asignarlos a filas (frontal/trasera). Se accede antes de entrar al mapa del run.",
+      "acceptance_criteria": [
+        "Muestra el equipo actual con slots vacíos si no hay Pokemon",
+        "Drag-and-drop o click para asignar Pokemon a fila frontal o trasera",
+        "Máximo 3 Pokemon: 1-2 en frontal, 1 en trasera (o configuración flexible)",
+        "Muestra stats calculados al nivel actual",
+        "Botón 'Entrar al mapa' habilita solo con al menos 1 Pokemon en equipo"
+      ],
+      "files_to_create": [
+        "src/scenes/TeamScene.ts",
+        "src/ui/TeamSlot.ts",
+        "src/ui/FormationDisplay.ts"
+      ]
+    },
+    {
+      "id": "F08",
+      "phase": 3,
+      "title": "Generador de mapa roguelite (árbol Slay the Spire)",
+      "status": "pending",
+      "description": "Generador de mapa estilo Slay the Spire: árbol vertical con bifurcaciones, nodos de diferentes tipos. El jugador elige su ruta. El mapa se genera aleatoriamente al inicio de cada run.",
+      "acceptance_criteria": [
+        "generateMap(seed) produce un árbol con 15 nodos en 5 filas",
+        "Tipos de nodo: battle(50%), elite(15%), shop(15%), event(10%), boss(10% solo última fila)",
+        "El boss solo aparece en la última fila",
+        "Siempre existe al menos un camino del inicio al boss",
+        "Test: misma seed produce mismo mapa",
+        "Test: árbol no tiene ciclos"
+      ],
+      "files_to_create": [
+        "src/systems/MapGenerator.ts",
+        "src/types/MapNode.ts",
+        "tests/map-generator.test.ts"
+      ]
+    },
+    {
+      "id": "F09",
+      "phase": 3,
+      "title": "Escena: Visualización y navegación del mapa",
+      "status": "pending",
+      "description": "Render visual del mapa generado. El jugador puede ver los nodos, sus tipos (íconos), y hacer click en los nodos accesibles desde su posición actual.",
+      "acceptance_criteria": [
+        "Mapa renderiza correctamente en pantalla",
+        "Nodos conectados con líneas/paths",
+        "Nodo actual marcado claramente",
+        "Solo los nodos adyacentes al actual son clickeables",
+        "Íconos distintos por tipo de nodo",
+        "Nodos visitados se muestran oscurecidos"
+      ],
+      "files_to_create": [
+        "src/scenes/MapScene.ts",
+        "src/ui/MapNode.ts",
+        "src/ui/MapPath.ts"
+      ]
+    },
+    {
+      "id": "F10",
+      "phase": 4,
+      "title": "Pantalla pre-batalla: configuración de slots",
+      "status": "pending",
+      "description": "Antes de cada batalla, el jugador ve el equipo rival y configura los 3 slots de cada Pokemon (elige qué move va en cada slot de las opciones disponibles según el learnset y nivel).",
+      "acceptance_criteria": [
+        "Muestra equipo rival (sprites + tipos) antes de configurar",
+        "Para cada Pokemon del equipo, muestra los 3 slots con sus opciones",
+        "El jugador puede cambiar la selección de cada slot",
+        "Slot 1: ataque principal, Slot 2: habilidad/efecto, Slot 3: ataque secundario",
+        "Botón 'Iniciar batalla' activo solo cuando todos los slots están configurados",
+        "Configuración de slots se guarda para la siguiente batalla (no resetea)"
+      ],
+      "files_to_create": [
+        "src/scenes/PreBattleScene.ts",
+        "src/ui/SlotSelector.ts",
+        "src/ui/RivalPreview.ts"
+      ]
+    },
+    {
+      "id": "F11",
+      "phase": 4,
+      "title": "Motor de auto-batalla: lógica core",
+      "status": "pending",
+      "description": "Sistema de batalla automática. Los Pokemon actúan por orden de velocidad. El frontal ataca primero; el trasero tiene -30% velocidad. Calcula daño con tipos y stats. La batalla se simula completa y luego se anima.",
+      "acceptance_criteria": [
+        "BattleEngine.simulate(teamA, teamB) retorna lista de eventos ordenados",
+        "Orden de turno determinado por speed stat",
+        "Fila trasera: speed *= 0.7",
+        "Daño: potencia * atk/def con multiplicador de tipo (x2, x0.5, x0)",
+        "Batalla termina cuando todos los Pokemon de un equipo llegan a 0 HP",
+        "Test: Pokemon con speed mayor actúa antes",
+        "Test: ventaja de tipo dobla el daño",
+        "Test: fila trasera protegida mientras haya Pokemon frontal"
+      ],
+      "files_to_create": [
+        "src/systems/BattleEngine.ts",
+        "src/systems/DamageCalculator.ts",
+        "src/systems/TypeChart.ts",
+        "tests/battle-engine.test.ts",
+        "tests/damage-calculator.test.ts"
+      ]
+    },
+    {
+      "id": "F12",
+      "phase": 4,
+      "title": "Escena de batalla: animación y visualización",
+      "status": "pending",
+      "description": "Render visual de la batalla. Muestra los sprites en sus filas, anima los ataques (tweens), barra de HP, logs de combate. Reproduce los eventos generados por BattleEngine.",
+      "acceptance_criteria": [
+        "Arena con fila frontal y trasera para cada equipo (4 posiciones)",
+        "HP bars actualizadas en tiempo real durante animación",
+        "Sprite 'sacude' al recibir daño",
+        "Sprite desaparece (fade out) al llegar a 0 HP",
+        "Log de batalla muestra los eventos: '¡Charmander usó Ember! -12 HP'",
+        "Botón de velocidad (1x / 2x / Auto) para controlar velocidad de animación",
+        "Al terminar: muestra resultado (victoria/derrota) + botón continuar"
+      ],
+      "files_to_create": [
+        "src/scenes/BattleScene.ts",
+        "src/ui/BattleArena.ts",
+        "src/ui/HPBar.ts",
+        "src/ui/BattleLog.ts"
+      ]
+    },
+    {
+      "id": "F13",
+      "phase": 4,
+      "title": "Sistema de captura post-batalla",
+      "status": "pending",
+      "description": "Al ganar una batalla, el jugador tiene probabilidad de capturar aleatoriamente 1 Pokemon del equipo rival. El Pokemon capturado se añade a la Pokédex permanente y al inventario del run.",
+      "acceptance_criteria": [
+        "Pantalla post-batalla muestra posible captura (1 Pokemon del rival al azar)",
+        "Probabilidad de captura basada en rareza (común=60%, raro=30%, legendario=10%)",
+        "Si se captura: Pokemon se añade a colección permanente (localStorage)",
+        "Si ya estaba capturado: se marca con contador de capturas",
+        "Animación simple de 'captura' (pokeball shrink/appear)",
+        "Puede elegir agregar al equipo del run o solo a la colección"
+      ],
+      "files_to_create": [
+        "src/scenes/PostBattleScene.ts",
+        "src/systems/CaptureSystem.ts",
+        "tests/capture-system.test.ts"
+      ]
+    },
+    {
+      "id": "F14",
+      "phase": 5,
+      "title": "Nodo tienda: comprar Pokemon e items",
+      "status": "pending",
+      "description": "Al entrar a un nodo de tienda, el jugador puede gastar moneda del run para comprar Pokemon aleatorios o items que mejoran stats.",
+      "acceptance_criteria": [
+        "Tienda muestra 3 Pokemon aleatorios disponibles para comprar",
+        "Precio basado en rareza del Pokemon",
+        "2-3 items aleatorios disponibles (mejoras de stat)",
+        "Items de baja rareza benefician más a Pokemon comunes (como en Overlord)",
+        "Botón refrescar tienda (gasta moneda)",
+        "Pokemon comprado se agrega al equipo si hay espacio, sino a la caja"
+      ],
+      "files_to_create": [
+        "src/scenes/ShopScene.ts",
+        "src/systems/ShopSystem.ts",
+        "src/data/items.ts",
+        "src/types/Item.ts"
+      ]
+    },
+    {
+      "id": "F15",
+      "phase": 5,
+      "title": "Nodos de evento aleatorio",
+      "status": "pending",
+      "description": "Nodos de evento con texto narrativo y opciones de decisión. Las decisiones pueden dar recompensas, Pokemon, items, o penalizaciones.",
+      "acceptance_criteria": [
+        "Pool de al menos 10 eventos distintos",
+        "Cada evento tiene 2-3 opciones",
+        "Resultados variables (aleatorios con seed)",
+        "Algunos eventos son contextuales (solo si tienes cierto Pokemon)",
+        "Render de texto con opciones clickeables"
+      ],
+      "files_to_create": [
+        "src/scenes/EventScene.ts",
+        "src/data/events.ts",
+        "src/types/Event.ts"
+      ]
+    },
+    {
+      "id": "F16",
+      "phase": 6,
+      "title": "Persistencia y Pokédex permanente (localStorage)",
+      "status": "pending",
+      "description": "Sistema de guardado en localStorage. Persiste: Pokédex (qué Pokemon han sido capturados), colección de shinies, moneda meta, estadísticas de runs.",
+      "acceptance_criteria": [
+        "SaveSystem.save(state) y SaveSystem.load() funcionan correctamente",
+        "Pokédex guarda: id, capturado (bool), cantidad capturada, shiny (bool)",
+        "Datos no se corrompen al cerrar/reabrir el navegador",
+        "Test: save → reload → datos intactos",
+        "Test: no se pierden datos si localStorage está casi lleno (manejo de error)",
+        "Versioning del save (para futuras migraciones)"
+      ],
+      "files_to_create": [
+        "src/systems/SaveSystem.ts",
+        "src/types/SaveData.ts",
+        "tests/save-system.test.ts"
+      ]
+    },
+    {
+      "id": "F17",
+      "phase": 6,
+      "title": "Sistema de shinies",
+      "status": "pending",
+      "description": "Al capturar un Pokemon, tiene una pequeña probabilidad de ser shiny (1/512). Los shinies usan los sprites de la carpeta Shiny/ y quedan marcados en la colección permanente.",
+      "acceptance_criteria": [
+        "Probabilidad de shiny: 1/512 por captura",
+        "Shiny usa sprite de carpeta assets/shiny/",
+        "Indicador visual en el sprite (destellos dorados)",
+        "Pokédex muestra indicador shiny si alguno fue capturado",
+        "Test: en 10000 capturas simuladas, ratio shiny ≈ 1/512 (±20%)"
+      ],
+      "files_to_create": [
+        "src/systems/ShinySystem.ts",
+        "tests/shiny-system.test.ts"
+      ]
+    },
+    {
+      "id": "F18",
+      "phase": 6,
+      "title": "Moneda meta y desbloqueos",
+      "status": "pending",
+      "description": "Sistema de moneda que se gana al completar runs. Se puede gastar en una tienda meta para desbloquear biomas, starters adicionales y cosméticos.",
+      "acceptance_criteria": [
+        "Se gana moneda meta al terminar un run (más según dificultad alcanzada)",
+        "Tienda meta con al menos 5 items desbloqueables",
+        "Desbloqueos persisten en localStorage",
+        "UI de tienda meta accesible desde el menú principal"
+      ],
+      "files_to_create": [
+        "src/scenes/MetaShopScene.ts",
+        "src/systems/MetaCurrencySystem.ts",
+        "src/data/unlockables.ts"
+      ]
+    },
+    {
+      "id": "F19",
+      "phase": 6,
+      "title": "Sistema de logros",
+      "status": "pending",
+      "description": "Achievements que se desbloquean por hitos del juego (primera captura, primera victoria, capturar todos los starters, etc.).",
+      "acceptance_criteria": [
+        "Al menos 15 logros definidos",
+        "Notificación visual al desbloquear un logro",
+        "Pantalla de logros accesible desde el menú",
+        "Logros guardados en localStorage",
+        "Algunos logros dan recompensas de moneda meta"
+      ],
+      "files_to_create": [
+        "src/systems/AchievementSystem.ts",
+        "src/data/achievements.ts",
+        "src/scenes/AchievementsScene.ts"
+      ]
+    },
+    {
+      "id": "F20",
+      "phase": 7,
+      "title": "Evoluciones durante el run",
+      "status": "pending",
+      "description": "Los Pokemon evolucionan al alcanzar su nivel de evolución durante un run. La evolución cambia sprite, sube stats y puede desbloquear nuevos moves en los slots.",
+      "acceptance_criteria": [
+        "Al subir de nivel al nivel correcto, el Pokemon evoluciona automáticamente post-batalla",
+        "Animación de evolución (fade-out sprite base, fade-in sprite evolución)",
+        "Stats recalculados con base stats de la evolución",
+        "Nuevos moves pueden aparecer en los slots disponibles",
+        "La forma evolucionada queda registrada en la Pokédex"
+      ],
+      "files_to_create": [
+        "src/systems/EvolutionSystem.ts",
+        "src/scenes/EvolutionScene.ts",
+        "tests/evolution-system.test.ts"
+      ]
+    }
+  ]
+}
