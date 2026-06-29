@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://cur0i3668yn3x"]
+
+[ext_resource type="Texture2D" uid="uid://dm8jfta8yn2cm" path="res://Files/Sprites/items.png" id="1"]
+[ext_resource type="FontFile" uid="uid://bbcfrt4x2slms" path="res://Files/Fonts/pokemon-ds-font.ttf" id="2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n3wdn"]
+font = ExtResource("2")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_kw28v"]
+font = ExtResource("2")
+font_size = 32
+
+[node name="ItemEntry" type="Control"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(2, 15)
+texture = ExtResource("1")
+hframes = 6
+vframes = 3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 22.0
+offset_right = 190.0
+offset_bottom = 28.0
+text = "Item"
+label_settings = SubResource("LabelSettings_n3wdn")
+
+[node name="Amount" type="Label" parent="."]
+modulate = Color(0.8, 0.8, 0.8, 1)
+layout_mode = 0
+offset_left = 193.0
+offset_right = 233.0
+offset_bottom = 28.0
+text = "x1"
+label_settings = SubResource("LabelSettings_kw28v")
+horizontal_alignment = 2

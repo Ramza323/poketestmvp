@@ -1,0 +1,691 @@
+[gd_scene load_steps=17 format=3 uid="uid://cf506teakoc0c"]
+
+[ext_resource type="Script" uid="uid://b3c0iryg3lypb" path="res://Files/Scenes/Versus/versus_mode.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://cuv5c0wi0lc5c" path="res://Files/Scenes/Menu/UI.tscn" id="2"]
+[ext_resource type="FontFile" uid="uid://b1386mtlrc4cx" path="res://Files/Fonts/power clear bold.ttf" id="3"]
+[ext_resource type="FontFile" uid="uid://b3ss5cqwd4t1u" path="res://Files/Fonts/PKMN RBYGSC.ttf" id="4"]
+[ext_resource type="Texture2D" uid="uid://b0j26ltmj22dw" path="res://Files/Sprites/UI/UIBox.png" id="5"]
+[ext_resource type="FontFile" uid="uid://bbcfrt4x2slms" path="res://Files/Fonts/pokemon-ds-font.ttf" id="6"]
+[ext_resource type="Script" uid="uid://b34uxlk280d3o" path="res://Files/Data/player_data.gd" id="7"]
+
+[sub_resource type="Animation" id="Animation_dfdik"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.215686, 0.615686, 0.670588, 0.509804)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(60, 29)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_quffp"]
+resource_name = "cantpickup"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.1, 0.2),
+"transitions": PackedFloat32Array(0, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 0.2, 0.2, 1), Color(1, 0.2, 0.2, 1), Color(0.215686, 0.615686, 0.670588, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.030303, 0.0606061, 0.0909091, 0.121212, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0606061, 0.121212, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0349066, -0.0349066, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_kmpwa"]
+resource_name = "loop"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.2144, 0.616847, 0.67, 1), Color(0.2656, 0.764153, 0.83, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(60, 29), Vector2(60, 21)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vl6bb"]
+_data = {
+&"RESET": SubResource("Animation_dfdik"),
+&"cantpickup": SubResource("Animation_quffp"),
+&"loop": SubResource("Animation_kmpwa")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_l13t5"]
+font = ExtResource("3")
+font_size = 78
+font_color = Color(0.933333, 0.917647, 0.933333, 1)
+outline_size = 16
+outline_color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ma1wh"]
+font = ExtResource("4")
+font_size = 32
+outline_size = 12
+outline_color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ws6kx"]
+font = ExtResource("6")
+font_size = 48
+font_color = Color(0.972549, 0.972549, 0.972549, 1)
+outline_size = 8
+outline_color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_g16k7"]
+font = ExtResource("4")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_eqibh"]
+font = ExtResource("3")
+font_size = 65
+font_color = Color(0.88, 0.2376, 0.826467, 1)
+outline_size = 8
+outline_color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[node name="VersusMode" type="Node2D"]
+script = ExtResource("1")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("2")]
+
+[node name="UI" parent="CanvasLayer" index="3"]
+modulate = Color(1, 1, 1, 0)
+
+[node name="Status" parent="CanvasLayer/UI" index="3"]
+position = Vector2(-611, -24)
+
+[node name="Formation" parent="CanvasLayer/UI/Status/Party" index="5"]
+position = Vector2(306, 0)
+
+[node name="Money" parent="CanvasLayer/HUD" index="0"]
+visible = false
+
+[node name="Player" parent="CanvasLayer/HUD" index="2"]
+visible = false
+
+[node name="BG" type="ColorRect" parent="."]
+offset_left = 691.0
+offset_top = 62.0
+offset_right = 1496.0
+offset_bottom = 854.0
+color = Color(0.035, 0.0425833, 0.1, 1)
+
+[node name="BG2" type="ColorRect" parent="."]
+offset_left = 714.0
+offset_top = 294.0
+offset_right = 1474.0
+offset_bottom = 830.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Grids" type="Node2D" parent="."]
+position = Vector2(-24, 0)
+
+[node name="ScrollContainer1" type="ScrollContainer" parent="Grids"]
+custom_minimum_size = Vector2(1004, 528)
+offset_left = 746.0
+offset_top = 302.0
+offset_right = 1750.0
+offset_bottom = 830.0
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="GridContainer" type="GridContainer" parent="Grids/ScrollContainer1"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 6
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="Grids"]
+custom_minimum_size = Vector2(1004, 528)
+offset_left = 746.0
+offset_top = 302.0
+offset_right = 1750.0
+offset_bottom = 830.0
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="GridContainer" type="GridContainer" parent="Grids/ScrollContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 6
+
+[node name="ScrollContainer3" type="ScrollContainer" parent="Grids"]
+custom_minimum_size = Vector2(1004, 528)
+offset_left = 746.0
+offset_top = 302.0
+offset_right = 1750.0
+offset_bottom = 830.0
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="GridContainer" type="GridContainer" parent="Grids/ScrollContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 6
+
+[node name="ScrollContainer4" type="ScrollContainer" parent="Grids"]
+custom_minimum_size = Vector2(1004, 528)
+offset_left = 746.0
+offset_top = 302.0
+offset_right = 1750.0
+offset_bottom = 830.0
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="GridContainer" type="GridContainer" parent="Grids/ScrollContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 6
+
+[node name="ScrollContainer5" type="ScrollContainer" parent="Grids"]
+custom_minimum_size = Vector2(1004, 528)
+offset_left = 746.0
+offset_top = 302.0
+offset_right = 1750.0
+offset_bottom = 830.0
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="GridContainer" type="GridContainer" parent="Grids/ScrollContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 6
+
+[node name="Selector" type="ColorRect" parent="Grids"]
+offset_left = 748.0
+offset_top = 304.0
+offset_right = 858.0
+offset_bottom = 360.0
+pivot_offset = Vector2(57, 28)
+color = Color(0.215686, 0.615686, 0.670588, 0.509804)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Grids/Selector"]
+libraries = {
+&"": SubResource("AnimationLibrary_vl6bb")
+}
+autoplay = "loop"
+
+[node name="Rarities" type="Node2D" parent="."]
+position = Vector2(692, 78)
+scale = Vector2(0.75, 0.75)
+
+[node name="RarityIndex" type="Node2D" parent="Rarities"]
+position = Vector2(486, 192)
+
+[node name="BG" type="ColorRect" parent="Rarities/RarityIndex"]
+offset_right = 105.0
+offset_bottom = 86.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Label" type="Label" parent="Rarities/RarityIndex"]
+modulate = Color(0.7, 0.7, 0.7, 1)
+z_index = 4
+offset_top = 8.0
+offset_right = 105.0
+offset_bottom = 72.0
+text = "*1"
+label_settings = SubResource("LabelSettings_l13t5")
+horizontal_alignment = 1
+
+[node name="RarityIndex2" type="Node2D" parent="Rarities"]
+position = Vector2(599, 192)
+
+[node name="BG" type="ColorRect" parent="Rarities/RarityIndex2"]
+offset_right = 105.0
+offset_bottom = 86.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Label" type="Label" parent="Rarities/RarityIndex2"]
+modulate = Color(0.45098, 0.631373, 0.933333, 1)
+z_index = 4
+offset_top = 8.0
+offset_right = 105.0
+offset_bottom = 72.0
+text = "*2"
+label_settings = SubResource("LabelSettings_l13t5")
+horizontal_alignment = 1
+
+[node name="RarityIndex3" type="Node2D" parent="Rarities"]
+position = Vector2(712, 192)
+
+[node name="BG" type="ColorRect" parent="Rarities/RarityIndex3"]
+offset_right = 105.0
+offset_bottom = 86.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Label" type="Label" parent="Rarities/RarityIndex3"]
+modulate = Color(0.482353, 0.807843, 0.384314, 1)
+z_index = 4
+offset_top = 8.0
+offset_right = 105.0
+offset_bottom = 72.0
+text = "*3"
+label_settings = SubResource("LabelSettings_l13t5")
+horizontal_alignment = 1
+
+[node name="RarityIndex4" type="Node2D" parent="Rarities"]
+position = Vector2(825, 192)
+
+[node name="BG" type="ColorRect" parent="Rarities/RarityIndex4"]
+offset_right = 105.0
+offset_bottom = 86.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Label" type="Label" parent="Rarities/RarityIndex4"]
+modulate = Color(0.964706, 0.901961, 0.384314, 1)
+z_index = 4
+offset_top = 8.0
+offset_right = 105.0
+offset_bottom = 72.0
+text = "*4"
+label_settings = SubResource("LabelSettings_l13t5")
+horizontal_alignment = 1
+
+[node name="RarityIndex5" type="Node2D" parent="Rarities"]
+position = Vector2(938, 192)
+
+[node name="BG" type="ColorRect" parent="Rarities/RarityIndex5"]
+offset_right = 105.0
+offset_bottom = 86.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Label" type="Label" parent="Rarities/RarityIndex5"]
+modulate = Color(0.835294, 0.219608, 0.192157, 1)
+z_index = 4
+offset_top = 8.0
+offset_right = 105.0
+offset_bottom = 72.0
+text = "*5"
+label_settings = SubResource("LabelSettings_l13t5")
+horizontal_alignment = 1
+
+[node name="Selector" type="ColorRect" parent="Rarities"]
+offset_left = 486.0
+offset_top = 192.0
+offset_right = 591.0
+offset_bottom = 278.0
+color = Color(0.215686, 0.615686, 0.670588, 0.509804)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rarities/Selector"]
+libraries = {
+&"": SubResource("AnimationLibrary_vl6bb")
+}
+autoplay = "loop"
+
+[node name="Menu" type="Node2D" parent="."]
+
+[node name="BG" type="ColorRect" parent="Menu"]
+offset_left = 111.0
+offset_top = 457.0
+offset_right = 393.0
+offset_bottom = 529.0
+color = Color(0.035, 0.0425833, 0.1, 1)
+
+[node name="BG2" type="ColorRect" parent="Menu"]
+offset_left = 119.0
+offset_top = 465.0
+offset_right = 385.0
+offset_bottom = 521.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Selector" type="ColorRect" parent="Menu"]
+visible = false
+offset_left = 119.0
+offset_top = 465.0
+offset_right = 385.0
+offset_bottom = 521.0
+color = Color(0.215686, 0.615686, 0.670588, 0.509804)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Menu/Selector"]
+libraries = {
+&"": SubResource("AnimationLibrary_vl6bb")
+}
+autoplay = "loop"
+
+[node name="Label" type="Label" parent="Menu"]
+offset_left = 119.0
+offset_top = 465.0
+offset_right = 385.0
+offset_bottom = 521.0
+text = "READY"
+label_settings = SubResource("LabelSettings_ma1wh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BG3" type="ColorRect" parent="Menu"]
+visible = false
+offset_left = 16.0
+offset_top = 747.0
+offset_right = 343.0
+offset_bottom = 819.0
+color = Color(0.035, 0.0425833, 0.1, 1)
+
+[node name="BG4" type="ColorRect" parent="Menu"]
+visible = false
+offset_left = 24.0
+offset_top = 755.0
+offset_right = 335.0
+offset_bottom = 811.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Menu"]
+position = Vector2(291, 787)
+texture = ExtResource("5")
+hframes = 2
+
+[node name="Label3" type="RichTextLabel" parent="Menu"]
+offset_left = 31.0
+offset_top = 763.0
+offset_right = 944.0
+offset_bottom = 819.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/normal_font = ExtResource("6")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[color=202020]Hold[color=c4a445] Cancel [color=202020]to quit"
+
+[node name="HUD" type="Node2D" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HUD"]
+offset_left = 716.0
+offset_top = 81.0
+offset_right = 1309.0
+offset_bottom = 161.0
+theme_override_constants/outline_size = 16
+theme_override_fonts/normal_font = ExtResource("6")
+theme_override_font_sizes/normal_font_size = 80
+bbcode_enabled = true
+text = "[color=317dff]Player 1[/color] picking..."
+
+[node name="PlayerData" type="Node" parent="HUD/RichTextLabel"]
+script = ExtResource("7")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="HUD"]
+offset_left = 714.0
+offset_top = 160.0
+offset_right = 1307.0
+offset_bottom = 240.0
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("6")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[color=c52018]Player 2[/color], look away!"
+
+[node name="PlayerData" type="Node" parent="HUD/RichTextLabel2"]
+script = ExtResource("7")
+
+[node name="BG" type="ColorRect" parent="HUD"]
+offset_left = 714.0
+offset_top = 222.0
+offset_right = 1040.0
+offset_bottom = 285.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Label" type="Label" parent="HUD"]
+offset_left = 714.0
+offset_top = 222.0
+offset_right = 1041.0
+offset_bottom = 286.0
+text = "Points Available: 0"
+label_settings = SubResource("LabelSettings_ws6kx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RaritySelect" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1, 0)
+metadata/_edit_lock_ = true
+
+[node name="ScreenTint" type="ColorRect" parent="RaritySelect"]
+z_index = 10
+offset_left = -40.0
+offset_top = -45.0
+offset_right = 1636.0
+offset_bottom = 926.0
+color = Color(0.13, 0.13, 0.13, 0.662745)
+
+[node name="BG" type="ColorRect" parent="RaritySelect"]
+z_index = 15
+offset_left = 394.0
+offset_top = 172.0
+offset_right = 1199.0
+offset_bottom = 675.0
+color = Color(0.035, 0.0425833, 0.1, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="RaritySelect"]
+z_index = 15
+offset_left = 394.0
+offset_top = 210.0
+offset_right = 1199.0
+offset_bottom = 286.0
+theme_override_constants/outline_size = 16
+theme_override_fonts/normal_font = ExtResource("6")
+theme_override_font_sizes/normal_font_size = 80
+bbcode_enabled = true
+text = "Set the [color=d53831]Battle Rank[/color]!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="RaritySelect"]
+z_index = 15
+texture_filter = 2
+offset_left = 394.0
+offset_top = 306.0
+offset_right = 1199.0
+offset_bottom = 382.0
+theme_override_constants/outline_size = 16
+theme_override_fonts/normal_font = ExtResource("6")
+theme_override_font_sizes/normal_font_size = 39
+bbcode_enabled = true
+text = "The Battle Rank is the
+ [color=eeca52]maximum combined rarity[/color] of each team."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Ranks" type="Node2D" parent="RaritySelect"]
+z_index = 15
+
+[node name="Index" type="ColorRect" parent="RaritySelect/Ranks"]
+show_behind_parent = true
+offset_left = 587.0
+offset_top = 456.0
+offset_right = 651.0
+offset_bottom = 520.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Index2" type="ColorRect" parent="RaritySelect/Ranks"]
+show_behind_parent = true
+offset_left = 675.0
+offset_top = 456.0
+offset_right = 739.0
+offset_bottom = 520.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Index3" type="ColorRect" parent="RaritySelect/Ranks"]
+show_behind_parent = true
+offset_left = 763.0
+offset_top = 456.0
+offset_right = 827.0
+offset_bottom = 520.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Index4" type="ColorRect" parent="RaritySelect/Ranks"]
+show_behind_parent = true
+offset_left = 851.0
+offset_top = 456.0
+offset_right = 915.0
+offset_bottom = 520.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Index5" type="ColorRect" parent="RaritySelect/Ranks"]
+show_behind_parent = true
+offset_left = 939.0
+offset_top = 456.0
+offset_right = 1003.0
+offset_bottom = 520.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="RanksLabels" type="Node2D" parent="RaritySelect"]
+z_index = 17
+position = Vector2(112, 0)
+
+[node name="Label" type="Label" parent="RaritySelect/RanksLabels"]
+z_index = 16
+offset_left = 475.0
+offset_top = 454.0
+offset_right = 545.0
+offset_bottom = 518.0
+text = "5"
+label_settings = SubResource("LabelSettings_g16k7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="RaritySelect/RanksLabels"]
+z_index = 16
+offset_left = 563.0
+offset_top = 454.0
+offset_right = 633.0
+offset_bottom = 518.0
+text = "7"
+label_settings = SubResource("LabelSettings_g16k7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="RaritySelect/RanksLabels"]
+z_index = 16
+offset_left = 651.0
+offset_top = 454.0
+offset_right = 721.0
+offset_bottom = 518.0
+text = "9"
+label_settings = SubResource("LabelSettings_g16k7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="RaritySelect/RanksLabels"]
+z_index = 16
+offset_left = 739.0
+offset_top = 454.0
+offset_right = 809.0
+offset_bottom = 518.0
+text = "12"
+label_settings = SubResource("LabelSettings_g16k7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="RaritySelect/RanksLabels"]
+z_index = 16
+offset_left = 831.883
+offset_top = 392.08
+offset_right = 901.883
+offset_bottom = 456.08
+rotation = 1.5708
+pivot_offset = Vector2(0.0986938, 63.0184)
+text = "8"
+label_settings = SubResource("LabelSettings_eqibh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Selector" type="ColorRect" parent="RaritySelect"]
+z_index = 15
+offset_left = 587.0
+offset_top = 456.0
+offset_right = 651.0
+offset_bottom = 520.0
+color = Color(0.215686, 0.615686, 0.670588, 0.509804)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RaritySelect/Selector"]
+libraries = {
+&"": SubResource("AnimationLibrary_vl6bb")
+}
+autoplay = "loop"
+
+[editable path="CanvasLayer"]
+[editable path="CanvasLayer/UI/Status/Moves/Move1"]
+[editable path="CanvasLayer/Shop/CardList/CardShopCard"]
+[editable path="CanvasLayer/GetCard/Booster"]
+[editable path="CanvasLayer/Starters/DeckDetails/DeckItem"]
+[editable path="CanvasLayer/GBC"]

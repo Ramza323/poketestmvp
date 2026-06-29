@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cm8ck2c4qbly0"]
+
+[node name="Divider" type="ColorRect"]
+custom_minimum_size = Vector2(4, 0)
+offset_left = -2.0
+offset_right = 2.0
+offset_bottom = 5.0
+size_flags_horizontal = 6
+color = Color(0.12549, 0.12549, 0.12549, 1)

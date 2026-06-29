@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://eq30fx0c4hag"
+path="res://.godot/imported/Battle Win 1.ogg-3be92b7c18756b4d6197cfdc57f4eb8e.oggvorbisstr"
+
+[deps]
+
+source_file="res://Files/BGMs/Battle Win 1.ogg"
+dest_files=["res://.godot/imported/Battle Win 1.ogg-3be92b7c18756b4d6197cfdc57f4eb8e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

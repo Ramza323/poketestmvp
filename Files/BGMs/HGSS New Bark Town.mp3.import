@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ijw1grna4405"
+path="res://.godot/imported/HGSS New Bark Town.mp3-42998d2e99b1a7fd0c57fe20aec62e90.mp3str"
+
+[deps]
+
+source_file="res://Files/BGMs/HGSS New Bark Town.mp3"
+dest_files=["res://.godot/imported/HGSS New Bark Town.mp3-42998d2e99b1a7fd0c57fe20aec62e90.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bn40yx16ufeqg"
+path="res://.godot/imported/HGSS Battle Frontier.mp3-7893793919efc36f1be21626db671c7d.mp3str"
+
+[deps]
+
+source_file="res://Files/BGMs/HGSS Battle Frontier.mp3"
+dest_files=["res://.godot/imported/HGSS Battle Frontier.mp3-7893793919efc36f1be21626db671c7d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

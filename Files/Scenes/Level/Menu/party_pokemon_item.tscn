@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://b4ryqlheg15bu"]
+
+[ext_resource type="Texture2D" uid="uid://b2fuval8bjfyx" path="res://Files/Sprites/UI/PartyIndexBG.png" id="1"]
+[ext_resource type="FontFile" uid="uid://bbcfrt4x2slms" path="res://Files/Fonts/pokemon-ds-font.ttf" id="2"]
+[ext_resource type="Texture2D" uid="uid://dk15kmgo0xhx5" path="res://Files/Sprites/PokemonSprites.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://bepfuhxkh2mkr" path="res://Files/Sprites/ColorIcons/green.png" id="4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p875q"]
+font = ExtResource("2")
+font_size = 32
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_wixhu"]
+offsets = PackedFloat32Array(0, 0.21978022, 0.62637365)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p875q"]
+gradient = SubResource("Gradient_wixhu")
+fill = 1
+fill_from = Vector2(0.48290598, 0.52991456)
+fill_to = Vector2(0.1965812, 0.76495725)
+
+[node name="PartyPokemonItem" type="Control"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(90, 16)
+texture = ExtResource("1")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 41.0
+offset_right = 209.0
+offset_bottom = 28.0
+text = "Pokemon"
+label_settings = SubResource("LabelSettings_p875q")
+
+[node name="Level" type="Label" parent="."]
+modulate = Color(0.8, 0.8, 0.8, 1)
+layout_mode = 0
+offset_left = 171.0
+offset_right = 211.0
+offset_bottom = 28.0
+pivot_offset = Vector2(21, 18)
+text = "lv9"
+label_settings = SubResource("LabelSettings_p875q")
+horizontal_alignment = 2
+
+[node name="Sprite" type="Sprite2D" parent="."]
+clip_children = 2
+position = Vector2(20, 12)
+texture = ExtResource("3")
+hframes = 15
+vframes = 84
+
+[node name="BlinkTexture" type="ColorRect" parent="Sprite"]
+offset_left = -17.0
+offset_top = -14.0
+offset_right = 23.0
+offset_bottom = 26.0
+color = Color(1, 1, 1, 0)
+
+[node name="ColorBorder" type="Sprite2D" parent="."]
+position = Vector2(-10, 13)
+texture = SubResource("GradientTexture2D_p875q")
+
+[node name="Color" type="Sprite2D" parent="."]
+position = Vector2(-11, 15)
+texture = ExtResource("4")

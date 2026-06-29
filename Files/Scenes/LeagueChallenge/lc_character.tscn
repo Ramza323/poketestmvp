@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://jfnaq8jwbs1w"]
+
+[ext_resource type="Texture2D" uid="uid://y6xffd0ytlwu" path="res://Files/Sprites/Characters/Red.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bcfr7sxvjtr6s" path="res://Files/Sprites/badges.png" id="2"]
+
+[node name="LC_Character" type="Control"]
+custom_minimum_size = Vector2(76, 76)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(46, 20)
+scale = Vector2(2, 2)
+texture = ExtResource("1")
+hframes = 3
+vframes = 4
+frame = 5
+
+[node name="Badge" type="Sprite2D" parent="."]
+z_index = 3
+position = Vector2(20, 34)
+texture = ExtResource("2")
+hframes = 7
+vframes = 7
+frame = 13

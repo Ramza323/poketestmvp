@@ -1,0 +1,182 @@
+[gd_scene format=3 uid="uid://cr77ti0n8jigq"]
+
+[ext_resource type="FontFile" uid="uid://bbcfrt4x2slms" path="res://Files/Fonts/pokemon-ds-font.ttf" id="1"]
+[ext_resource type="Texture2D" uid="uid://cmfu35em1c8vf" path="res://Files/Sprites/ColorIcons/red.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://doupsgg6ipv1l" path="res://Files/Sprites/UI/move_info.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://c6oj23itb3adh" path="res://Files/Sprites/UI/CardTexture.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://bd4tcirgmogpx" path="res://Files/Sprites/ColorIcons/black.png" id="5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bv0fq"]
+font = ExtResource("1")
+font_size = 32
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2jrja"]
+font = ExtResource("1")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ncxtp"]
+blend_mode = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_wo72p"]
+font = ExtResource("1")
+font_size = 32
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_42wvc"]
+offsets = PackedFloat32Array(0, 0.2259887, 0.7118644)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uyo4n"]
+gradient = SubResource("Gradient_42wvc")
+fill = 1
+fill_from = Vector2(0.48290598, 0.52991456)
+fill_to = Vector2(0.1965812, 0.76495725)
+
+[node name="AttackInfo" type="Node2D" unique_id=972302614]
+metadata/move_name = ""
+
+[node name="MoveInfo" type="Node2D" parent="." unique_id=1528739598]
+visible = false
+position = Vector2(-358, -376)
+
+[node name="MoveName" type="Label" parent="MoveInfo" unique_id=1322524469]
+visible = false
+offset_left = 460.0
+offset_top = 289.0
+offset_right = 600.0
+offset_bottom = 317.0
+text = "Flamethrower"
+label_settings = SubResource("LabelSettings_bv0fq")
+
+[node name="MoveDesc" type="Label" parent="MoveInfo" unique_id=1895349865]
+visible = false
+texture_filter = 2
+offset_left = 436.00006
+offset_top = 342.0
+offset_right = 706.0002
+offset_bottom = 464.85718
+scale = Vector2(0.9, 0.9)
+text = "ATK:{0}   AP:{1}
+Deals more damage the lower HP the user is."
+label_settings = SubResource("LabelSettings_2jrja")
+autowrap_mode = 3
+
+[node name="MoveColor" type="Sprite2D" parent="MoveInfo" unique_id=716835297]
+position = Vector2(441, 304)
+texture = ExtResource("2")
+
+[node name="MoveColorBG" type="Sprite2D" parent="MoveInfo/MoveColor" unique_id=1233219902]
+modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("2")
+
+[node name="AtkNameBG" type="ColorRect" parent="." unique_id=1662931924]
+visible = false
+offset_left = 60.0
+offset_top = -81.0
+offset_right = 281.0
+offset_bottom = -53.0
+color = Color(0, 0, 0, 1)
+
+[node name="BG" type="Sprite2D" parent="." unique_id=1913497160]
+clip_children = 2
+position = Vector2(195, -21)
+texture = ExtResource("3")
+hframes = 2
+
+[node name="CardTexture" type="Sprite2D" parent="BG" unique_id=555885156]
+material = SubResource("CanvasItemMaterial_ncxtp")
+position = Vector2(1, -1)
+scale = Vector2(0.63849735, 0.6150082)
+texture = ExtResource("4")
+
+[node name="BG2" type="Sprite2D" parent="." unique_id=1669689250]
+position = Vector2(195, -21)
+texture = ExtResource("3")
+hframes = 2
+frame = 1
+
+[node name="CostContainer" type="HBoxContainer" parent="." unique_id=2086600443]
+offset_left = 99.0
+offset_top = -62.0
+offset_right = 139.0
+offset_bottom = -44.0
+
+[node name="AtkNameLabel" type="Label" parent="." unique_id=1249858545]
+texture_filter = 2
+offset_left = 98.5
+offset_top = -96.0
+offset_right = 238.5
+offset_bottom = -64.0
+text = "Flamethrower"
+label_settings = SubResource("LabelSettings_wo72p")
+
+[node name="ColorBorder" type="Sprite2D" parent="." unique_id=1865316639]
+position = Vector2(84, -82)
+texture = SubResource("GradientTexture2D_uyo4n")
+
+[node name="ColorSpriteBG" type="Sprite2D" parent="." unique_id=1317023729]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 2
+position = Vector2(83.5, -80)
+scale = Vector2(1.15, 1.15)
+texture = ExtResource("5")
+
+[node name="ColorSprite" type="Sprite2D" parent="." unique_id=991315877]
+texture_filter = 2
+position = Vector2(83.5, -80)
+texture = ExtResource("5")
+
+[node name="AtkInfoLabel" type="RichTextLabel" parent="." unique_id=1614107066]
+offset_left = 75.0
+offset_top = -43.0
+offset_right = 333.0
+offset_bottom = 47.0
+theme_override_colors/default_color = Color(0.12549, 0.12549, 0.12549, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/normal_font = ExtResource("1")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "ATK:{0} - Deals damage to 1 of enemy."
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+
+[node name="BlinkBox" type="ColorRect" parent="." unique_id=617341318]
+offset_left = 64.0
+offset_top = -100.0
+offset_right = 326.0
+offset_bottom = 37.0
+color = Color(1, 1, 1, 0)
+
+[node name="OLD" type="Node2D" parent="." unique_id=2133084963]
+visible = false
+
+[node name="BGBorder" type="ColorRect" parent="OLD" unique_id=785900800]
+offset_left = 52.0
+offset_top = -89.0
+offset_right = 329.0
+offset_bottom = 53.0
+color = Color(0, 0, 0, 1)
+
+[node name="BG" type="ColorRect" parent="OLD" unique_id=1198502235]
+offset_left = 55.0
+offset_top = -86.0
+offset_right = 326.0
+offset_bottom = 50.0
+color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[node name="AtkInfoBG" type="ColorRect" parent="OLD" unique_id=15274302]
+offset_left = 60.0
+offset_top = -48.0
+offset_right = 321.0
+offset_bottom = 45.0
+color = Color(0, 0, 0, 1)

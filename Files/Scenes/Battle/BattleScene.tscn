@@ -1,0 +1,1518 @@
+[gd_scene format=3 uid="uid://cyo2e6pjebvyn"]
+
+[ext_resource type="Script" uid="uid://c4pv46ibmvc3y" path="res://Files/Scenes/Battle/battle_logic.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://b8uagfppui5pl" path="res://Files/Sprites/stadium.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://biox5jbvrxp2p" path="res://Files/Sprites/StagePlaceholder.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://brbmwm0vlmq5s" path="res://Files/Sprites/hand.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://dk15kmgo0xhx5" path="res://Files/Sprites/PokemonSprites.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://bivb2rdoevaiv" path="res://Files/Sprites/shadow_sprite.png" id="6"]
+[ext_resource type="FontFile" uid="uid://bbcfrt4x2slms" path="res://Files/Fonts/pokemon-ds-font.ttf" id="7"]
+[ext_resource type="FontFile" uid="uid://b3ss5cqwd4t1u" path="res://Files/Fonts/PKMN RBYGSC.ttf" id="8"]
+[ext_resource type="Texture2D" uid="uid://75pt8soaqi8p" path="res://Files/Sprites/DialogueWindowBG.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://caqbt6tsaqr0p" path="res://Files/Sprites/Window.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://b0i6y8ddplrlv" path="res://Files/Sprites/DialogueWindow.png" id="11"]
+
+[sub_resource type="Animation" id="Animation_ysl8y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, -120)]
+}
+
+[sub_resource type="Animation" id="Animation_2t1bb"]
+resource_name = "catch"
+length = 0.6
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.3, 0.35, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, -120), Vector2(1, -130), Vector2(1, -130), Vector2(1, -50), Vector2(1, -50), Vector2(1, -120)]
+}
+
+[sub_resource type="Animation" id="Animation_aqv6h"]
+resource_name = "drop"
+length = 0.6
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [3, 2, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.3, 0.35, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, -120), Vector2(1, -130), Vector2(1, -130), Vector2(1, -50), Vector2(1, -50), Vector2(1, -120)]
+}
+
+[sub_resource type="Animation" id="Animation_v4gyx"]
+resource_name = "fail drop"
+length = 0.8
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.34, 0.38, 0.42, 0.46, 0.5, 0.54, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, -120), Vector2(1, -130), Vector2(1, -130), Vector2(1, -100), Vector2(-3, -100), Vector2(4, -100), Vector2(-3, -100), Vector2(4, -100), Vector2(1, -100), Vector2(1, -100), Vector2(1, -120)]
+}
+
+[sub_resource type="Animation" id="Animation_2vb5f"]
+resource_name = "idle"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aqv6h"]
+_data = {
+&"RESET": SubResource("Animation_ysl8y"),
+&"catch": SubResource("Animation_2t1bb"),
+&"drop": SubResource("Animation_aqv6h"),
+&"fail drop": SubResource("Animation_v4gyx"),
+&"idle": SubResource("Animation_2vb5f")
+}
+
+[sub_resource type="Animation" id="Animation_1ytrj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stage:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.3053, 0.309457, 0.43, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Stage:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.18103, 2.0676)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BG:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_axrxo"]
+resource_name = "start battle"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stage:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(0.3053, 0.309457, 0.43, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Stage:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BG:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(0.25, 0.25, 0.25, 0), Color(0.25, 0.25, 0.25, 0.588235)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rwq8k"]
+_data = {
+&"RESET": SubResource("Animation_1ytrj"),
+&"start battle": SubResource("Animation_axrxo")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_2aqka"]
+font = ExtResource("7")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_f8lc4"]
+font = ExtResource("7")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_rh3te"]
+font = ExtResource("7")
+font_size = 48
+outline_size = 11
+outline_color = Color(0.160784, 0.282353, 0.545098, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_swhoj"]
+font = ExtResource("7")
+font_size = 32
+font_color = Color(0.192157, 0.490196, 1, 1)
+outline_size = 11
+outline_color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2lhnl"]
+font = ExtResource("7")
+font_size = 48
+outline_size = 11
+outline_color = Color(0.482353, 0.0941176, 0.0941176, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_co1pr"]
+font = ExtResource("7")
+font_size = 32
+font_color = Color(0.772549, 0.12549, 0.0941176, 1)
+outline_size = 11
+outline_color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_id134"]
+font = ExtResource("8")
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_hjspy"]
+line_spacing = 9.0
+font = ExtResource("7")
+font_size = 32
+
+[sub_resource type="Animation" id="Animation_tpwq0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.215686, 0.615686, 0.670588, 0.509804)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(60, 29)]
+}
+
+[sub_resource type="Animation" id="Animation_m5sco"]
+resource_name = "loop"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.215686, 0.615686, 0.670588, 0.509804), Color(0.215686, 0.615686, 0.670588, 0.823529)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(60, 29), Vector2(60, 21)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_squei"]
+_data = {
+&"RESET": SubResource("Animation_tpwq0"),
+&"loop": SubResource("Animation_m5sco")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_6t3sn"]
+line_spacing = 9.0
+font = ExtResource("8")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_udsj3"]
+font = ExtResource("7")
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_hlkbp"]
+font = ExtResource("7")
+font_size = 32
+
+[sub_resource type="Animation" id="Animation_dfdik"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.215686, 0.615686, 0.670588, 0.509804)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(60, 29)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_quffp"]
+resource_name = "cantpickup"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.1, 0.2),
+"transitions": PackedFloat32Array(0, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 0.2, 0.2, 1), Color(1, 0.2, 0.2, 1), Color(0.215686, 0.615686, 0.670588, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.030303, 0.0606061, 0.0909091, 0.121212, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0606061, 0.121212, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0349066, -0.0349066, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_kmpwa"]
+resource_name = "loop"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.2144, 0.616847, 0.67, 1), Color(0.2656, 0.764153, 0.83, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(60, 29), Vector2(60, 21)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vl6bb"]
+_data = {
+&"RESET": SubResource("Animation_dfdik"),
+&"cantpickup": SubResource("Animation_quffp"),
+&"loop": SubResource("Animation_kmpwa")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_2vb5f"]
+font = ExtResource("7")
+font_size = 48
+
+[node name="BattleScene" type="Node2D" unique_id=1051707177]
+y_sort_enabled = true
+script = ExtResource("1")
+
+[node name="BG" type="ColorRect" parent="." unique_id=853114090]
+z_index = -2
+offset_left = -160.0
+offset_top = -114.0
+offset_right = 1611.0
+offset_bottom = 911.0
+color = Color(1, 1, 1, 0)
+
+[node name="Stage" type="Sprite2D" parent="." unique_id=2137279600]
+modulate = Color(0.3053, 0.309457, 0.43, 0)
+z_index = -2
+position = Vector2(756, 469.5)
+scale = Vector2(1.18103, 2.0676)
+texture = ExtResource("2")
+hframes = 5
+frame = 1
+
+[node name="Stage2" type="Sprite2D" parent="." unique_id=1061533456]
+modulate = Color(0.3053, 0.309457, 0.43, 0)
+z_index = -2
+position = Vector2(756, 525.5)
+scale = Vector2(1.18103, 2.0676)
+texture = ExtResource("3")
+
+[node name="UnitField" type="Node2D" parent="." unique_id=1312452694]
+position = Vector2(0, -48)
+
+[node name="Selector" type="Node2D" parent="UnitField" unique_id=51118441]
+z_index = 99
+
+[node name="Sprite2D" type="Sprite2D" parent="UnitField/Selector" unique_id=813682692]
+position = Vector2(1, -120)
+scale = Vector2(4, 4)
+texture = ExtResource("4")
+hframes = 4
+
+[node name="PokeSprite" type="Sprite2D" parent="UnitField/Selector/Sprite2D" unique_id=1273695475]
+visible = false
+modulate = Color(1, 1, 1, 0.705882)
+show_behind_parent = true
+position = Vector2(-0.25, 8)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5")
+hframes = 15
+vframes = 84
+frame = 68
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UnitField/Selector" unique_id=1239461494]
+libraries/ = SubResource("AnimationLibrary_aqv6h")
+autoplay = &"idle"
+
+[node name="Shadow" type="Sprite2D" parent="UnitField/Selector" unique_id=2134166431]
+modulate = Color(1, 1, 1, 0.705882)
+position = Vector2(0, 10)
+texture = ExtResource("6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2042809650]
+libraries/ = SubResource("AnimationLibrary_rwq8k")
+autoplay = &"start battle"
+
+[node name="Searchbox" type="Node2D" parent="." unique_id=622209643]
+visible = false
+z_index = 50
+
+[node name="BGBorder" type="ColorRect" parent="Searchbox" unique_id=7819687]
+offset_left = 56.0
+offset_top = -125.0
+offset_right = 438.0
+offset_bottom = 1.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="BG" type="ColorRect" parent="Searchbox" unique_id=1309746011]
+offset_left = 59.0
+offset_top = -122.0
+offset_right = 435.0
+offset_bottom = -2.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="AtkNameBG" type="ColorRect" parent="Searchbox" unique_id=1865329937]
+offset_left = 257.0
+offset_top = -112.0
+offset_right = 430.0
+offset_bottom = -84.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="AtkNameBG2" type="ColorRect" parent="Searchbox" unique_id=241876884]
+offset_left = 257.0
+offset_top = -76.0
+offset_right = 430.0
+offset_bottom = -48.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="AtkNameBG3" type="ColorRect" parent="Searchbox" unique_id=847040859]
+offset_left = 257.0
+offset_top = -40.0
+offset_right = 430.0
+offset_bottom = -12.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="Slot1" type="Label" parent="Searchbox" unique_id=1662732818]
+offset_left = 257.0
+offset_top = -114.0
+offset_right = 430.0
+offset_bottom = -86.0
+text = "Feraligator"
+label_settings = SubResource("LabelSettings_2aqka")
+horizontal_alignment = 1
+
+[node name="Slot2" type="Label" parent="Searchbox" unique_id=100961802]
+offset_left = 257.0
+offset_top = -78.0
+offset_right = 430.0
+offset_bottom = -50.0
+text = "Feraligator"
+label_settings = SubResource("LabelSettings_2aqka")
+horizontal_alignment = 1
+
+[node name="Slot3" type="Label" parent="Searchbox" unique_id=1809888282]
+offset_left = 257.0
+offset_top = -42.0
+offset_right = 430.0
+offset_bottom = -14.0
+text = "Feraligator"
+label_settings = SubResource("LabelSettings_2aqka")
+horizontal_alignment = 1
+
+[node name="Stats" type="Node2D" parent="Searchbox" unique_id=928964603]
+position = Vector2(129, -67)
+
+[node name="AtkNameBG" type="ColorRect" parent="Searchbox/Stats" unique_id=1664993727]
+offset_left = -67.0
+offset_top = -52.0
+offset_right = 124.0
+offset_bottom = 62.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="Name" type="Label" parent="Searchbox/Stats" unique_id=2029052128]
+offset_left = -61.0
+offset_top = -54.0
+offset_right = 61.0
+offset_bottom = -26.0
+text = "Feraligator"
+label_settings = SubResource("LabelSettings_2aqka")
+
+[node name="Statbox" type="Node2D" parent="Searchbox/Stats" unique_id=249569038]
+position = Vector2(-859, -153)
+
+[node name="HP" type="Label" parent="Searchbox/Stats/Statbox" unique_id=1305290779]
+offset_left = 805.0
+offset_top = 129.0
+offset_right = 917.0
+offset_bottom = 157.0
+text = "hp: 100"
+label_settings = SubResource("LabelSettings_f8lc4")
+
+[node name="ATK" type="Label" parent="Searchbox/Stats/Statbox" unique_id=487517648]
+offset_left = 793.0
+offset_top = 157.0
+offset_right = 905.0
+offset_bottom = 185.0
+text = "atk: 100"
+label_settings = SubResource("LabelSettings_f8lc4")
+
+[node name="SPD" type="Label" parent="Searchbox/Stats/Statbox" unique_id=52627462]
+offset_left = 793.0
+offset_top = 185.0
+offset_right = 905.0
+offset_bottom = 213.0
+text = "spd: 100"
+label_settings = SubResource("LabelSettings_f8lc4")
+
+[node name="Bars" type="Node2D" parent="Searchbox/Stats/Statbox" unique_id=1558267850]
+
+[node name="HealthBG" type="ColorRect" parent="Searchbox/Stats/Statbox/Bars" unique_id=270993839]
+offset_left = 885.0
+offset_top = 135.0
+offset_right = 980.0
+offset_bottom = 153.0
+color = Color(0, 0, 0, 1)
+
+[node name="HealthBar" type="ColorRect" parent="Searchbox/Stats/Statbox/Bars" unique_id=2055312346]
+offset_left = 887.0
+offset_top = 137.0
+offset_right = 978.0
+offset_bottom = 151.0
+color = Color(0, 0.572549, 0, 1)
+
+[node name="HealthShadow" type="ColorRect" parent="Searchbox/Stats/Statbox/Bars" unique_id=2084195902]
+offset_left = 887.0
+offset_top = 137.0
+offset_right = 978.0
+offset_bottom = 141.0
+color = Color(0, 0, 0, 0.364706)
+
+[node name="ATKBG" type="ColorRect" parent="Searchbox/Stats/Statbox/Bars" unique_id=111404101]
+offset_left = 885.0
+offset_top = 163.0
+offset_right = 980.0
+offset_bottom = 181.0
+color = Color(0, 0, 0, 1)
+
+[node name="ATKBar" type="ColorRect" parent="Searchbox/Stats/Statbox/Bars" unique_id=1887367895]
+offset_left = 887.0
+offset_top = 165.0
+offset_right = 978.0
+offset_bottom = 179.0
+color = Color(0.57, 0.057, 0, 1)
+
+[node name="ATKShadow" type="ColorRect" parent="Searchbox/Stats/Statbox/Bars" unique_id=280531605]
+offset_left = 887.0
+offset_top = 165.0
+offset_right = 978.0
+offset_bottom = 169.0
+color = Color(0, 0, 0, 0.364706)
+
+[node name="SPDBG" type="ColorRect" parent="Searchbox/Stats/Statbox/Bars" unique_id=166291052]
+offset_left = 885.0
+offset_top = 191.0
+offset_right = 980.0
+offset_bottom = 209.0
+color = Color(0, 0, 0, 1)
+
+[node name="SPDBar" type="ColorRect" parent="Searchbox/Stats/Statbox/Bars" unique_id=1927050224]
+offset_left = 887.0
+offset_top = 193.0
+offset_right = 978.0
+offset_bottom = 207.0
+color = Color(0, 0.152, 0.57, 1)
+
+[node name="SPDShadow" type="ColorRect" parent="Searchbox/Stats/Statbox/Bars" unique_id=890332634]
+offset_left = 887.0
+offset_top = 193.0
+offset_right = 978.0
+offset_bottom = 197.0
+color = Color(0, 0, 0, 0.364706)
+
+[node name="BoxExp" type="Node2D" parent="." unique_id=1369296212]
+position = Vector2(320, 0)
+
+[node name="BG" type="ColorRect" parent="BoxExp" unique_id=839366833]
+offset_left = 1298.0
+offset_top = 86.0
+offset_right = 1517.0
+offset_bottom = 473.0
+color = Color(0.035, 0.0425833, 0.1, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BoxExp" unique_id=117275141]
+offset_left = 1318.0
+offset_top = 95.0
+offset_right = 1358.0
+offset_bottom = 135.0
+
+[node name="BattleResults" type="Node2D" parent="." unique_id=548222570]
+modulate = Color(1, 1, 1, 0)
+z_index = 90
+position = Vector2(0, 160)
+metadata/_edit_lock_ = true
+
+[node name="PlayerTeam" type="Node2D" parent="BattleResults" unique_id=801649860]
+position = Vector2(1017, 147)
+
+[node name="ColorRect" type="ColorRect" parent="BattleResults/PlayerTeam" unique_id=259956396]
+offset_left = -152.0
+offset_top = -51.0
+offset_right = 152.0
+offset_bottom = 59.0
+color = Color(0.13, 0.13, 0.13, 0.588235)
+
+[node name="BG" type="ColorRect" parent="BattleResults/PlayerTeam" unique_id=833715561]
+offset_left = -138.0
+offset_right = 139.0
+offset_bottom = 18.0
+color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[node name="BG2" type="ColorRect" parent="BattleResults/PlayerTeam" unique_id=190868592]
+offset_left = -134.0
+offset_top = 4.0
+offset_right = 135.0
+offset_bottom = 14.0
+color = Color(0, 0, 0, 1)
+
+[node name="ScoreBar" type="ColorRect" parent="BattleResults/PlayerTeam" unique_id=523189685]
+offset_left = -134.0
+offset_top = 4.0
+offset_right = 135.0
+offset_bottom = 14.0
+scale = Vector2(1e-05, 1)
+color = Color(0.192157, 0.490196, 1, 1)
+
+[node name="Label" type="Label" parent="BattleResults/PlayerTeam" unique_id=1032911396]
+offset_left = -96.0
+offset_top = -44.0
+offset_right = 96.0
+offset_bottom = -2.0
+pivot_offset = Vector2(67, 25)
+text = "PLAYER TEAM"
+label_settings = SubResource("LabelSettings_rh3te")
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="BattleResults/PlayerTeam" unique_id=305969231]
+offset_left = -96.0
+offset_top = 18.0
+offset_right = 96.0
+offset_bottom = 60.0
+pivot_offset = Vector2(95, 15)
+text = "0"
+label_settings = SubResource("LabelSettings_swhoj")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BattleResults/PlayerTeam" unique_id=65614392]
+offset_top = 64.0
+offset_right = 40.0
+offset_bottom = 104.0
+
+[node name="ResultNotif" type="Control" parent="BattleResults/PlayerTeam" unique_id=1435342264]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 3
+anchors_preset = 0
+offset_top = 64.0
+offset_right = 40.0
+offset_bottom = 96.0
+
+[node name="ColorRect" type="ColorRect" parent="BattleResults/PlayerTeam/ResultNotif" unique_id=78659320]
+layout_mode = 0
+offset_left = -152.0
+offset_top = -1.0
+offset_right = 152.0
+offset_bottom = 31.0
+color = Color(0.13, 0.13, 0.13, 0.588235)
+
+[node name="Label" type="RichTextLabel" parent="BattleResults/PlayerTeam/ResultNotif" unique_id=1187881429]
+layout_mode = 0
+offset_left = -133.0
+offset_top = 100.0
+offset_right = 139.0
+offset_bottom = 131.0
+pivot_offset = Vector2(67, 25)
+theme_override_colors/font_outline_color = Color(0.12549, 0.12549, 0.12549, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/normal_font = ExtResource("7")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[color=fffaf6]enemy wipeout:[/color] [color=f6ce29]2x"
+horizontal_alignment = 2
+
+[node name="EnemyTeam" type="Node2D" parent="BattleResults" unique_id=1376527991]
+position = Vector2(504, 147)
+
+[node name="ColorRect" type="ColorRect" parent="BattleResults/EnemyTeam" unique_id=1241836381]
+offset_left = -152.0
+offset_top = -51.0
+offset_right = 152.0
+offset_bottom = 59.0
+color = Color(0.13, 0.13, 0.13, 0.588235)
+
+[node name="BG" type="ColorRect" parent="BattleResults/EnemyTeam" unique_id=189979386]
+offset_left = -138.0
+offset_right = 139.0
+offset_bottom = 18.0
+color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[node name="BG2" type="ColorRect" parent="BattleResults/EnemyTeam" unique_id=1944885787]
+offset_left = -134.0
+offset_top = 4.0
+offset_right = 135.0
+offset_bottom = 14.0
+color = Color(0, 0, 0, 1)
+
+[node name="ScoreBar" type="ColorRect" parent="BattleResults/EnemyTeam" unique_id=444705139]
+offset_left = -134.0
+offset_top = 4.0
+offset_right = 135.0
+offset_bottom = 14.0
+scale = Vector2(1e-05, 1)
+color = Color(0.772549, 0.12549, 0.0941176, 1)
+
+[node name="Label" type="Label" parent="BattleResults/EnemyTeam" unique_id=252798681]
+offset_left = -96.0
+offset_top = -44.0
+offset_right = 96.0
+offset_bottom = -2.0
+pivot_offset = Vector2(67, 25)
+text = "ENEMY TEAM"
+label_settings = SubResource("LabelSettings_2lhnl")
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="BattleResults/EnemyTeam" unique_id=1231476435]
+offset_left = -96.0
+offset_top = 18.0
+offset_right = 96.0
+offset_bottom = 60.0
+text = "0"
+label_settings = SubResource("LabelSettings_co1pr")
+horizontal_alignment = 1
+
+[node name="Countdown" type="Node2D" parent="." unique_id=787442950]
+visible = false
+z_index = 90
+
+[node name="BG" type="ColorRect" parent="Countdown" unique_id=715022628]
+offset_left = 512.0
+offset_top = 289.0
+offset_right = 1009.0
+offset_bottom = 426.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="Label" type="RichTextLabel" parent="Countdown" unique_id=733043479]
+offset_left = 544.0
+offset_top = 299.0
+offset_right = 1240.0
+offset_bottom = 362.0
+theme_override_colors/default_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("7")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "Next battle in [color=ffffff]3.99"
+
+[node name="Label2" type="RichTextLabel" parent="Countdown" unique_id=1794126579]
+offset_left = 514.0
+offset_top = 371.0
+offset_right = 996.0
+offset_bottom = 434.0
+theme_override_colors/default_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("7")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Press [color=ffffff]Cancel[/color] to enter Battle Setup"
+horizontal_alignment = 1
+
+[node name="BFResult" type="Node2D" parent="." unique_id=1884530590]
+modulate = Color(1, 1, 1, 0)
+z_index = 91
+
+[node name="BG" type="ColorRect" parent="BFResult" unique_id=1623994710]
+offset_left = 524.0
+offset_top = 166.0
+offset_right = 1022.0
+offset_bottom = 645.0
+color = Color(0.035, 0.0425833, 0.1, 1)
+
+[node name="ResultBG" type="ColorRect" parent="BFResult" unique_id=1979229954]
+offset_left = 587.0
+offset_top = 210.0
+offset_right = 963.0
+offset_bottom = 311.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Result" type="Label" parent="BFResult" unique_id=1944091103]
+offset_left = 587.0
+offset_top = 232.0
+offset_right = 963.0
+offset_bottom = 286.0
+text = "VICTORY"
+label_settings = SubResource("LabelSettings_id134")
+horizontal_alignment = 1
+
+[node name="Party" type="Node2D" parent="BFResult" unique_id=470002369]
+position = Vector2(772, 343)
+
+[node name="PartyBG0" type="ColorRect" parent="BFResult/Party" unique_id=1106890189]
+offset_right = 48.0
+offset_bottom = 48.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="PartyBG1" type="ColorRect" parent="BFResult/Party" unique_id=1345029583]
+offset_top = 56.0
+offset_right = 48.0
+offset_bottom = 104.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="PartyBG2" type="ColorRect" parent="BFResult/Party" unique_id=800864843]
+offset_top = 112.0
+offset_right = 48.0
+offset_bottom = 160.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="PartyBG3" type="ColorRect" parent="BFResult/Party" unique_id=1404702442]
+offset_left = 56.0
+offset_right = 104.0
+offset_bottom = 48.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="PartyBG4" type="ColorRect" parent="BFResult/Party" unique_id=988723131]
+offset_left = 56.0
+offset_top = 56.0
+offset_right = 104.0
+offset_bottom = 104.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="PartyBG5" type="ColorRect" parent="BFResult/Party" unique_id=576403371]
+offset_left = 56.0
+offset_top = 112.0
+offset_right = 104.0
+offset_bottom = 160.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Sprite0" type="Sprite2D" parent="BFResult/Party" unique_id=1726302916]
+visible = false
+position = Vector2(24, 23)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5")
+hframes = 15
+vframes = 77
+frame = 2
+
+[node name="Sprite1" type="Sprite2D" parent="BFResult/Party" unique_id=522937295]
+visible = false
+position = Vector2(24, 79)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5")
+hframes = 15
+vframes = 77
+frame = 2
+
+[node name="Sprite2" type="Sprite2D" parent="BFResult/Party" unique_id=244523159]
+visible = false
+position = Vector2(24, 135)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5")
+hframes = 15
+vframes = 77
+frame = 2
+
+[node name="Sprite3" type="Sprite2D" parent="BFResult/Party" unique_id=502644863]
+visible = false
+position = Vector2(80, 23)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5")
+hframes = 15
+vframes = 77
+frame = 2
+
+[node name="Sprite4" type="Sprite2D" parent="BFResult/Party" unique_id=1399688251]
+visible = false
+position = Vector2(80, 79)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5")
+hframes = 15
+vframes = 77
+frame = 2
+
+[node name="Sprite5" type="Sprite2D" parent="BFResult/Party" unique_id=369921107]
+visible = false
+position = Vector2(80, 135)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5")
+hframes = 15
+vframes = 77
+frame = 2
+
+[node name="Box" type="Node2D" parent="BFResult" unique_id=2093308811]
+position = Vector2(884, 343)
+
+[node name="BoxBG" type="ColorRect" parent="BFResult/Box" unique_id=1369854441]
+offset_right = 79.0
+offset_bottom = 160.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Sprite0" type="Sprite2D" parent="BFResult/Box" unique_id=1643415523]
+visible = false
+position = Vector2(19, 15)
+texture = ExtResource("5")
+hframes = 15
+vframes = 77
+frame = 2
+
+[node name="Sprite1" type="Sprite2D" parent="BFResult/Box" unique_id=229279475]
+visible = false
+position = Vector2(59, 15)
+texture = ExtResource("5")
+hframes = 15
+vframes = 77
+frame = 2
+
+[node name="Sprite2" type="Sprite2D" parent="BFResult/Box" unique_id=1930036192]
+visible = false
+position = Vector2(19, 47)
+texture = ExtResource("5")
+hframes = 15
+vframes = 77
+frame = 2
+
+[node name="Sprite3" type="Sprite2D" parent="BFResult/Box" unique_id=608544769]
+visible = false
+position = Vector2(59, 47)
+texture = ExtResource("5")
+hframes = 15
+vframes = 77
+frame = 2
+
+[node name="Sprite4" type="Sprite2D" parent="BFResult/Box" unique_id=1812901157]
+visible = false
+position = Vector2(19, 79)
+texture = ExtResource("5")
+hframes = 15
+vframes = 77
+frame = 2
+
+[node name="Sprite5" type="Sprite2D" parent="BFResult/Box" unique_id=2020340123]
+visible = false
+position = Vector2(59, 79)
+texture = ExtResource("5")
+hframes = 15
+vframes = 77
+frame = 2
+
+[node name="Sprite6" type="Sprite2D" parent="BFResult/Box" unique_id=258345006]
+visible = false
+position = Vector2(19, 111)
+texture = ExtResource("5")
+hframes = 15
+vframes = 77
+frame = 2
+
+[node name="Sprite7" type="Sprite2D" parent="BFResult/Box" unique_id=1707433605]
+visible = false
+position = Vector2(59, 111)
+texture = ExtResource("5")
+hframes = 15
+vframes = 77
+frame = 2
+
+[node name="Sprite8" type="Sprite2D" parent="BFResult/Box" unique_id=1757411948]
+visible = false
+position = Vector2(19, 143)
+texture = ExtResource("5")
+hframes = 15
+vframes = 77
+frame = 2
+
+[node name="Sprite9" type="Sprite2D" parent="BFResult/Box" unique_id=325845413]
+visible = false
+position = Vector2(59, 143)
+texture = ExtResource("5")
+hframes = 15
+vframes = 77
+frame = 2
+
+[node name="Stats" type="Node2D" parent="BFResult" unique_id=948836806]
+position = Vector2(587, 343)
+
+[node name="ResultBG" type="ColorRect" parent="BFResult/Stats" unique_id=85747604]
+offset_right = 161.0
+offset_bottom = 160.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="ResultsLabel" type="Label" parent="BFResult/Stats" unique_id=1673791686]
+modulate = Color(0.972549, 0.972549, 0.972549, 1)
+offset_right = 115.0
+offset_bottom = 159.0
+text = "Battles:
+Victories:
+Defeats:
+"
+label_settings = SubResource("LabelSettings_hjspy")
+horizontal_alignment = 2
+
+[node name="ResultsValue" type="Label" parent="BFResult/Stats" unique_id=2032383988]
+offset_left = 120.0
+offset_right = 235.0
+offset_bottom = 159.0
+text = "{0}
+{1}
+{2}"
+label_settings = SubResource("LabelSettings_hjspy")
+
+[node name="Button" type="Node2D" parent="BFResult" unique_id=1494256941]
+position = Vector2(0, 325)
+
+[node name="BG" type="ColorRect" parent="BFResult/Button" unique_id=1804803113]
+offset_left = 672.0
+offset_top = 210.0
+offset_right = 867.0
+offset_bottom = 258.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Selector" type="ColorRect" parent="BFResult/Button" unique_id=1433307165]
+visible = false
+modulate = Color(1, 1, 1, 0.509804)
+offset_left = 672.0
+offset_top = 210.0
+offset_right = 867.0
+offset_bottom = 258.0
+color = Color(0.215686, 0.615686, 0.670588, 0.509804)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BFResult/Button/Selector" unique_id=368899258]
+libraries/ = SubResource("AnimationLibrary_squei")
+autoplay = &"loop"
+
+[node name="Label" type="Label" parent="BFResult/Button" unique_id=933246718]
+modulate = Color(0.972549, 0.972549, 0.972549, 1)
+offset_left = 672.0
+offset_top = 216.0
+offset_right = 867.0
+offset_bottom = 252.0
+text = "OK"
+label_settings = SubResource("LabelSettings_6t3sn")
+horizontal_alignment = 1
+
+[node name="DefeatedBy" type="Node2D" parent="BFResult" unique_id=1365326954]
+visible = false
+show_behind_parent = true
+position = Vector2(506, 0)
+
+[node name="BG" type="ColorRect" parent="BFResult/DefeatedBy" unique_id=1302069399]
+offset_left = 524.0
+offset_top = 311.0
+offset_right = 774.0
+offset_bottom = 645.0
+color = Color(0.035, 0.0425833, 0.1, 1)
+
+[node name="ResultBG" type="ColorRect" parent="BFResult/DefeatedBy" unique_id=1066315500]
+offset_left = 540.0
+offset_top = 327.0
+offset_right = 758.0
+offset_bottom = 392.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Result" type="Label" parent="BFResult/DefeatedBy" unique_id=1458604542]
+offset_left = 465.0
+offset_top = 335.0
+offset_right = 841.0
+offset_bottom = 389.0
+text = "Defeated by:"
+label_settings = SubResource("LabelSettings_udsj3")
+horizontal_alignment = 1
+
+[node name="Party" type="Node2D" parent="BFResult/DefeatedBy" unique_id=1137813877]
+position = Vector2(598, 424)
+
+[node name="PartyBG0" type="ColorRect" parent="BFResult/DefeatedBy/Party" unique_id=1497987850]
+offset_right = 48.0
+offset_bottom = 48.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="PartyBG1" type="ColorRect" parent="BFResult/DefeatedBy/Party" unique_id=939021969]
+offset_top = 56.0
+offset_right = 48.0
+offset_bottom = 104.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="PartyBG2" type="ColorRect" parent="BFResult/DefeatedBy/Party" unique_id=1777125265]
+offset_top = 112.0
+offset_right = 48.0
+offset_bottom = 160.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="PartyBG3" type="ColorRect" parent="BFResult/DefeatedBy/Party" unique_id=261775498]
+offset_left = 56.0
+offset_right = 104.0
+offset_bottom = 48.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="PartyBG4" type="ColorRect" parent="BFResult/DefeatedBy/Party" unique_id=2070952423]
+offset_left = 56.0
+offset_top = 56.0
+offset_right = 104.0
+offset_bottom = 104.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="PartyBG5" type="ColorRect" parent="BFResult/DefeatedBy/Party" unique_id=714176138]
+offset_left = 56.0
+offset_top = 112.0
+offset_right = 104.0
+offset_bottom = 160.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Sprite0" type="Sprite2D" parent="BFResult/DefeatedBy/Party" unique_id=1456355617]
+visible = false
+position = Vector2(24, 23)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5")
+hframes = 15
+vframes = 77
+frame = 2
+
+[node name="Sprite1" type="Sprite2D" parent="BFResult/DefeatedBy/Party" unique_id=1831187309]
+visible = false
+position = Vector2(24, 79)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5")
+hframes = 15
+vframes = 77
+frame = 2
+
+[node name="Sprite2" type="Sprite2D" parent="BFResult/DefeatedBy/Party" unique_id=737099630]
+visible = false
+position = Vector2(24, 135)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5")
+hframes = 15
+vframes = 77
+frame = 2
+
+[node name="Sprite3" type="Sprite2D" parent="BFResult/DefeatedBy/Party" unique_id=531512933]
+visible = false
+position = Vector2(80, 23)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5")
+hframes = 15
+vframes = 77
+frame = 2
+
+[node name="Sprite4" type="Sprite2D" parent="BFResult/DefeatedBy/Party" unique_id=437695960]
+visible = false
+position = Vector2(80, 79)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5")
+hframes = 15
+vframes = 77
+frame = 2
+
+[node name="Sprite5" type="Sprite2D" parent="BFResult/DefeatedBy/Party" unique_id=715753986]
+visible = false
+position = Vector2(80, 135)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5")
+hframes = 15
+vframes = 77
+frame = 2
+
+[node name="SpeechBox" type="Node2D" parent="." unique_id=1795034671]
+visible = false
+z_index = 99
+
+[node name="BG" type="ColorRect" parent="SpeechBox" unique_id=1431720707]
+offset_left = -154.0
+offset_top = -78.0
+offset_right = 155.0
+offset_bottom = -10.0
+pivot_offset = Vector2(142, 111)
+color = Color(0.035, 0.0436667, 0.1, 0.901961)
+
+[node name="BgTexture" type="Sprite2D" parent="SpeechBox" unique_id=1856526586]
+position = Vector2(-0.499818, -44.5)
+scale = Vector2(1.11151, 0.844156)
+texture = ExtResource("9")
+
+[node name="Border" type="Node2D" parent="SpeechBox" unique_id=543530707]
+position = Vector2(-11, 0)
+
+[node name="NW" type="Sprite2D" parent="SpeechBox/Border" unique_id=462154704]
+z_index = 2
+position = Vector2(-134, -71)
+texture = ExtResource("10")
+hframes = 6
+vframes = 6
+frame = 3
+
+[node name="Top" type="Sprite2D" parent="SpeechBox/Border" unique_id=764192204]
+position = Vector2(13.5, -71)
+scale = Vector2(8.21875, 1)
+texture = ExtResource("10")
+hframes = 6
+vframes = 6
+frame = 4
+
+[node name="NE" type="Sprite2D" parent="SpeechBox/Border" unique_id=164420213]
+z_index = 2
+position = Vector2(160, -71)
+texture = ExtResource("10")
+hframes = 6
+vframes = 6
+frame = 5
+
+[node name="Right" type="Sprite2D" parent="SpeechBox/Border" unique_id=2003527832]
+position = Vector2(160, -42.25)
+scale = Vector2(1, 1.89062)
+texture = ExtResource("10")
+hframes = 6
+vframes = 6
+frame = 11
+
+[node name="Left" type="Sprite2D" parent="SpeechBox/Border" unique_id=795658458]
+position = Vector2(-134, -42)
+scale = Vector2(1, 1.875)
+texture = ExtResource("10")
+hframes = 6
+vframes = 6
+frame = 9
+
+[node name="SW" type="Sprite2D" parent="SpeechBox/Border" unique_id=1013130129]
+z_index = 2
+position = Vector2(-134, -17)
+texture = ExtResource("10")
+hframes = 6
+vframes = 6
+frame = 15
+
+[node name="SE" type="Sprite2D" parent="SpeechBox/Border" unique_id=2056318587]
+z_index = 2
+position = Vector2(160, -17)
+texture = ExtResource("10")
+hframes = 6
+vframes = 6
+frame = 17
+
+[node name="Bottom" type="Sprite2D" parent="SpeechBox/Border" unique_id=2059497859]
+position = Vector2(13, -17)
+scale = Vector2(8.25, 1)
+texture = ExtResource("10")
+hframes = 6
+vframes = 6
+frame = 16
+
+[node name="DialogueBorder" type="Sprite2D" parent="SpeechBox" unique_id=1688709998]
+visible = false
+position = Vector2(1, -39)
+texture = ExtResource("11")
+
+[node name="Dialogue" type="Label" parent="SpeechBox" unique_id=52084475]
+modulate = Color(0.972549, 0.972549, 0.972549, 1)
+offset_left = -146.0
+offset_top = -75.0
+offset_right = 158.0
+offset_bottom = 15.0
+label_settings = SubResource("LabelSettings_hlkbp")
+autowrap_mode = 2
+
+[node name="ChoiceList" type="Node2D" parent="SpeechBox" unique_id=1548596661]
+position = Vector2(16, -7)
+
+[node name="VersusMenu" type="Node2D" parent="." unique_id=1260061928]
+visible = false
+z_index = 90
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="ScreenTint" type="ColorRect" parent="VersusMenu" unique_id=295722367]
+offset_left = -24.0
+offset_top = -22.0
+offset_right = 1623.0
+offset_bottom = 929.0
+color = Color(0.13, 0.13, 0.13, 0.54902)
+
+[node name="BG" type="ColorRect" parent="VersusMenu" unique_id=862178100]
+offset_left = 647.0
+offset_top = 338.0
+offset_right = 866.0
+offset_bottom = 481.0
+color = Color(0.035, 0.0425833, 0.1, 1)
+
+[node name="BG2" type="ColorRect" parent="VersusMenu" unique_id=590469098]
+offset_left = 659.0
+offset_top = 350.0
+offset_right = 854.0
+offset_bottom = 406.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="BG3" type="ColorRect" parent="VersusMenu" unique_id=507747711]
+offset_left = 659.0
+offset_top = 414.0
+offset_right = 854.0
+offset_bottom = 470.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="BG5" type="ColorRect" parent="VersusMenu" unique_id=1932720122]
+visible = false
+offset_left = 559.0
+offset_top = 202.0
+offset_right = 969.0
+offset_bottom = 287.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Selector" type="ColorRect" parent="VersusMenu" unique_id=1357088763]
+offset_left = 659.0
+offset_top = 350.0
+offset_right = 854.0
+offset_bottom = 406.0
+color = Color(0.215686, 0.615686, 0.670588, 0.509804)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VersusMenu/Selector" unique_id=2062295999]
+libraries/ = SubResource("AnimationLibrary_vl6bb")
+autoplay = &"loop"
+
+[node name="Label" type="Label" parent="VersusMenu" unique_id=765722933]
+offset_left = 659.0
+offset_top = 350.0
+offset_right = 854.0
+offset_bottom = 406.0
+text = "REMATCH"
+label_settings = SubResource("LabelSettings_2vb5f")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VersusMenu" unique_id=1500317512]
+offset_left = 659.0
+offset_top = 414.0
+offset_right = 854.0
+offset_bottom = 470.0
+text = "QUIT"
+label_settings = SubResource("LabelSettings_2vb5f")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BG6" type="ColorRect" parent="VersusMenu" unique_id=825750239]
+offset_left = 546.0
+offset_top = 194.0
+offset_right = 962.0
+offset_bottom = 297.0
+color = Color(0.035, 0.0425833, 0.1, 1)
+
+[node name="BG4" type="ColorRect" parent="VersusMenu" unique_id=529292762]
+offset_left = 550.0
+offset_top = 198.0
+offset_right = 958.0
+offset_bottom = 293.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VersusMenu" unique_id=159739763]
+offset_left = 556.0
+offset_top = 170.0
+offset_right = 964.0
+offset_bottom = 312.0
+theme_override_constants/outline_size = 12
+theme_override_fonts/normal_font = ExtResource("7")
+theme_override_font_sizes/normal_font_size = 80
+bbcode_enabled = true
+text = "[color=c52018]Player 2[/color] wins!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GUIPlayer" type="AudioStreamPlayer" parent="." unique_id=686226605]
+volume_db = -15.0

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cqcr13dh3pglj"
+path="res://.godot/imported/HGSS Trainer Battle (Johto).mp3-db89505076a9370e229ab10af281590f.mp3str"
+
+[deps]
+
+source_file="res://Files/BGMs/HGSS Trainer Battle (Johto).mp3"
+dest_files=["res://.godot/imported/HGSS Trainer Battle (Johto).mp3-db89505076a9370e229ab10af281590f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

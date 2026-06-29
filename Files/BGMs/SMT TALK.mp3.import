@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://5xcv7lsiakub"
+path="res://.godot/imported/SMT TALK.mp3-fc4bdf6cf139a102bf88ad6731a6ca9b.mp3str"
+
+[deps]
+
+source_file="res://Files/BGMs/SMT TALK.mp3"
+dest_files=["res://.godot/imported/SMT TALK.mp3-fc4bdf6cf139a102bf88ad6731a6ca9b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

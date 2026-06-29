@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bcy58nlfkd53q"
+path="res://.godot/imported/GUI naming tab swap start.mp3-428b1b2f0ef8866516b45ef91bea874e.mp3str"
+
+[deps]
+
+source_file="res://Files/SoundEffects/Battle/GUI naming tab swap start.mp3"
+dest_files=["res://.godot/imported/GUI naming tab swap start.mp3-428b1b2f0ef8866516b45ef91bea874e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

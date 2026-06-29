@@ -1,0 +1,421 @@
+[gd_scene load_steps=25 format=3 uid="uid://dphqqhpjri7ap"]
+
+[ext_resource type="Texture2D" uid="uid://nms20yd8ie6n" path="res://Files/Sprites/card_bg.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://cilfnaprlximy" path="res://Files/Sprites/cardUI.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://dk15kmgo0xhx5" path="res://Files/Sprites/PokemonSprites.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://bepfuhxkh2mkr" path="res://Files/Sprites/ColorIcons/green.png" id="4"]
+[ext_resource type="FontFile" uid="uid://b3ss5cqwd4t1u" path="res://Files/Fonts/PKMN RBYGSC.ttf" id="5"]
+[ext_resource type="FontFile" uid="uid://bbcfrt4x2slms" path="res://Files/Fonts/pokemon-ds-font.ttf" id="6"]
+[ext_resource type="Texture2D" uid="uid://ctmeonlwloi4b" path="res://Files/Sprites/cardback.png" id="7"]
+
+[sub_resource type="Animation" id="Animation_8jl6o"]
+resource_name = "Playing"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.27999997, 0.9159999, 1, 1), Color(0, 0.79499984, 0.9, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c86p3"]
+_data = {
+&"Playing": SubResource("Animation_8jl6o")
+}
+
+[sub_resource type="Animation" id="Animation_d167m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-59.6071, -153.693)]
+}
+
+[sub_resource type="Animation" id="Animation_c86p3"]
+resource_name = "shine"
+length = 4.5
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2, 2.8),
+"transitions": PackedFloat32Array(1, 0),
+"update": 0,
+"values": [Vector2(-84, -114), Vector2(76, -114)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j7g5w"]
+_data = {
+&"RESET": SubResource("Animation_d167m"),
+&"shine": SubResource("Animation_c86p3")
+}
+
+[sub_resource type="Gradient" id="Gradient_j7g5w"]
+colors = PackedColorArray(1, 1, 1, 0.25490198, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_816s4"]
+gradient = SubResource("Gradient_j7g5w")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0.008547009, 0.20940171)
+
+[sub_resource type="Gradient" id="Gradient_82uki"]
+offsets = PackedFloat32Array(0, 0.15384616, 0.32967034, 0.36263737, 0.4010989, 0.43406594)
+colors = PackedColorArray(0.27, 0.27, 0.27, 1, 0.50980395, 0.50980395, 0.50980395, 1, 0.972549, 0.972549, 0.972549, 1, 0.972549, 0.972549, 0.972549, 1, 0.45, 0.45, 0.45, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x0p3e"]
+gradient = SubResource("Gradient_82uki")
+fill = 1
+fill_from = Vector2(0.4871795, 0.5470086)
+
+[sub_resource type="Gradient" id="Gradient_x0p3e"]
+offsets = PackedFloat32Array(0, 0.21978022, 0.45604396)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j7g5w"]
+gradient = SubResource("Gradient_x0p3e")
+fill = 1
+fill_from = Vector2(0.48290598, 0.52991456)
+fill_to = Vector2(0.1965812, 0.76495725)
+
+[sub_resource type="LabelSettings" id="LabelSettings_c86p3"]
+font = ExtResource("5")
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ks230"]
+font = ExtResource("6")
+font_size = 32
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_x0p3e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardBack:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BG2:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_816s4"]
+resource_name = "rare"
+length = 1.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.3, 0.8, 1.1),
+"transitions": PackedFloat32Array(2, 1, 0.5, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9), Vector2(0.9, 0.9), Vector2(1.4, 1.4), Vector2(1.4, 1.4), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BG2:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.3, 0.8, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 0.254902), Color(0, 0, 0, 0.254902), Color(1, 1, 1, 0.784314), Color(1, 1, 1, 0.352941), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_j7g5w"]
+resource_name = "reveal"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(0.5, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardBack:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BG2:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_816s4"]
+_data = {
+&"RESET": SubResource("Animation_x0p3e"),
+&"rare": SubResource("Animation_816s4"),
+&"reveal": SubResource("Animation_j7g5w")
+}
+
+[node name="CardShopCard" type="Control"]
+custom_minimum_size = Vector2(120, 90)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 120.0
+offset_bottom = 90.0
+pivot_offset = Vector2(45, 90)
+metadata/disabled = false
+metadata/cost = 0
+
+[node name="Border" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.627451)
+layout_mode = 0
+offset_right = 90.0
+offset_bottom = 110.0
+color = Color(0.0216, 0.0237467, 0.04, 1)
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 87.0
+offset_bottom = 107.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="BG2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 87.0
+offset_bottom = 107.0
+color = Color(1, 1, 1, 0)
+
+[node name="Selector" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 88.0
+offset_bottom = 108.0
+color = Color(0.27999997, 0.9159999, 1, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Selector"]
+libraries = {
+&"": SubResource("AnimationLibrary_c86p3")
+}
+autoplay = "Playing"
+
+[node name="BGTexture" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.54902)
+clip_children = 2
+position = Vector2(45, 55)
+texture = ExtResource("1")
+hframes = 6
+frame = 2
+
+[node name="ColorRect" type="ColorRect" parent="BGTexture"]
+modulate = Color(1, 1, 1, 0.686275)
+offset_left = -59.6071
+offset_top = -153.693
+offset_right = -37.6071
+offset_bottom = 35.307007
+rotation = 0.349066
+pivot_offset = Vector2(7.18907, 92.3782)
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BGTexture"]
+libraries = {
+&"": SubResource("AnimationLibrary_j7g5w")
+}
+
+[node name="Shadow OLD" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 0
+offset_left = 11.0
+offset_top = 15.0
+offset_right = 79.0
+offset_bottom = 63.0
+color = Color(0, 0, 0, 1)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(44.5, 39)
+scale = Vector2(1.046875, 0.75)
+texture = SubResource("GradientTexture2D_816s4")
+
+[node name="SpriteShadow" type="Sprite2D" parent="."]
+position = Vector2(46.000004, 48)
+scale = Vector2(1.421875, 0.56249976)
+texture = SubResource("GradientTexture2D_x0p3e")
+
+[node name="ColorShadow" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 22.0
+offset_bottom = 21.0
+color = Color(0, 0, 0, 1)
+
+[node name="CardUI" type="Sprite2D" parent="."]
+position = Vector2(45, 55)
+texture = ExtResource("2")
+hframes = 7
+
+[node name="LevelBar" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 62.0
+offset_right = 73.0
+offset_bottom = 67.0
+
+[node name="Control" type="Control" parent="LevelBar"]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+
+[node name="Color" type="ColorRect" parent="LevelBar/Control"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 4.0
+offset_bottom = 3.0
+color = Color(0, 1, 0.15, 1)
+
+[node name="ColorRect" type="ColorRect" parent="LevelBar/Control"]
+layout_mode = 0
+offset_top = -3.0
+offset_right = 4.0
+offset_bottom = -1.0
+color = Color(0.341176, 0.329412, 0.298039, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="LevelBar/Control"]
+layout_mode = 0
+offset_top = 3.0
+offset_right = 4.0
+offset_bottom = 5.0
+color = Color(0.341176, 0.329412, 0.298039, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="LevelBar/Control"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = -1.0
+offset_right = 6.0
+offset_bottom = 3.0
+color = Color(0.341176, 0.329412, 0.298039, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="LevelBar/Control"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -1.0
+offset_bottom = 3.0
+color = Color(0.341176, 0.329412, 0.298039, 1)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(45, 31)
+scale = Vector2(2, 2)
+texture = ExtResource("3")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="ColorBorder" type="Sprite2D" parent="."]
+position = Vector2(14, 11)
+texture = SubResource("GradientTexture2D_j7g5w")
+
+[node name="Color" type="Sprite2D" parent="."]
+position = Vector2(13, 13)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4")
+
+[node name="Level" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 31.0
+offset_top = 4.0
+offset_right = 86.0
+offset_bottom = 23.0
+text = "lv2"
+label_settings = SubResource("LabelSettings_c86p3")
+
+[node name="Cost" type="Label" parent="."]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 75.0
+offset_right = 84.0
+offset_bottom = 103.0
+text = "$90"
+label_settings = SubResource("LabelSettings_ks230")
+horizontal_alignment = 2
+
+[node name="CardBack" type="Sprite2D" parent="."]
+position = Vector2(45, 55)
+texture = ExtResource("7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_816s4")
+}

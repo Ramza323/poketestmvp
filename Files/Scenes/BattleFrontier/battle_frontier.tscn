@@ -1,0 +1,492 @@
+[gd_scene load_steps=23 format=3 uid="uid://cvrh27e5utaor"]
+
+[ext_resource type="Script" uid="uid://tthb3swj4ht4" path="res://Files/Data/bf_encounters.gd" id="1"]
+[ext_resource type="Script" uid="uid://b34uxlk280d3o" path="res://Files/Data/player_data.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://cuv5c0wi0lc5c" path="res://Files/Scenes/Menu/UI.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://cyo2e6pjebvyn" path="res://Files/Scenes/Battle/BattleScene.tscn" id="4"]
+[ext_resource type="AudioStream" uid="uid://cgbni4tpv2qce" path="res://Files/BGMs/Battle Frontier Music.ogg" id="5"]
+[ext_resource type="PackedScene" uid="uid://ckyfcrf100fdd" path="res://Files/Scenes/BattleFrontier/map_node.tscn" id="6"]
+[ext_resource type="Texture2D" uid="uid://y6xffd0ytlwu" path="res://Files/Sprites/Characters/Red.png" id="7"]
+[ext_resource type="FontFile" uid="uid://bbcfrt4x2slms" path="res://Files/Fonts/pokemon-ds-font.ttf" id="8"]
+[ext_resource type="Texture2D" uid="uid://ryvdlh1ttoxy" path="res://Files/Title/Bg.png" id="9"]
+
+[sub_resource type="Animation" id="Animation_ol728"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NPCDetect:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ntwyu"]
+resource_name = "walk_down"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [11, 5, 8, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NPCDetect:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_dfdik"]
+resource_name = "walk_left"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3, 6, 9, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NPCDetect:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_vl6bb"]
+resource_name = "walk_right"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 1, 7, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NPCDetect:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [4.71239]
+}
+
+[sub_resource type="Animation" id="Animation_kmpwa"]
+resource_name = "walk_up"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [2, 0, 10, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NPCDetect:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.14159]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ol728"]
+_data = {
+&"RESET": SubResource("Animation_ol728"),
+&"walk_down": SubResource("Animation_ntwyu"),
+&"walk_left": SubResource("Animation_dfdik"),
+&"walk_right": SubResource("Animation_vl6bb"),
+&"walk_up": SubResource("Animation_kmpwa")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_s31rc"]
+font = ExtResource("8")
+font_size = 64
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_nwllg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.2144, 0.6168466, 0.67, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5icbo"]
+resource_name = "loop"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.2144, 0.616847, 0.67, 1), Color(0.2656, 0.764153, 0.83, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vl6bb"]
+_data = {
+&"RESET": SubResource("Animation_nwllg"),
+&"loop": SubResource("Animation_5icbo")
+}
+
+[sub_resource type="Animation" id="Animation_y1vp6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1600, 450)]
+}
+
+[sub_resource type="Animation" id="Animation_s31rc"]
+resource_name = "loop"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1600, 450), Vector2(0, 450)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bsxtc"]
+_data = {
+&"RESET": SubResource("Animation_y1vp6"),
+&"loop": SubResource("Animation_s31rc")
+}
+
+[node name="BattleFrontier" type="Node2D"]
+
+[node name="Encounters" type="Node" parent="."]
+script = ExtResource("1")
+
+[node name="PlayerData" type="Node" parent="."]
+script = ExtResource("2")
+
+[node name="ScreenTint" type="ColorRect" parent="."]
+z_index = 30
+offset_right = 1600.0
+offset_bottom = 900.0
+color = Color(0.13, 0.13, 0.13, 0)
+metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" parent="." instance=ExtResource("3")]
+
+[node name="BattleScene" parent="." instance=ExtResource("4")]
+
+[node name="BattlePlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5")
+volume_db = -15.0
+autoplay = true
+parameters/looping = true
+
+[node name="BFMap" type="Node2D" parent="."]
+
+[node name="Border" type="ColorRect" parent="BFMap"]
+offset_left = 373.0
+offset_top = 13.0
+offset_right = 927.0
+offset_bottom = 105.0
+color = Color(0.9843137, 0.9843137, 0.9843137, 1)
+
+[node name="ColorRect" type="ColorRect" parent="BFMap"]
+offset_left = 376.0
+offset_top = 16.0
+offset_right = 924.0
+offset_bottom = 102.0
+color = Color(0.4392157, 0.78431374, 0.627451, 1)
+
+[node name="GridContainer" type="GridContainer" parent="BFMap"]
+offset_left = 386.0
+offset_top = 32.0
+offset_right = 922.0
+offset_bottom = 100.0
+columns = 15
+
+[node name="MapNode" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapNode2" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapNode3" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapNode4" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapNode5" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapNode6" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapNode7" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapNode8" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapNode9" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapNode10" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapNode11" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapNode12" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapNode13" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapNode14" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapNode15" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapNode16" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapNode17" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapNode18" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapNode19" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapNode20" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapNode21" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapNode22" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapNode23" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapNode24" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapNode25" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapNode26" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapNode27" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapNode28" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapNode29" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapNode30" parent="BFMap/GridContainer" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="MapPlayer" type="Node2D" parent="BFMap"]
+position = Vector2(403, 48)
+
+[node name="Sprite2D" type="Sprite2D" parent="BFMap/MapPlayer"]
+clip_children = 2
+z_index = 1
+scale = Vector2(2, 2)
+texture = ExtResource("7")
+offset = Vector2(0.6666565, -6.000002)
+hframes = 3
+vframes = 4
+frame = 5
+
+[node name="ColorRect" type="ColorRect" parent="BFMap/MapPlayer/Sprite2D"]
+offset_left = -21.3333
+offset_top = -23.0
+offset_right = 18.6667
+offset_bottom = 17.0
+color = Color(1, 1, 1, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BFMap/MapPlayer"]
+libraries = {
+&"": SubResource("AnimationLibrary_ol728")
+}
+
+[node name="MapFilter" type="ColorRect" parent="."]
+z_index = 1
+offset_left = 376.0
+offset_top = 16.0
+offset_right = 924.0
+offset_bottom = 102.0
+color = Color(0.22540002, 0.7284666, 0.98, 0.105882354)
+
+[node name="QuitConfirm" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 50
+z_as_relative = false
+
+[node name="BG" type="ColorRect" parent="QuitConfirm"]
+offset_left = 459.0
+offset_top = 283.0
+offset_right = 1032.0
+offset_bottom = 446.0
+color = Color(0.035, 0.0425833, 0.1, 1)
+
+[node name="Label" type="Label" parent="QuitConfirm"]
+offset_left = 462.0
+offset_top = 295.0
+offset_right = 1032.0
+offset_bottom = 351.0
+text = "Abandon this run?"
+label_settings = SubResource("LabelSettings_s31rc")
+horizontal_alignment = 1
+
+[node name="Buttons" type="Node2D" parent="QuitConfirm"]
+
+[node name="Yes" type="Node2D" parent="QuitConfirm/Buttons"]
+position = Vector2(80, 0)
+
+[node name="ColorRect" type="ColorRect" parent="QuitConfirm/Buttons/Yes"]
+offset_left = 500.0
+offset_top = 369.0
+offset_right = 628.0
+offset_bottom = 428.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Label" type="Label" parent="QuitConfirm/Buttons/Yes"]
+z_index = 1
+offset_left = 500.0
+offset_top = 369.0
+offset_right = 628.0
+offset_bottom = 425.0
+text = "Yes"
+label_settings = SubResource("LabelSettings_s31rc")
+horizontal_alignment = 1
+
+[node name="No" type="Node2D" parent="QuitConfirm/Buttons"]
+position = Vector2(272, 0)
+
+[node name="ColorRect" type="ColorRect" parent="QuitConfirm/Buttons/No"]
+offset_left = 500.0
+offset_top = 369.0
+offset_right = 628.0
+offset_bottom = 428.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Label" type="Label" parent="QuitConfirm/Buttons/No"]
+z_index = 1
+offset_left = 500.0
+offset_top = 369.0
+offset_right = 628.0
+offset_bottom = 425.0
+text = "No"
+label_settings = SubResource("LabelSettings_s31rc")
+horizontal_alignment = 1
+
+[node name="Selector" type="ColorRect" parent="QuitConfirm/Buttons"]
+offset_left = 772.0
+offset_top = 369.0
+offset_right = 900.0
+offset_bottom = 428.0
+color = Color(0.2144, 0.6168466, 0.67, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="QuitConfirm/Buttons/Selector"]
+libraries = {
+&"": SubResource("AnimationLibrary_vl6bb")
+}
+autoplay = "loop"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.39215687)
+z_index = -100
+position = Vector2(1600, 450)
+texture = ExtResource("9")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_bsxtc")
+}
+autoplay = "loop"
+speed_scale = 0.1

@@ -1,0 +1,5678 @@
+[gd_scene format=3 uid="uid://cuv5c0wi0lc5c"]
+
+[ext_resource type="Texture2D" uid="uid://dbg5xiekonkux" path="res://Files/Sprites/UI/ShadowBorder.png" id="1"]
+[ext_resource type="Script" uid="uid://ck4l8wvc54d1y" path="res://Files/Scenes/Level/Menu/ui_script.gd" id="2"]
+[ext_resource type="FontFile" uid="uid://bbcfrt4x2slms" path="res://Files/Fonts/pokemon-ds-font.ttf" id="3"]
+[ext_resource type="Texture2D" uid="uid://ckkjy4j8tn00a" path="res://Files/Sprites/UI/cardBG.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://doupsgg6ipv1l" path="res://Files/Sprites/UI/move_info.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://c6oj23itb3adh" path="res://Files/Sprites/UI/CardTexture.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://cmfu35em1c8vf" path="res://Files/Sprites/ColorIcons/red.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://nms20yd8ie6n" path="res://Files/Sprites/card_bg.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://3yjmmpx0b0m1" path="res://Files/Sprites/UI/UV_portraitbg.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://dk15kmgo0xhx5" path="res://Files/Sprites/PokemonSprites.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://bepfuhxkh2mkr" path="res://Files/Sprites/ColorIcons/green.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://j7nq7qi6la78" path="res://Files/Sprites/UI/Rarities.png" id="12"]
+[ext_resource type="PackedScene" uid="uid://d1ls800gnv2cy" path="res://Files/Scenes/Level/Menu/move_box.tscn" id="13"]
+[ext_resource type="Texture2D" uid="uid://bo6y5bjptjetf" path="res://Files/Sprites/UI/UIParty.png" id="14"]
+[ext_resource type="Texture2D" uid="uid://cbavrh6enxts0" path="res://Files/Sprites/affinities.png" id="15"]
+[ext_resource type="Texture2D" uid="uid://bdjytkkq8qkbf" path="res://Files/Sprites/UI/formation_menu.png" id="16"]
+[ext_resource type="Texture2D" uid="uid://l8wnbrolv0qr" path="res://Files/Sprites/UI/ShopBG.png" id="17"]
+[ext_resource type="PackedScene" uid="uid://dphqqhpjri7ap" path="res://Files/Scenes/Level/Menu/card_shop_card.tscn" id="18"]
+[ext_resource type="PackedScene" uid="uid://cpxaf513bdj6m" path="res://Files/Scenes/Level/Menu/card_shop_booster.tscn" id="19"]
+[ext_resource type="Texture2D" uid="uid://b0j26ltmj22dw" path="res://Files/Sprites/UI/UIBox.png" id="20"]
+[ext_resource type="Texture2D" uid="uid://cilfnaprlximy" path="res://Files/Sprites/cardUI.png" id="21"]
+[ext_resource type="FontFile" uid="uid://b3ss5cqwd4t1u" path="res://Files/Fonts/PKMN RBYGSC.ttf" id="22"]
+[ext_resource type="Texture2D" uid="uid://ctmeonlwloi4b" path="res://Files/Sprites/cardback.png" id="23"]
+[ext_resource type="PackedScene" uid="uid://c83bvkdiwbfj3" path="res://Files/Scenes/Level/Menu/deck_item.tscn" id="24"]
+[ext_resource type="PackedScene" uid="uid://b4ryqlheg15bu" path="res://Files/Scenes/Level/Menu/party_pokemon_item.tscn" id="25"]
+[ext_resource type="Texture2D" uid="uid://cs837uvlxex1j" path="res://Files/Sprites/HUD.png" id="26"]
+[ext_resource type="Texture2D" uid="uid://y6xffd0ytlwu" path="res://Files/Sprites/Characters/Red.png" id="27"]
+[ext_resource type="Texture2D" uid="uid://634t33dq5o02" path="res://Files/Sprites/Missing/static.png" id="28"]
+[ext_resource type="AudioStream" uid="uid://dr8mg1dcaep3s" path="res://Files/SoundEffects/static.mp3" id="29"]
+[ext_resource type="Texture2D" uid="uid://75pt8soaqi8p" path="res://Files/Sprites/DialogueWindowBG.png" id="30"]
+[ext_resource type="Texture2D" uid="uid://caqbt6tsaqr0p" path="res://Files/Sprites/Window.png" id="31"]
+[ext_resource type="Texture2D" uid="uid://b0i6y8ddplrlv" path="res://Files/Sprites/DialogueWindow.png" id="32"]
+[ext_resource type="Texture2D" uid="uid://i3kgetp36u40" path="res://Files/Sprites/Characters/May.png" id="33"]
+[ext_resource type="AudioStream" uid="uid://d3sdhjqfscomd" path="res://Files/SoundEffects/SFX_BALL_POOF.wav" id="34"]
+[ext_resource type="PackedScene" uid="uid://ct3njd7ki414" path="res://Files/Scenes/Level/gbc.tscn" id="35"]
+[ext_resource type="Texture2D" uid="uid://dl2j7nth3fls6" path="res://Files/Sprites/UI/MewtwoIcon.png" id="36"]
+[ext_resource type="Script" uid="uid://bdn1i0kne8nue" path="res://Files/Scenes/Menu/move_replace.gd" id="37_hb178"]
+[ext_resource type="Texture2D" uid="uid://dffhmmfckf03c" path="res://Files/Sprites/ColorIcons/blue.png" id="38_5sxjm"]
+
+[sub_resource type="Gradient" id="Gradient_k1v45"]
+offsets = PackedFloat32Array(0, 0.454545, 1)
+colors = PackedColorArray(0.1674, 0.28539, 0.54, 0.843137, 0.168627, 0.286275, 0.541176, 0.843137, 0.1674, 0.28539, 0.54, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4uxtj"]
+gradient = SubResource("Gradient_k1v45")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="Animation" id="Animation_nwllg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.2144, 0.6168466, 0.67, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5icbo"]
+resource_name = "loop"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.2144, 0.616847, 0.67, 1), Color(0.2656, 0.764153, 0.83, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vl6bb"]
+_data = {
+&"RESET": SubResource("Animation_nwllg"),
+&"loop": SubResource("Animation_5icbo")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_mj540"]
+font = ExtResource("3")
+font_size = 64
+font_color = Color(1, 0.980392, 0.964706, 1)
+shadow_size = 4
+shadow_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_krlnb"]
+blend_mode = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_vw1v7"]
+font = ExtResource("3")
+font_size = 32
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_55qkw"]
+font = ExtResource("3")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_frvl6"]
+offsets = PackedFloat32Array(0, 0.4010989, 0.6978022)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_krlnb"]
+gradient = SubResource("Gradient_frvl6")
+fill = 1
+fill_from = Vector2(0.48290598, 0.52991456)
+fill_to = Vector2(0.1965812, 0.76495725)
+
+[sub_resource type="LabelSettings" id="LabelSettings_x4ny0"]
+font = ExtResource("3")
+font_size = 32
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_d167m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-59.6071, -153.693)]
+}
+
+[sub_resource type="Animation" id="Animation_c86p3"]
+resource_name = "shine"
+length = 5.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1.2),
+"transitions": PackedFloat32Array(1, 0),
+"update": 0,
+"values": [Vector2(-84, -114), Vector2(76, -114)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j7g5w"]
+_data = {
+&"RESET": SubResource("Animation_d167m"),
+&"shine": SubResource("Animation_c86p3")
+}
+
+[sub_resource type="Gradient" id="Gradient_krlnb"]
+offsets = PackedFloat32Array(0, 0.67582417, 0.94505495)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_42wvc"]
+gradient = SubResource("Gradient_krlnb")
+fill = 2
+fill_from = Vector2(0.50427353, 0.491453)
+fill_to = Vector2(1, 0.62393165)
+
+[sub_resource type="Animation" id="Animation_o3hpg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(34.75, -47.860214)]
+}
+
+[sub_resource type="Animation" id="Animation_42wvc"]
+resource_name = "loop"
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(34.75, -47.860214), Vector2(34.75, 83.13977)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7s3n7"]
+_data = {
+&"RESET": SubResource("Animation_o3hpg"),
+&"loop": SubResource("Animation_42wvc")
+}
+
+[sub_resource type="Gradient" id="Gradient_o3hpg"]
+offsets = PackedFloat32Array(0, 0.15384616, 0.32967034, 0.36263737, 0.4010989, 0.43406594)
+colors = PackedColorArray(0.27, 0.27, 0.27, 1, 0.50980395, 0.50980395, 0.50980395, 1, 0.972549, 0.972549, 0.972549, 1, 0.972549, 0.972549, 0.972549, 1, 0.4509804, 0.4509804, 0.4509804, 1, 0.45, 0.45, 0.45, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6647j"]
+gradient = SubResource("Gradient_o3hpg")
+fill = 1
+fill_from = Vector2(0.4871795, 0.5470086)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kmpwa"]
+font = ExtResource("3")
+font_size = 32
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dfdik"]
+font = ExtResource("3")
+font_size = 32
+font_color = Color(0.972549, 0.972549, 0.972549, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_squei"]
+font = ExtResource("3")
+font_size = 32
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_x4ny0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ye5dv"]
+resource_name = "loop"
+length = 6.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.57, 0.57, 1), Color(1, 0.77066666, 0.57, 1), Color(0.9931667, 1, 0.59000003, 1), Color(0.5429, 0.89, 0.58339506, 1), Color(0.61, 0.64900005, 1, 1), Color(0.77625, 0.6075, 0.81, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hb178"]
+_data = {
+&"RESET": SubResource("Animation_x4ny0"),
+&"loop": SubResource("Animation_ye5dv")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_ajg0y"]
+font = ExtResource("3")
+font_size = 32
+
+[sub_resource type="Animation" id="Animation_md570"]
+resource_name = "Playing"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.32, 0.9206666, 1, 1), Color(0.2592, 0.74573994, 0.81, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_agpxf"]
+_data = {
+&"Playing": SubResource("Animation_md570")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_baxxa"]
+font = ExtResource("3")
+font_size = 48
+font_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 2
+shadow_color = Color(1, 1, 1, 1)
+shadow_offset = Vector2(2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hegis"]
+font = ExtResource("3")
+font_size = 32
+font_color = Color(0.85, 0.85, 0.85, 1)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_md570"]
+font = ExtResource("3")
+font_size = 32
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_n3wdn"]
+font = ExtResource("3")
+font_size = 64
+font_color = Color(1, 0.980392, 0.964706, 1)
+shadow_size = 8
+shadow_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+
+[sub_resource type="Gradient" id="Gradient_j7g5w"]
+colors = PackedColorArray(1, 1, 1, 0.25490198, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ye5dv"]
+gradient = SubResource("Gradient_j7g5w")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0.008547009, 0.20940171)
+
+[sub_resource type="Animation" id="Animation_8jl6o"]
+resource_name = "Playing"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.2144, 0.616847, 0.67, 0.509804), Color(0.2144, 0.616847, 0.67, 0.823529)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c86p3"]
+_data = {
+&"Playing": SubResource("Animation_8jl6o")
+}
+
+[sub_resource type="Gradient" id="Gradient_6647j"]
+offsets = PackedFloat32Array(0, 0.15384616, 0.32967034, 0.36263737, 0.4010989, 0.43406594)
+colors = PackedColorArray(0.27, 0.27, 0.27, 1, 0.50980395, 0.50980395, 0.50980395, 1, 0.972549, 0.972549, 0.972549, 1, 0.972549, 0.972549, 0.972549, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s5i3a"]
+gradient = SubResource("Gradient_6647j")
+fill = 1
+fill_from = Vector2(0.4871795, 0.5470086)
+
+[sub_resource type="Gradient" id="Gradient_x4ny0"]
+offsets = PackedFloat32Array(0, 0.21978022, 0.45604396)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_frvl6"]
+gradient = SubResource("Gradient_x4ny0")
+fill = 1
+fill_from = Vector2(0.48290598, 0.52991456)
+fill_to = Vector2(0.1965812, 0.76495725)
+
+[sub_resource type="LabelSettings" id="LabelSettings_c86p3"]
+font = ExtResource("22")
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ks230"]
+font = ExtResource("3")
+font_size = 32
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_acwv3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ScreenTint:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Card/CardBack:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Card/CardShopCard:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Polygon2D:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CardScreenTint:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../CardScreenTint:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(36.0938, 14.3125)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Polygon2D:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Card:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(800, 600)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Card:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Card:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Card/CardBack:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath(".:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Booster:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Booster:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(710, 462)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Card:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Booster/BoosterTop:scale")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Booster/BoosterTop:modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Card:modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_003jk"]
+resource_name = "get_booster"
+length = 2.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.28, 0.48, 1.73, 2.12, 2.42),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.313726), Color(1, 1, 1, 0.313726), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CardScreenTint:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.54, 2.12, 2.42),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CardScreenTint:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.02, 2.21),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(36.0938, 14.3125), Vector2(72, 30)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Polygon2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.49, 2.12, 2.42, 4.3),
+"transitions": PackedFloat32Array(2, 1, 2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1.2, 1.2), Vector2(0.8, 0.8)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Card/CardShopCard:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.02, 1.22),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Card:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.02, 1.22, 1.72, 2.12, 2.42),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(800, 600), Vector2(800, 250), Vector2(800, 300), Vector2(800, 300), Vector2(1750, 300)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Card/CardBack:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.02, 1.12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Card:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.02, 1.22, 1.42, 1.62),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(2, 2), Vector2(0, 2), Vector2(2, 2)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Card:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(2.12, 2.42),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.5708]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Card/CardBack:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(1.02, 1.42),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath(".:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 2.42),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Booster:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.2, 1.5, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Booster:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(710, 562), Vector2(710, 452), Vector2(710, 462)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Card:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Booster/BoosterTop:scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0.25, 0.65),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(-1, 1)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Booster/BoosterTop:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0.52, 0.65),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Card:modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_agykp"]
+resource_name = "get_card"
+length = 1.4
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.71, 1.1, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.313726), Color(1, 1, 1, 0.313726), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CardScreenTint:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.1, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CardScreenTint:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.19, 2.93),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(36.0938, 14.3125), Vector2(72, 30), Vector2(36.0938, 14.3125)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Polygon2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2, 1.1, 1.4, 3.28),
+"transitions": PackedFloat32Array(2, 1, 2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1.2, 1.2), Vector2(0.8, 0.8)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Card/CardShopCard:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Card:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.7, 1.1, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(800, 600), Vector2(800, 250), Vector2(800, 300), Vector2(800, 300), Vector2(1750, 300)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Card/CardBack:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Card:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(2, 2), Vector2(0, 2), Vector2(2, 2)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Card:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1.1, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.5708]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Card/CardBack:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath(".:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Card:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Card:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 1.35, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vihp5"]
+resource_name = "old_get_card"
+length = 3.6
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Card:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.55, 2.75, 2.95, 3.15, 3.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1e-05, 2), Vector2(2, 2), Vector2(1e-05, 2), Vector2(2, 2), Vector2(1e-05, 2), Vector2(2, 2), Vector2(2, 2), Vector2(1e-05, 2), Vector2(2, 2), Vector2(1e-05, 2), Vector2(2, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Card:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.4, 1.8, 2.4, 2.5, 2.6, 3.4),
+"transitions": PackedFloat32Array(0.5, 1, 2, 1, 1, 1, 0.5, 1),
+"update": 0,
+"values": [Vector2(800, 900), Vector2(800, 330), Vector2(800, 340), Vector2(800, 350), Vector2(800, 350), Vector2(760, 350), Vector2(760, 350), Vector2(1750, 350)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Card:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.8, 1.3, 1.7, 2.4, 2.6, 3.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.349066, -0.349066, 0.261799, -0.10472, 0.0, 0.0, 0.139626, 1.5708]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../ScreenTint:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.2, 2.53333, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.3726, 0.4284, 0.54, 0), Color(0.168627, 0.286275, 0.541176, 0.54902), Color(0.372549, 0.427451, 0.541176, 0.54902), Color(0.39, 0.39, 0.39, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(300, 0), Vector2(-200, 0), Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Card/CardBack:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.9, 1.5, 2.75, 3.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Card:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2, 3.5, 3.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Card/CardShopCard:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vw1v7"]
+_data = {
+&"RESET": SubResource("Animation_acwv3"),
+&"get_booster": SubResource("Animation_003jk"),
+&"get_card": SubResource("Animation_agykp"),
+&"old_get_card": SubResource("Animation_vihp5")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_6647j"]
+font = ExtResource("3")
+font_size = 48
+outline_size = 8
+outline_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_s5i3a"]
+font = ExtResource("3")
+font_size = 48
+font_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+shadow_size = 5
+shadow_color = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ns1q6"]
+font = ExtResource("3")
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_jsa7l"]
+font = ExtResource("3")
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_2oe2l"]
+font = ExtResource("3")
+font_size = 48
+outline_size = 8
+outline_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_u0000"]
+font = ExtResource("3")
+font_size = 48
+font_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+shadow_size = 5
+shadow_color = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cyo2d"]
+font = ExtResource("3")
+font_size = 48
+font_color = Color(0.286275, 0.286275, 0.286275, 1)
+shadow_size = 4
+shadow_color = Color(0.48, 0.48, 0.48, 0.5764706)
+
+[sub_resource type="Gradient" id="Gradient_hb178"]
+offsets = PackedFloat32Array(0, 0.56969696, 0.6181818)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5sxjm"]
+gradient = SubResource("Gradient_hb178")
+fill = 1
+fill_from = Vector2(0.48908296, 0.48471615)
+
+[sub_resource type="Gradient" id="Gradient_hd04x"]
+offsets = PackedFloat32Array(0, 0.55151516, 0.6060606)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_i153o"]
+gradient = SubResource("Gradient_hd04x")
+fill = 1
+fill_from = Vector2(0.49344978, 0.48034933)
+fill_to = Vector2(0.93449783, 0.07860262)
+
+[sub_resource type="Animation" id="Animation_b4133"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_v")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CutscenePlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_utwdi"]
+resource_name = "static_gbc"
+length = 0.26
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03, 0.09, 0.14999999, 0.21),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_v")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.17999999, 0.23999998),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.26),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CutscenePlayer:stream")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("29")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CutscenePlayer:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.26),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8q5a8"]
+_data = {
+&"RESET": SubResource("Animation_b4133"),
+&"static_gbc": SubResource("Animation_utwdi")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_8q5a8"]
+font = ExtResource("22")
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_k0hpf"]
+line_spacing = 9.0
+font = ExtResource("3")
+font_size = 32
+
+[sub_resource type="Animation" id="Animation_tpwq0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.215686, 0.615686, 0.670588, 0.509804)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(60, 29)]
+}
+
+[sub_resource type="Animation" id="Animation_m5sco"]
+resource_name = "loop"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.215686, 0.615686, 0.670588, 0.509804), Color(0.215686, 0.615686, 0.670588, 0.823529)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(60, 29), Vector2(60, 21)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_squei"]
+_data = {
+&"RESET": SubResource("Animation_tpwq0"),
+&"loop": SubResource("Animation_m5sco")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_eh382"]
+line_spacing = 9.0
+font = ExtResource("22")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_krlnb"]
+font = ExtResource("3")
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_tpwq0"]
+font = ExtResource("22")
+font_size = 88
+
+[sub_resource type="LabelSettings" id="LabelSettings_f0yyu"]
+line_spacing = 38.0
+font = ExtResource("22")
+font_size = 48
+font_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+
+[sub_resource type="Animation" id="Animation_hb178"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.26666668, 0.7647059, 0.83137256, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_frvl6"]
+resource_name = "loop"
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.21568628, 0.6156863, 0.67058825, 1), Color(0.26666668, 0.7647059, 0.83137256, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5sxjm"]
+_data = {
+&"RESET": SubResource("Animation_hb178"),
+&"loop": SubResource("Animation_frvl6")
+}
+
+[sub_resource type="Animation" id="Animation_i153o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.2627451, 0.40784314, 0.8, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hd04x"]
+resource_name = "loop"
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.21568628, 0.6156863, 0.67058825, 1), Color(0.26666668, 0.7647059, 0.83137256, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3m7cq"]
+_data = {
+&"RESET": SubResource("Animation_i153o"),
+&"loop": SubResource("Animation_hd04x")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_hb178"]
+font = ExtResource("3")
+font_size = 32
+font_color = Color(1, 0.980392, 0.964706, 1)
+shadow_size = 8
+shadow_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_frvl6"]
+font = ExtResource("3")
+font_size = 32
+font_color = Color(1, 0.980392, 0.964706, 1)
+shadow_size = 8
+shadow_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=506259775]
+layer = 2
+
+[node name="ScreenTint" type="ColorRect" parent="." unique_id=1747694385]
+z_index = 30
+offset_right = 1600.0
+offset_bottom = 900.0
+color = Color(1, 1, 1, 0)
+metadata/_edit_lock_ = true
+
+[node name="CardScreenTint" type="Sprite2D" parent="." unique_id=1353052117]
+modulate = Color(1, 1, 1, 0)
+z_index = 90
+position = Vector2(1158, 461)
+scale = Vector2(36.0938, 14.3125)
+texture = SubResource("GradientTexture2D_4uxtj")
+metadata/_edit_lock_ = true
+
+[node name="ShadowBorder" type="Sprite2D" parent="." unique_id=618259394]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(0.1254902, 0.1254902, 0.1254902, 1)
+position = Vector2(800, 450)
+texture = ExtResource("1")
+
+[node name="UI" type="Node2D" parent="." unique_id=2119385778]
+z_index = 99
+position = Vector2(310, 0)
+script = ExtResource("2")
+
+[node name="BG" type="ColorRect" parent="UI" unique_id=1460563196]
+offset_left = 1298.0
+offset_top = 86.0
+offset_right = 1580.0
+offset_bottom = 473.0
+color = Color(0.035, 0.0425833, 0.1, 1)
+
+[node name="Selector" type="ColorRect" parent="UI" unique_id=727462899]
+modulate = Color(1, 1, 1, 0.509804)
+offset_left = 1315.0
+offset_top = 97.0
+offset_right = 1567.0
+offset_bottom = 147.0
+color = Color(0.2144, 0.6168466, 0.67, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Selector" unique_id=316883162]
+libraries/ = SubResource("AnimationLibrary_vl6bb")
+autoplay = &"loop"
+
+[node name="VList" type="VBoxContainer" parent="UI" unique_id=1306332703]
+offset_left = 1332.0
+offset_top = 92.0
+offset_right = 1372.0
+offset_bottom = 132.0
+
+[node name="Label" type="Label" parent="UI/VList" unique_id=950251243]
+layout_mode = 2
+text = "Pokémon"
+label_settings = SubResource("LabelSettings_mj540")
+
+[node name="Label2" type="Label" parent="UI/VList" unique_id=1617938980]
+layout_mode = 2
+text = "Items"
+label_settings = SubResource("LabelSettings_mj540")
+
+[node name="Label3" type="Label" parent="UI/VList" unique_id=1669026359]
+layout_mode = 2
+text = "Collection"
+label_settings = SubResource("LabelSettings_mj540")
+
+[node name="Label4" type="Label" parent="UI/VList" unique_id=1358260291]
+layout_mode = 2
+text = "Options"
+label_settings = SubResource("LabelSettings_mj540")
+
+[node name="Label5" type="Label" parent="UI/VList" unique_id=796776170]
+layout_mode = 2
+text = "Save"
+label_settings = SubResource("LabelSettings_mj540")
+
+[node name="Label6" type="Label" parent="UI/VList" unique_id=426554462]
+layout_mode = 2
+text = "Quit"
+label_settings = SubResource("LabelSettings_mj540")
+
+[node name="Status" type="Node2D" parent="UI" unique_id=953344594]
+show_behind_parent = true
+position = Vector2(596, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Status" unique_id=1667804852]
+position = Vector2(843, 280)
+texture = ExtResource("4")
+
+[node name="MoveInfo" type="Node2D" parent="UI/Status" unique_id=512878044]
+position = Vector2(290, 0)
+
+[node name="BG" type="Sprite2D" parent="UI/Status/MoveInfo" unique_id=2038835694]
+clip_children = 2
+position = Vector2(553, 363)
+texture = ExtResource("5")
+hframes = 2
+
+[node name="CardTexture" type="Sprite2D" parent="UI/Status/MoveInfo/BG" unique_id=1212684010]
+material = SubResource("CanvasItemMaterial_krlnb")
+position = Vector2(1, -1)
+scale = Vector2(0.63849735, 0.6150082)
+texture = ExtResource("6")
+
+[node name="BG2" type="Sprite2D" parent="UI/Status/MoveInfo" unique_id=1376072067]
+position = Vector2(553, 363)
+texture = ExtResource("5")
+hframes = 2
+frame = 1
+
+[node name="MoveName" type="Label" parent="UI/Status/MoveInfo" unique_id=291137667]
+offset_left = 460.0
+offset_top = 289.0
+offset_right = 600.0
+offset_bottom = 317.0
+text = "Flamethrower"
+label_settings = SubResource("LabelSettings_vw1v7")
+
+[node name="MoveDesc" type="Label" parent="UI/Status/MoveInfo" unique_id=1898652037]
+texture_filter = 2
+offset_left = 436.00006
+offset_top = 342.0
+offset_right = 706.0002
+offset_bottom = 464.85718
+scale = Vector2(0.9, 0.9)
+text = "ATK:{0}   AP:{1}
+Deals more damage the lower HP the user is."
+label_settings = SubResource("LabelSettings_55qkw")
+autowrap_mode = 3
+
+[node name="ColorBorder" type="Sprite2D" parent="UI/Status/MoveInfo" unique_id=1824450187]
+position = Vector2(442, 302)
+texture = SubResource("GradientTexture2D_krlnb")
+
+[node name="MoveColor" type="Sprite2D" parent="UI/Status/MoveInfo" unique_id=2040372401]
+position = Vector2(441, 304)
+texture = ExtResource("7")
+
+[node name="MoveColorBG" type="Sprite2D" parent="UI/Status/MoveInfo/MoveColor" unique_id=1142379687]
+modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("7")
+
+[node name="CostContainer" type="HBoxContainer" parent="UI/Status/MoveInfo" unique_id=1797919020]
+offset_left = 457.0
+offset_top = 322.0
+offset_right = 497.0
+offset_bottom = 340.0
+
+[node name="DisableHint" type="Node2D" parent="UI/Status" unique_id=1207474873]
+visible = false
+position = Vector2(0, -8)
+
+[node name="ColorRect" type="ColorRect" parent="UI/Status/DisableHint" unique_id=1172584756]
+offset_left = 698.0
+offset_top = 489.0
+offset_right = 990.0
+offset_bottom = 529.0
+color = Color(0.15686275, 0.17254902, 0.2901961, 1)
+
+[node name="Label" type="Label" parent="UI/Status/DisableHint" unique_id=2009768137]
+offset_left = 702.0
+offset_top = 493.0
+offset_right = 988.0
+offset_bottom = 521.0
+text = "Press INFO to disable move"
+label_settings = SubResource("LabelSettings_x4ny0")
+
+[node name="BGBorder" type="ColorRect" parent="UI/Status" unique_id=457706801]
+visible = false
+offset_left = 702.0
+offset_top = 86.0
+offset_right = 984.0
+offset_bottom = 473.0
+color = Color(0.76862746, 0.6431373, 0.27058825, 1)
+
+[node name="BG" type="ColorRect" parent="UI/Status" unique_id=2001046734]
+offset_left = 707.0
+offset_top = 91.0
+offset_right = 979.0
+offset_bottom = 468.0
+color = Color(0.35000002, 0.42583346, 1, 1)
+
+[node name="CardTexture" type="Sprite2D" parent="UI/Status" unique_id=732037933]
+material = SubResource("CanvasItemMaterial_krlnb")
+position = Vector2(842.99994, 279.49997)
+scale = Vector2(0.63849735, 0.6150082)
+texture = ExtResource("6")
+
+[node name="BGTexture" type="Sprite2D" parent="UI/Status" unique_id=2136749672]
+visible = false
+self_modulate = Color(1, 1, 1, 0.54902)
+clip_children = 2
+position = Vector2(843, 282.5)
+scale = Vector2(3.35714, 3.72115)
+texture = ExtResource("8")
+hframes = 6
+
+[node name="ColorRect" type="ColorRect" parent="UI/Status/BGTexture" unique_id=923691818]
+modulate = Color(1, 1, 1, 0.686275)
+offset_left = -59.6071
+offset_top = -153.693
+offset_right = -37.6071
+offset_bottom = 35.307205
+rotation = 0.349066
+pivot_offset = Vector2(7.18907, 92.3782)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Status/BGTexture" unique_id=1183820738]
+libraries/ = SubResource("AnimationLibrary_j7g5w")
+autoplay = &"shine"
+
+[node name="Points" type="Node2D" parent="UI/Status" unique_id=682934808]
+position = Vector2(736, 81)
+
+[node name="AP" type="Node2D" parent="UI/Status/Points" unique_id=114938805]
+position = Vector2(140, 9)
+
+[node name="Border" type="ColorRect" parent="UI/Status/Points/AP" unique_id=10342372]
+modulate = Color(0.7, 0.7, 0.7, 1)
+offset_left = 11.0
+offset_top = 138.0
+offset_right = 99.0
+offset_bottom = 176.0
+color = Color(0, 0, 0, 1)
+
+[node name="APBG" type="ColorRect" parent="UI/Status/Points/AP" unique_id=551182750]
+modulate = Color(0.46, 0.46, 0.46, 1)
+offset_left = 13.0
+offset_top = 140.0
+offset_right = 97.0
+offset_bottom = 174.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="APBox1" type="HBoxContainer" parent="UI/Status/Points/AP" unique_id=1054770363]
+offset_left = 17.0
+offset_top = 143.0
+offset_right = 57.0
+offset_bottom = 183.0
+
+[node name="APBox2" type="HBoxContainer" parent="UI/Status/Points/AP" unique_id=1561065256]
+offset_left = 17.0
+offset_top = 159.0
+offset_right = 93.0
+offset_bottom = 199.0
+
+[node name="PP" type="Node2D" parent="UI/Status/Points" unique_id=334161789]
+position = Vector2(140, 49)
+
+[node name="Border" type="ColorRect" parent="UI/Status/Points/PP" unique_id=2101529446]
+modulate = Color(0.7, 0.7, 0.7, 1)
+offset_left = 11.0
+offset_top = 138.0
+offset_right = 99.0
+offset_bottom = 176.0
+color = Color(0, 0, 0, 1)
+
+[node name="APBG" type="ColorRect" parent="UI/Status/Points/PP" unique_id=1616116570]
+modulate = Color(0.46, 0.46, 0.46, 1)
+offset_left = 13.0
+offset_top = 140.0
+offset_right = 97.0
+offset_bottom = 174.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="PPBox1" type="HBoxContainer" parent="UI/Status/Points/PP" unique_id=956350426]
+offset_left = 17.0
+offset_top = 143.0
+offset_right = 57.0
+offset_bottom = 183.0
+
+[node name="PPBox2" type="HBoxContainer" parent="UI/Status/Points/PP" unique_id=639873940]
+offset_left = 17.0
+offset_top = 159.0
+offset_right = 93.0
+offset_bottom = 199.0
+
+[node name="Stats" type="Node2D" parent="UI/Status" unique_id=2147072441]
+
+[node name="SpriteShadow" type="Sprite2D" parent="UI/Status/Stats" unique_id=421580816]
+position = Vector2(845.49994, 184)
+scale = Vector2(1.5156246, 1.5)
+texture = SubResource("GradientTexture2D_42wvc")
+
+[node name="SpriteBGBorder" type="ColorRect" parent="UI/Status/Stats" unique_id=1807128458]
+offset_left = 797.0
+offset_top = 134.0
+offset_right = 882.0
+offset_bottom = 219.0
+color = Color(0.77, 0.644875, 0.26950002, 1)
+
+[node name="SpriteBG" type="ColorRect" parent="UI/Status/Stats" unique_id=2053637847]
+clip_children = 2
+offset_left = 799.0
+offset_top = 136.0
+offset_right = 880.0
+offset_bottom = 217.0
+
+[node name="ScrollBG" type="Sprite2D" parent="UI/Status/Stats/SpriteBG" unique_id=460280859]
+position = Vector2(34.75, -47.860214)
+scale = Vector2(0.50829387, 0.5082938)
+texture = ExtResource("9")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Status/Stats/SpriteBG/ScrollBG" unique_id=149395625]
+libraries/ = SubResource("AnimationLibrary_7s3n7")
+autoplay = &"loop"
+
+[node name="SpriteShadow" type="Sprite2D" parent="UI/Status/Stats/SpriteBG" unique_id=550650975]
+position = Vector2(43.49997, 58.000008)
+scale = Vector2(1.421875, 0.56249976)
+texture = SubResource("GradientTexture2D_6647j")
+
+[node name="Bars" type="Node2D" parent="UI/Status/Stats" unique_id=877992087]
+position = Vector2(-80, 93)
+
+[node name="ExpBG" type="ColorRect" parent="UI/Status/Stats/Bars" unique_id=2039569189]
+offset_left = 966.0
+offset_top = 29.0
+offset_right = 1056.0
+offset_bottom = 34.0
+color = Color(0, 0, 0, 1)
+
+[node name="ExpBar" type="ColorRect" parent="UI/Status/Stats/Bars" unique_id=1522229538]
+offset_left = 967.0
+offset_top = 30.0
+offset_right = 1055.0
+offset_bottom = 33.0
+color = Color(0.286275, 0.572549, 0.984314, 1)
+
+[node name="ExpShadow" type="ColorRect" parent="UI/Status/Stats/Bars" unique_id=509144785]
+offset_left = 967.0
+offset_top = 30.0
+offset_right = 1055.0
+offset_bottom = 31.0
+color = Color(0, 0, 0, 0.364706)
+
+[node name="HealthBG" type="ColorRect" parent="UI/Status/Stats/Bars" unique_id=724319783]
+offset_left = 885.0
+offset_top = 135.0
+offset_right = 963.0
+offset_bottom = 153.0
+color = Color(0, 0, 0, 1)
+
+[node name="HealthBar" type="ColorRect" parent="UI/Status/Stats/Bars" unique_id=1494494657]
+modulate = Color(0, 0.572549, 0, 1)
+offset_left = 887.0
+offset_top = 137.0
+offset_right = 961.0
+offset_bottom = 151.0
+
+[node name="HealthShadow" type="ColorRect" parent="UI/Status/Stats/Bars" unique_id=1193594131]
+offset_left = 887.0
+offset_top = 137.0
+offset_right = 961.0
+offset_bottom = 141.0
+color = Color(0, 0, 0, 0.364706)
+
+[node name="ATKBG" type="ColorRect" parent="UI/Status/Stats/Bars" unique_id=293733165]
+offset_left = 885.0
+offset_top = 163.0
+offset_right = 963.0
+offset_bottom = 181.0
+color = Color(0, 0, 0, 1)
+
+[node name="ATKBar" type="ColorRect" parent="UI/Status/Stats/Bars" unique_id=1564558881]
+modulate = Color(0.568627, 0.0588235, 0, 1)
+offset_left = 887.0
+offset_top = 165.0
+offset_right = 961.0
+offset_bottom = 179.0
+
+[node name="ATKShadow" type="ColorRect" parent="UI/Status/Stats/Bars" unique_id=765409100]
+offset_left = 887.0
+offset_top = 165.0
+offset_right = 961.0
+offset_bottom = 169.0
+color = Color(0, 0, 0, 0.364706)
+
+[node name="SPDBG" type="ColorRect" parent="UI/Status/Stats/Bars" unique_id=2037456285]
+offset_left = 885.0
+offset_top = 191.0
+offset_right = 963.0
+offset_bottom = 209.0
+color = Color(0, 0, 0, 1)
+
+[node name="SPDBar" type="ColorRect" parent="UI/Status/Stats/Bars" unique_id=1535421440]
+modulate = Color(0, 0.152941, 0.568627, 1)
+offset_left = 887.0
+offset_top = 193.0
+offset_right = 961.0
+offset_bottom = 207.0
+
+[node name="SPDShadow" type="ColorRect" parent="UI/Status/Stats/Bars" unique_id=642714270]
+offset_left = 887.0
+offset_top = 193.0
+offset_right = 961.0
+offset_bottom = 197.0
+color = Color(0, 0, 0, 0.364706)
+
+[node name="Sprite" type="Sprite2D" parent="UI/Status/Stats" unique_id=864282389]
+position = Vector2(839, 173)
+scale = Vector2(2, 2)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="ColorBorder" type="Sprite2D" parent="UI/Status/Stats" unique_id=1151236086]
+position = Vector2(730, 107)
+texture = SubResource("GradientTexture2D_krlnb")
+
+[node name="Color" type="Sprite2D" parent="UI/Status/Stats" unique_id=1363820018]
+position = Vector2(729, 109)
+texture = ExtResource("11")
+
+[node name="Name" type="Label" parent="UI/Status/Stats" unique_id=1799215465]
+offset_left = 750.0
+offset_top = 93.0
+offset_right = 872.0
+offset_bottom = 121.0
+text = "Feraligator"
+label_settings = SubResource("LabelSettings_kmpwa")
+
+[node name="Level" type="Label" parent="UI/Status/Stats" unique_id=559101855]
+offset_left = 881.0
+offset_top = 93.0
+offset_right = 975.0
+offset_bottom = 121.0
+pivot_offset = Vector2(70, 18)
+text = "lv: 9"
+label_settings = SubResource("LabelSettings_dfdik")
+horizontal_alignment = 2
+
+[node name="HP" type="Label" parent="UI/Status/Stats" unique_id=559496584]
+offset_left = 725.0
+offset_top = 221.0
+offset_right = 837.0
+offset_bottom = 249.0
+pivot_offset = Vector2(38, 19)
+text = "hp: 100"
+label_settings = SubResource("LabelSettings_dfdik")
+
+[node name="ATK" type="Label" parent="UI/Status/Stats" unique_id=174554187]
+offset_left = 713.0
+offset_top = 249.0
+offset_right = 825.0
+offset_bottom = 277.0
+pivot_offset = Vector2(38, 19)
+text = "atk: 100"
+label_settings = SubResource("LabelSettings_dfdik")
+
+[node name="SPD" type="Label" parent="UI/Status/Stats" unique_id=1432715673]
+offset_left = 713.0
+offset_top = 277.0
+offset_right = 825.0
+offset_bottom = 305.0
+pivot_offset = Vector2(38, 19)
+text = "spd: 100"
+label_settings = SubResource("LabelSettings_dfdik")
+
+[node name="EvoBG OLD" type="ColorRect" parent="UI/Status/Stats" unique_id=1392942733]
+visible = false
+modulate = Color(0.7, 0.7, 0.7, 1)
+offset_left = 751.0
+offset_top = 279.0
+offset_right = 935.0
+offset_bottom = 310.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="EvolutionOld" type="Label" parent="UI/Status/Stats" unique_id=2086177260]
+visible = false
+modulate = Color(1, 1, 1, 0.45098)
+offset_left = 773.0
+offset_top = 279.0
+offset_right = 943.0
+offset_bottom = 307.0
+text = "evolution: lv9"
+label_settings = SubResource("LabelSettings_dfdik")
+
+[node name="EvoBorder" type="ColorRect" parent="UI/Status/Stats" unique_id=326571548]
+modulate = Color(0.7, 0.7, 0.7, 1)
+offset_left = 714.0
+offset_top = 134.0
+offset_right = 787.0
+offset_bottom = 162.0
+color = Color(0, 0, 0, 1)
+
+[node name="EvoBG" type="ColorRect" parent="UI/Status/Stats" unique_id=149857762]
+modulate = Color(0.46, 0.46, 0.46, 1)
+offset_left = 716.0
+offset_top = 136.0
+offset_right = 785.0
+offset_bottom = 160.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="Evolution" type="Label" parent="UI/Status/Stats" unique_id=462461769]
+modulate = Color(1, 1, 1, 0.45098)
+offset_left = 722.0
+offset_top = 132.0
+offset_right = 796.0
+offset_bottom = 160.0
+text = "evo:9"
+label_settings = SubResource("LabelSettings_squei")
+
+[node name="Rarity" type="Sprite2D" parent="UI/Status" unique_id=129113697]
+position = Vector2(910, 110)
+texture = ExtResource("12")
+hframes = 5
+
+[node name="Moves" type="Node2D" parent="UI/Status" unique_id=135062900]
+
+[node name="Move1" parent="UI/Status/Moves" unique_id=1874580887 instance=ExtResource("13")]
+position = Vector2(0, 52)
+
+[node name="AnimationPlayer" parent="UI/Status/Moves/Move1/Switch/Selector" index="0"]
+autoplay = &"Playing"
+
+[node name="Move2" parent="UI/Status/Moves" unique_id=1802902307 instance=ExtResource("13")]
+position = Vector2(0, 106)
+
+[node name="Move3" parent="UI/Status/Moves" unique_id=1101782711 instance=ExtResource("13")]
+position = Vector2(0, 160)
+
+[node name="Party" type="Node2D" parent="UI/Status" unique_id=1936470930]
+show_behind_parent = true
+position = Vector2(-298, 0)
+
+[node name="Options" type="Node2D" parent="UI/Status/Party" unique_id=618477286]
+position = Vector2(0, -128)
+
+[node name="OptionsBG" type="ColorRect" parent="UI/Status/Party/Options" unique_id=1075182681]
+offset_left = 1000.0
+offset_top = 477.0
+offset_right = 1282.0
+offset_bottom = 601.0
+color = Color(0.035, 0.0425833, 0.1, 1)
+
+[node name="BG1" type="ColorRect" parent="UI/Status/Party/Options" unique_id=1608777455]
+offset_left = 1016.0
+offset_top = 482.0
+offset_right = 1268.0
+offset_bottom = 513.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="BG2" type="ColorRect" parent="UI/Status/Party/Options" unique_id=1668516457]
+offset_left = 1016.0
+offset_top = 524.0
+offset_right = 1268.0
+offset_bottom = 555.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="BG3" type="ColorRect" parent="UI/Status/Party/Options" unique_id=602783284]
+visible = false
+offset_left = 1016.0
+offset_top = 566.0
+offset_right = 1268.0
+offset_bottom = 597.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="AutoBattle" type="RichTextLabel" parent="UI/Status/Party/Options" unique_id=1053562837]
+offset_left = 1023.0
+offset_top = 482.0
+offset_right = 1269.0
+offset_bottom = 522.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/normal_font = ExtResource("3")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Auto Battle: [color=999999]OFF[/color]"
+
+[node name="PreBattle" type="RichTextLabel" parent="UI/Status/Party/Options" unique_id=378641293]
+offset_left = 1023.0
+offset_top = 524.0
+offset_right = 1269.0
+offset_bottom = 564.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/normal_font = ExtResource("3")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Pre-Battle: [color=379dab]FORMATION[/color]"
+
+[node name="StartBattle" type="RichTextLabel" parent="UI/Status/Party/Options" unique_id=1334133590]
+visible = false
+offset_left = 1016.0
+offset_top = 566.0
+offset_right = 1268.0
+offset_bottom = 606.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.67, 0.67, 0.67, 0.4745098)
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 6
+theme_override_fonts/normal_font = ExtResource("3")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "START BATTLE"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Status/Party/Options/StartBattle" unique_id=186628874]
+libraries/ = SubResource("AnimationLibrary_hb178")
+autoplay = &"loop"
+speed_scale = 0.5
+
+[node name="BFOptions" type="Node2D" parent="UI/Status/Party/Options" unique_id=1224044584]
+show_behind_parent = true
+
+[node name="OptionsBG" type="ColorRect" parent="UI/Status/Party/Options/BFOptions" unique_id=570948802]
+offset_left = 1000.0
+offset_top = 477.0
+offset_right = 1282.0
+offset_bottom = 601.0
+color = Color(0.035, 0.0425833, 0.1, 1)
+
+[node name="BG1" type="ColorRect" parent="UI/Status/Party/Options/BFOptions" unique_id=1673571040]
+offset_left = 1016.0
+offset_top = 482.0
+offset_right = 1268.0
+offset_bottom = 513.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="BG2" type="ColorRect" parent="UI/Status/Party/Options/BFOptions" unique_id=1784286473]
+offset_left = 1016.0
+offset_top = 524.0
+offset_right = 1268.0
+offset_bottom = 555.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="BG3" type="ColorRect" parent="UI/Status/Party/Options/BFOptions" unique_id=2117201828]
+offset_left = 1016.0
+offset_top = 566.0
+offset_right = 1268.0
+offset_bottom = 597.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="Shop" type="RichTextLabel" parent="UI/Status/Party/Options/BFOptions" unique_id=272513201]
+modulate = Color(0.933333, 0.792157, 0.321569, 1)
+offset_left = 1016.0
+offset_top = 482.0
+offset_right = 1268.0
+offset_bottom = 522.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/normal_font = ExtResource("3")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "SHOP"
+horizontal_alignment = 1
+
+[node name="ItemShop" type="RichTextLabel" parent="UI/Status/Party/Options/BFOptions" unique_id=877078928]
+offset_left = 1016.0
+offset_top = 524.0
+offset_right = 1268.0
+offset_bottom = 564.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/normal_font = ExtResource("3")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "ITEMS"
+horizontal_alignment = 1
+
+[node name="Quit" type="RichTextLabel" parent="UI/Status/Party/Options/BFOptions" unique_id=1779558431]
+offset_left = 1016.0
+offset_top = 566.0
+offset_right = 1268.0
+offset_bottom = 606.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/normal_font = ExtResource("3")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "QUIT GAME"
+horizontal_alignment = 1
+
+[node name="BG" type="ColorRect" parent="UI/Status/Party" unique_id=798139708]
+visible = false
+offset_left = 1000.0
+offset_top = 86.0
+offset_right = 1282.0
+offset_bottom = 473.0
+color = Color(0.035, 0.0425833, 0.1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Status/Party" unique_id=973456042]
+position = Vector2(1141, 280)
+texture = ExtResource("14")
+
+[node name="Selector" type="ColorRect" parent="UI/Status/Party" unique_id=1520416973]
+offset_left = 1017.0
+offset_top = 108.0
+offset_right = 1268.0
+offset_bottom = 137.0
+color = Color(0.2144, 0.6168466, 0.67, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Status/Party/Selector" unique_id=1728476613]
+libraries/ = SubResource("AnimationLibrary_vl6bb")
+autoplay = &"loop"
+
+[node name="VList" type="VBoxContainer" parent="UI/Status/Party" unique_id=752048875]
+offset_left = 1053.0
+offset_top = 107.0
+offset_right = 1221.0
+offset_bottom = 463.0
+
+[node name="Formation" type="Node2D" parent="UI/Status/Party" unique_id=127240256]
+show_behind_parent = true
+position = Vector2(596, 0)
+
+[node name="Affinities" type="Node2D" parent="UI/Status/Party/Formation" unique_id=1441537010]
+position = Vector2(0, -128)
+
+[node name="AffBG" type="ColorRect" parent="UI/Status/Party/Formation/Affinities" unique_id=1072363872]
+offset_left = 404.0
+offset_top = 477.0
+offset_right = 686.0
+offset_bottom = 601.0
+color = Color(0.035, 0.0425833, 0.1, 1)
+
+[node name="SlotBG" type="ColorRect" parent="UI/Status/Party/Formation/Affinities" unique_id=1983269901]
+offset_left = 422.0
+offset_top = 494.0
+offset_right = 537.0
+offset_bottom = 587.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="SlotBG2" type="ColorRect" parent="UI/Status/Party/Formation/Affinities" unique_id=382409050]
+offset_left = 552.0
+offset_top = 494.0
+offset_right = 667.0
+offset_bottom = 587.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Status/Party/Formation/Affinities" unique_id=1312703995]
+position = Vector2(545, 539)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("15")
+
+[node name="BG" type="Sprite2D" parent="UI/Status/Party/Formation" unique_id=769728058]
+position = Vector2(545, 280)
+texture = ExtResource("16")
+
+[node name="BG OLD" type="ColorRect" parent="UI/Status/Party/Formation" unique_id=215225119]
+visible = false
+offset_left = 404.0
+offset_top = 86.0
+offset_right = 686.0
+offset_bottom = 473.0
+color = Color(0.035, 0.0425833, 0.1, 1)
+
+[node name="Slots" type="Node2D" parent="UI/Status/Party/Formation" unique_id=1639924292]
+
+[node name="Slot1" type="Node2D" parent="UI/Status/Party/Formation/Slots" unique_id=1987071379]
+position = Vector2(441, 116)
+
+[node name="SlotBG" type="ColorRect" parent="UI/Status/Party/Formation/Slots/Slot1" unique_id=295976490]
+visible = false
+offset_right = 90.0
+offset_bottom = 90.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="Sprite" type="Sprite2D" parent="UI/Status/Party/Formation/Slots/Slot1" unique_id=370656321]
+position = Vector2(45, 45)
+scale = Vector2(2, 2)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Slot2" type="Node2D" parent="UI/Status/Party/Formation/Slots" unique_id=632761830]
+position = Vector2(441, 230)
+
+[node name="SlotBG" type="ColorRect" parent="UI/Status/Party/Formation/Slots/Slot2" unique_id=1650011563]
+visible = false
+offset_right = 90.0
+offset_bottom = 90.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="Sprite" type="Sprite2D" parent="UI/Status/Party/Formation/Slots/Slot2" unique_id=286064024]
+position = Vector2(45, 45)
+scale = Vector2(2, 2)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Slot3" type="Node2D" parent="UI/Status/Party/Formation/Slots" unique_id=1258381681]
+position = Vector2(441, 344)
+
+[node name="SlotBG" type="ColorRect" parent="UI/Status/Party/Formation/Slots/Slot3" unique_id=577935288]
+visible = false
+offset_right = 90.0
+offset_bottom = 90.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="Sprite" type="Sprite2D" parent="UI/Status/Party/Formation/Slots/Slot3" unique_id=2136819243]
+position = Vector2(45, 45)
+scale = Vector2(2, 2)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Slot4" type="Node2D" parent="UI/Status/Party/Formation/Slots" unique_id=682175507]
+position = Vector2(555, 116)
+
+[node name="SlotBG" type="ColorRect" parent="UI/Status/Party/Formation/Slots/Slot4" unique_id=1172342848]
+visible = false
+offset_right = 90.0
+offset_bottom = 90.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="Sprite" type="Sprite2D" parent="UI/Status/Party/Formation/Slots/Slot4" unique_id=2036893382]
+position = Vector2(45, 45)
+scale = Vector2(2, 2)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Slot5" type="Node2D" parent="UI/Status/Party/Formation/Slots" unique_id=1714087289]
+position = Vector2(555, 230)
+
+[node name="SlotBG" type="ColorRect" parent="UI/Status/Party/Formation/Slots/Slot5" unique_id=1778257991]
+visible = false
+offset_right = 90.0
+offset_bottom = 90.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="Sprite" type="Sprite2D" parent="UI/Status/Party/Formation/Slots/Slot5" unique_id=96241620]
+position = Vector2(45, 45)
+scale = Vector2(2, 2)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Slot6" type="Node2D" parent="UI/Status/Party/Formation/Slots" unique_id=140906009]
+position = Vector2(555, 344)
+
+[node name="SlotBG" type="ColorRect" parent="UI/Status/Party/Formation/Slots/Slot6" unique_id=781309244]
+visible = false
+offset_right = 90.0
+offset_bottom = 90.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="Sprite" type="Sprite2D" parent="UI/Status/Party/Formation/Slots/Slot6" unique_id=378632552]
+position = Vector2(45, 45)
+scale = Vector2(2, 2)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Selector" type="ColorRect" parent="UI/Status/Party/Formation" unique_id=1275208522]
+visible = false
+offset_left = 441.0
+offset_top = 116.0
+offset_right = 531.0
+offset_bottom = 206.0
+color = Color(0.2144, 0.6168466, 0.67, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Status/Party/Formation/Selector" unique_id=2136116162]
+libraries/ = SubResource("AnimationLibrary_vl6bb")
+autoplay = &"loop"
+
+[node name="Sprite" type="Sprite2D" parent="UI/Status/Party/Formation/Selector" unique_id=1515329928]
+visible = false
+self_modulate = Color(1, 1, 1, 0.784314)
+z_index = 2
+position = Vector2(60, 29)
+scale = Vector2(2, 2)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 6
+
+[node name="Items" type="Node2D" parent="UI" unique_id=1576331324]
+show_behind_parent = true
+
+[node name="BG" type="ColorRect" parent="UI/Items" unique_id=1153514739]
+offset_left = 1298.0
+offset_top = 86.0
+offset_right = 1580.0
+offset_bottom = 473.0
+color = Color(0.035, 0.0425833, 0.1, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Selector" type="ColorRect" parent="UI/Items" unique_id=113969592]
+modulate = Color(1, 1, 1, 0.509804)
+offset_left = 1306.0
+offset_top = 99.0
+offset_right = 1572.0
+offset_bottom = 130.0
+color = Color(0.2144, 0.6168466, 0.67, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Items/Selector" unique_id=817909273]
+libraries/ = SubResource("AnimationLibrary_vl6bb")
+autoplay = &"loop"
+
+[node name="ItemList" type="VBoxContainer" parent="UI/Items" unique_id=1837429815]
+offset_left = 1322.0
+offset_top = 100.0
+offset_right = 1557.0
+offset_bottom = 450.0
+
+[node name="ItemInfo" type="Node2D" parent="UI/Items" unique_id=839441350]
+show_behind_parent = true
+position = Vector2(314, -35)
+
+[node name="BG" type="ColorRect" parent="UI/Items/ItemInfo" unique_id=933574028]
+offset_left = 984.0
+offset_top = 121.0
+offset_right = 1266.0
+offset_bottom = 253.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="BG2" type="ColorRect" parent="UI/Items/ItemInfo" unique_id=1819058595]
+offset_left = 992.0
+offset_top = 129.0
+offset_right = 1258.0
+offset_bottom = 245.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Label" type="Label" parent="UI/Items/ItemInfo" unique_id=557356601]
+offset_left = 1008.0
+offset_top = 137.0
+offset_right = 1242.0
+offset_bottom = 237.0
+text = "ayayayayayay"
+label_settings = SubResource("LabelSettings_ajg0y")
+autowrap_mode = 2
+
+[node name="Shop" type="Node2D" parent="." unique_id=1634787993]
+z_index = 30
+position = Vector2(-1072, 0)
+
+[node name="BG" type="Sprite2D" parent="Shop" unique_id=1918763917]
+visible = false
+position = Vector2(530, 279)
+texture = ExtResource("17")
+
+[node name="BG OLD2" type="ColorRect" parent="Shop" unique_id=1144237893]
+offset_left = 126.0
+offset_top = 85.0
+offset_right = 934.0
+offset_bottom = 473.0
+color = Color(0.15686275, 0.17254902, 0.2901961, 1)
+
+[node name="BG OLD" type="ColorRect" parent="Shop" unique_id=1259192727]
+offset_left = 153.0
+offset_top = 112.0
+offset_right = 901.0
+offset_bottom = 385.0
+color = Color(0, 0, 0, 0.3137255)
+
+[node name="CardList" type="HBoxContainer" parent="Shop" unique_id=1015330042]
+custom_minimum_size = Vector2(120, 90)
+offset_left = 175.0
+offset_top = 121.0
+offset_right = 295.0
+offset_bottom = 211.0
+
+[node name="CardShopCard" parent="Shop/CardList" unique_id=914609057 instance=ExtResource("18")]
+layout_mode = 2
+
+[node name="AnimationPlayer" parent="Shop/CardList/CardShopCard/Selector" index="0"]
+autoplay = &"Playing"
+
+[node name="BoosterList" type="HBoxContainer" parent="Shop" unique_id=973786724]
+custom_minimum_size = Vector2(120, 90)
+offset_left = 175.0
+offset_top = 258.0
+offset_right = 915.0
+offset_bottom = 348.0
+
+[node name="CardShopCard" parent="Shop/BoosterList" unique_id=1461334286 instance=ExtResource("19")]
+layout_mode = 2
+
+[node name="CardShopCard2" parent="Shop/BoosterList" unique_id=184219552 instance=ExtResource("19")]
+layout_mode = 2
+
+[node name="CardShopCard3" parent="Shop/BoosterList" unique_id=1410542528 instance=ExtResource("19")]
+layout_mode = 2
+
+[node name="CardShopCard4" parent="Shop/BoosterList" unique_id=481598648 instance=ExtResource("19")]
+layout_mode = 2
+
+[node name="CardShopCard5" parent="Shop/BoosterList" unique_id=750782113 instance=ExtResource("19")]
+layout_mode = 2
+
+[node name="CardShopCard6" parent="Shop/BoosterList" unique_id=1589912913 instance=ExtResource("19")]
+layout_mode = 2
+
+[node name="SellButton" type="Node2D" parent="Shop" unique_id=792066308]
+position = Vector2(175, 397)
+
+[node name="BG OLD" type="ColorRect" parent="Shop/SellButton" unique_id=2030557145]
+offset_right = 157.0
+offset_bottom = 45.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="BG" type="Sprite2D" parent="Shop/SellButton" unique_id=1155565660]
+position = Vector2(285, 23)
+texture = ExtResource("20")
+hframes = 2
+frame = 1
+
+[node name="Selector" type="ColorRect" parent="Shop/SellButton" unique_id=314477312]
+visible = false
+offset_left = 10.0
+offset_top = -3.0
+offset_right = 265.0
+offset_bottom = 49.0
+color = Color(0.26133382, 0.75187916, 0.8166682, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Shop/SellButton/Selector" unique_id=1750072654]
+libraries/ = SubResource("AnimationLibrary_agpxf")
+autoplay = &"Playing"
+
+[node name="Label" type="Label" parent="Shop/SellButton" unique_id=582755647]
+offset_left = 64.0
+offset_right = 208.0
+offset_bottom = 42.0
+text = "Sell card"
+label_settings = SubResource("LabelSettings_baxxa")
+
+[node name="PlayerMoney" type="Node2D" parent="Shop" unique_id=1372985520]
+visible = false
+position = Vector2(727, 404)
+
+[node name="BG OLD" type="ColorRect" parent="Shop/PlayerMoney" unique_id=1936662136]
+offset_right = 157.0
+offset_bottom = 45.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Label" type="Label" parent="Shop/PlayerMoney" unique_id=1622964207]
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 125.0
+offset_bottom = 49.0
+text = "Player:"
+label_settings = SubResource("LabelSettings_hegis")
+
+[node name="Money" type="Label" parent="Shop/PlayerMoney" unique_id=723178127]
+modulate = Color(0.933333, 0.792157, 0.321569, 1)
+offset_left = 85.0
+offset_top = 8.0
+offset_right = 153.0
+offset_bottom = 50.0
+text = "$90"
+label_settings = SubResource("LabelSettings_md570")
+horizontal_alignment = 2
+
+[node name="SellValue" type="Node2D" parent="Shop" unique_id=398976967]
+visible = false
+z_index = 69
+position = Vector2(-592, 382)
+
+[node name="BG" type="ColorRect" parent="Shop/SellValue" unique_id=2146833821]
+offset_left = 23.0
+offset_right = 78.0
+offset_bottom = 45.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Selector" type="ColorRect" parent="Shop/SellValue" unique_id=2011103095]
+offset_left = 23.0
+offset_right = 78.0
+offset_bottom = 45.0
+color = Color(0.2144, 0.616847, 0.67, 0.509804)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Shop/SellValue/Selector" unique_id=1375295779]
+libraries/ = SubResource("AnimationLibrary_agpxf")
+autoplay = &"Playing"
+
+[node name="Label" type="Label" parent="Shop/SellValue" unique_id=371402895]
+visible = false
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 125.0
+offset_bottom = 49.0
+text = "Player:"
+label_settings = SubResource("LabelSettings_hegis")
+
+[node name="Money" type="Label" parent="Shop/SellValue" unique_id=1484360707]
+modulate = Color(0.933333, 0.792157, 0.321569, 1)
+offset_top = 7.0
+offset_right = 98.0
+offset_bottom = 46.0
+text = "$900"
+label_settings = SubResource("LabelSettings_md570")
+horizontal_alignment = 1
+
+[node name="ItemShop" type="Node2D" parent="." unique_id=1805920014]
+position = Vector2(2553, 0)
+
+[node name="ColorRect" type="ColorRect" parent="ItemShop" unique_id=173560861]
+offset_left = -953.0
+offset_top = 7.0
+offset_right = -320.0
+offset_bottom = 481.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="ItemHeader" type="ColorRect" parent="ItemShop" unique_id=1077750667]
+offset_left = -945.0
+offset_top = 15.0
+offset_right = -663.0
+offset_bottom = 78.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="Label" type="Label" parent="ItemShop/ItemHeader" unique_id=1835168661]
+layout_mode = 0
+offset_top = 2.0
+offset_right = 282.0
+offset_bottom = 58.0
+text = "Shop"
+label_settings = SubResource("LabelSettings_n3wdn")
+horizontal_alignment = 1
+
+[node name="PlayerHeader" type="ColorRect" parent="ItemShop" unique_id=924301589]
+offset_left = -610.0
+offset_top = 15.0
+offset_right = -328.0
+offset_bottom = 78.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="Label" type="Label" parent="ItemShop/PlayerHeader" unique_id=83855324]
+layout_mode = 0
+offset_top = 2.0
+offset_right = 282.0
+offset_bottom = 58.0
+text = "Player"
+label_settings = SubResource("LabelSettings_n3wdn")
+horizontal_alignment = 1
+
+[node name="BG" type="ColorRect" parent="ItemShop" unique_id=1974055105]
+offset_left = -945.0
+offset_top = 86.0
+offset_right = -663.0
+offset_bottom = 473.0
+color = Color(0.035, 0.0425833, 0.1, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Selector" type="ColorRect" parent="ItemShop" unique_id=753219707]
+modulate = Color(1, 1, 1, 0.509804)
+offset_left = -937.0
+offset_top = 99.0
+offset_right = -671.0
+offset_bottom = 130.0
+color = Color(0.2144, 0.6168466, 0.67, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ItemShop/Selector" unique_id=457416717]
+libraries/ = SubResource("AnimationLibrary_vl6bb")
+autoplay = &"loop"
+
+[node name="ItemList" type="VBoxContainer" parent="ItemShop" unique_id=1288275096]
+offset_left = -921.0
+offset_top = 100.0
+offset_right = -686.0
+offset_bottom = 450.0
+
+[node name="ItemInfo" type="Node2D" parent="ItemShop" unique_id=1522422567]
+show_behind_parent = true
+position = Vector2(-1929, -35)
+
+[node name="BG" type="ColorRect" parent="ItemShop/ItemInfo" unique_id=1341784505]
+offset_left = 984.0
+offset_top = 121.0
+offset_right = 1266.0
+offset_bottom = 253.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="BG2" type="ColorRect" parent="ItemShop/ItemInfo" unique_id=1899435935]
+offset_left = 992.0
+offset_top = 129.0
+offset_right = 1258.0
+offset_bottom = 245.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Label" type="Label" parent="ItemShop/ItemInfo" unique_id=404300629]
+offset_left = 1008.0
+offset_top = 137.0
+offset_right = 1242.0
+offset_bottom = 237.0
+text = "ayayayayayay"
+label_settings = SubResource("LabelSettings_ajg0y")
+autowrap_mode = 2
+
+[node name="GetCard" type="Node2D" parent="." unique_id=786600796]
+visible = false
+z_index = 99
+
+[node name="Polygon2D" type="Polygon2D" parent="GetCard" unique_id=85143747]
+position = Vector2(805, -24)
+color = Color(1, 1, 1, 0)
+offset = Vector2(-923, 13)
+polygon = PackedVector2Array(785, -12, 600, 895, 1244, 896, 1063, -12)
+
+[node name="Card" type="Node2D" parent="GetCard" unique_id=522423390]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(800, 600)
+scale = Vector2(2, 2)
+
+[node name="CardShopCard" type="Node2D" parent="GetCard/Card" unique_id=978013776]
+visible = false
+position = Vector2(-45, -55)
+metadata/disabled = false
+metadata/cost = 0
+
+[node name="Border" type="ColorRect" parent="GetCard/Card/CardShopCard" unique_id=1518827020]
+visible = false
+modulate = Color(1, 1, 1, 0.627451)
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 88.0
+offset_bottom = 108.0
+color = Color(0.0216, 0.0237467, 0.04, 1)
+
+[node name="BG" type="ColorRect" parent="GetCard/Card/CardShopCard" unique_id=219201632]
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 87.0
+offset_bottom = 107.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="BGTexture" type="Sprite2D" parent="GetCard/Card/CardShopCard" unique_id=1977761026]
+self_modulate = Color(1, 1, 1, 0.54902)
+clip_children = 2
+position = Vector2(45, 55)
+texture = ExtResource("8")
+hframes = 6
+frame = 2
+
+[node name="ColorRect" type="ColorRect" parent="GetCard/Card/CardShopCard/BGTexture" unique_id=810045515]
+modulate = Color(1, 1, 1, 0.686275)
+offset_left = -59.6071
+offset_top = -153.693
+offset_right = -37.6071
+offset_bottom = 35.307205
+rotation = 0.349066
+pivot_offset = Vector2(7.18907, 92.3782)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GetCard/Card/CardShopCard/BGTexture" unique_id=526431253]
+libraries/ = SubResource("AnimationLibrary_j7g5w")
+
+[node name="ColorShadow" type="ColorRect" parent="GetCard/Card/CardShopCard" unique_id=749301711]
+visible = false
+modulate = Color(1, 1, 1, 0.784314)
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 22.0
+offset_bottom = 21.0
+color = Color(0, 0, 0, 1)
+
+[node name="Shadow OLD" type="ColorRect" parent="GetCard/Card/CardShopCard" unique_id=1784292267]
+modulate = Color(1, 1, 1, 0.784314)
+offset_left = 12.0
+offset_top = 15.0
+offset_right = 78.0
+offset_bottom = 63.0
+color = Color(0, 0, 0, 1)
+
+[node name="Shadow" type="Sprite2D" parent="GetCard/Card/CardShopCard" unique_id=1940920811]
+position = Vector2(44.5, 39)
+scale = Vector2(1.046875, 0.75)
+texture = SubResource("GradientTexture2D_ye5dv")
+
+[node name="CardUI" type="Sprite2D" parent="GetCard/Card/CardShopCard" unique_id=797384789]
+position = Vector2(45, 55)
+texture = ExtResource("21")
+hframes = 7
+frame = 6
+
+[node name="LevelBar" type="HBoxContainer" parent="GetCard/Card/CardShopCard" unique_id=981975081]
+offset_left = 12.0
+offset_top = 61.5
+offset_right = 75.0
+offset_bottom = 66.5
+
+[node name="Control" type="Control" parent="GetCard/Card/CardShopCard/LevelBar" unique_id=1550912803]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+
+[node name="Color" type="ColorRect" parent="GetCard/Card/CardShopCard/LevelBar/Control" unique_id=1775908824]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 4.0
+offset_bottom = 3.0
+color = Color(0, 1, 0.15, 1)
+
+[node name="ColorRect" type="ColorRect" parent="GetCard/Card/CardShopCard/LevelBar/Control" unique_id=1503709370]
+layout_mode = 0
+offset_top = -3.0
+offset_right = 4.0
+offset_bottom = -1.0
+color = Color(0.341176, 0.329412, 0.298039, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="GetCard/Card/CardShopCard/LevelBar/Control" unique_id=1935850980]
+layout_mode = 0
+offset_top = 3.0
+offset_right = 4.0
+offset_bottom = 5.0
+color = Color(0.341176, 0.329412, 0.298039, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="GetCard/Card/CardShopCard/LevelBar/Control" unique_id=1345466042]
+layout_mode = 0
+offset_left = 4.0
+offset_top = -1.0
+offset_right = 6.0
+offset_bottom = 3.0
+color = Color(0.341176, 0.329412, 0.298039, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="GetCard/Card/CardShopCard/LevelBar/Control" unique_id=65916916]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -1.0
+offset_bottom = 3.0
+color = Color(0.341176, 0.329412, 0.298039, 1)
+
+[node name="Selector" type="ColorRect" parent="GetCard/Card/CardShopCard" unique_id=745031874]
+visible = false
+offset_right = 90.0
+offset_bottom = 110.0
+color = Color(0.2144, 0.616847, 0.67, 0.509804)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GetCard/Card/CardShopCard/Selector" unique_id=717113478]
+libraries/ = SubResource("AnimationLibrary_c86p3")
+autoplay = &"Playing"
+
+[node name="SpriteShadow" type="Sprite2D" parent="GetCard/Card/CardShopCard" unique_id=633989701]
+position = Vector2(45, 49)
+scale = Vector2(1.421875, 0.56249976)
+texture = SubResource("GradientTexture2D_s5i3a")
+
+[node name="Sprite" type="Sprite2D" parent="GetCard/Card/CardShopCard" unique_id=2027032567]
+position = Vector2(45, 34)
+scale = Vector2(2, 2)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="ColorBorder" type="Sprite2D" parent="GetCard/Card/CardShopCard" unique_id=525992811]
+position = Vector2(14, 11)
+texture = SubResource("GradientTexture2D_frvl6")
+
+[node name="Color" type="Sprite2D" parent="GetCard/Card/CardShopCard" unique_id=1521190738]
+position = Vector2(13, 12.5)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("11")
+
+[node name="Level" type="Label" parent="GetCard/Card/CardShopCard" unique_id=1907827552]
+visible = false
+offset_left = 31.0
+offset_top = 4.0
+offset_right = 86.0
+offset_bottom = 23.0
+text = "lv2"
+label_settings = SubResource("LabelSettings_c86p3")
+
+[node name="Cost" type="Label" parent="GetCard/Card/CardShopCard" unique_id=281299136]
+visible = false
+offset_left = 29.0
+offset_top = 75.0
+offset_right = 84.0
+offset_bottom = 103.0
+text = "$90"
+label_settings = SubResource("LabelSettings_ks230")
+horizontal_alignment = 2
+
+[node name="CardBack" type="Sprite2D" parent="GetCard/Card" unique_id=383493352]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("23")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GetCard" unique_id=280256560]
+libraries/ = SubResource("AnimationLibrary_vw1v7")
+
+[node name="Booster" parent="GetCard" unique_id=1159073566 instance=ExtResource("19")]
+modulate = Color(1, 1, 1, 0)
+offset_left = 710.0
+offset_top = 462.0
+offset_right = 830.0
+offset_bottom = 552.0
+scale = Vector2(2, 2)
+
+[node name="Cost" parent="GetCard/Booster" index="9" unique_id=136621537]
+visible = false
+
+[node name="BoosterTop" parent="GetCard/Booster" index="10" unique_id=206972275]
+position = Vector2(0, 5.5)
+offset = Vector2(45, -0.5)
+
+[node name="Starters" type="Node2D" parent="." unique_id=1587086094]
+position = Vector2(-520, 0)
+
+[node name="BG" type="ColorRect" parent="Starters" unique_id=971591373]
+offset_left = -1057.0
+offset_top = 155.0
+offset_right = -26.0
+offset_bottom = 786.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="DeckList" type="HBoxContainer" parent="Starters" unique_id=140000431]
+custom_minimum_size = Vector2(120, 90)
+offset_left = -987.0
+offset_top = 217.0
+offset_right = -307.0
+offset_bottom = 307.0
+
+[node name="DeckList2" type="HBoxContainer" parent="Starters" unique_id=2065175611]
+custom_minimum_size = Vector2(120, 90)
+offset_left = -987.0
+offset_top = 349.0
+offset_right = -867.0
+offset_bottom = 439.0
+
+[node name="DeckList3" type="HBoxContainer" parent="Starters" unique_id=1348217177]
+custom_minimum_size = Vector2(120, 90)
+offset_left = -987.0
+offset_top = 481.0
+offset_right = -867.0
+offset_bottom = 571.0
+
+[node name="DeckDetails" type="Node2D" parent="Starters" unique_id=1656551220]
+position = Vector2(-8, 0)
+
+[node name="BG" type="ColorRect" parent="Starters/DeckDetails" unique_id=243026376]
+offset_left = 135.0
+offset_top = 153.0
+offset_right = 470.0
+offset_bottom = 623.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="DeckItem" parent="Starters/DeckDetails" unique_id=1574510527 instance=ExtResource("24")]
+offset_left = 160.0
+offset_top = 178.0
+offset_right = 270.0
+offset_bottom = 178.0
+scale = Vector2(3, 3)
+
+[node name="AnimationPlayer" parent="Starters/DeckDetails/DeckItem/Selector" index="0"]
+autoplay = &"Playing"
+
+[node name="VList" type="VBoxContainer" parent="Starters/DeckDetails" unique_id=1971883527]
+offset_left = 216.0
+offset_top = 513.0
+offset_right = 384.0
+offset_bottom = 869.0
+
+[node name="PartyPokemonItem" parent="Starters/DeckDetails/VList" unique_id=125934270 instance=ExtResource("25")]
+layout_mode = 2
+
+[node name="BP" type="Node2D" parent="Starters" unique_id=1654711819]
+position = Vector2(151, 641)
+
+[node name="BG2" type="ColorRect" parent="Starters/BP" unique_id=1507106831]
+offset_left = 13.0
+offset_top = -13.0
+offset_right = 265.0
+offset_bottom = 47.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="BG" type="ColorRect" parent="Starters/BP" unique_id=1313256922]
+offset_left = 19.0
+offset_top = -7.0
+offset_right = 259.0
+offset_bottom = 41.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Starters/BP" unique_id=1773948931]
+position = Vector2(286.5, 17)
+texture = ExtResource("20")
+hframes = 2
+frame = 1
+
+[node name="Money" type="Label" parent="Starters/BP" unique_id=1119027032]
+modulate = Color(0.47843137, 0.7764706, 1, 1)
+offset_left = -37.0
+offset_top = -7.0
+offset_right = 256.0
+offset_bottom = 49.0
+text = "$0"
+label_settings = SubResource("LabelSettings_6647j")
+horizontal_alignment = 2
+
+[node name="Label" type="Label" parent="Starters/BP" unique_id=594076656]
+offset_left = 27.0
+offset_top = -7.0
+offset_right = 183.0
+offset_bottom = 49.0
+text = "Player BP:"
+label_settings = SubResource("LabelSettings_s5i3a")
+
+[node name="Keyboard" type="Node2D" parent="." unique_id=1564437491]
+modulate = Color(0, 0, 0, 0)
+z_index = 32
+position = Vector2(1364, -15)
+
+[node name="BG" type="ColorRect" parent="Keyboard" unique_id=1007654416]
+offset_left = -827.0
+offset_top = 180.0
+offset_right = -263.0
+offset_bottom = 622.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="BG2" type="ColorRect" parent="Keyboard" unique_id=858036141]
+offset_left = -780.0
+offset_top = 229.0
+offset_right = -308.0
+offset_bottom = 354.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Keys" type="Node2D" parent="Keyboard" unique_id=855932645]
+
+[node name="Selector" type="ColorRect" parent="Keyboard/Keys" unique_id=966659484]
+modulate = Color(1, 1, 1, 0.509804)
+offset_left = -777.0
+offset_top = 385.0
+offset_right = -729.0
+offset_bottom = 433.0
+color = Color(0.2144, 0.6168466, 0.67, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Keyboard/Keys/Selector" unique_id=199577903]
+libraries/ = SubResource("AnimationLibrary_vl6bb")
+autoplay = &"loop"
+
+[node name="KeyVBox" type="VBoxContainer" parent="Keyboard/Keys" unique_id=1601676874]
+offset_left = -776.0
+offset_top = 384.0
+offset_right = -312.0
+offset_bottom = 536.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Keyboard/Keys/KeyVBox" unique_id=1431977281]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Keyboard/Keys/KeyVBox/HBoxContainer" unique_id=296131980]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/KeyVBox/HBoxContainer/Control" unique_id=1315501989]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "A"
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="Control2" type="Control" parent="Keyboard/Keys/KeyVBox/HBoxContainer" unique_id=1980572207]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/KeyVBox/HBoxContainer/Control2" unique_id=437951508]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "B"
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="Control3" type="Control" parent="Keyboard/Keys/KeyVBox/HBoxContainer" unique_id=867051941]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/KeyVBox/HBoxContainer/Control3" unique_id=967161470]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "C"
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="Control4" type="Control" parent="Keyboard/Keys/KeyVBox/HBoxContainer" unique_id=891321243]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/KeyVBox/HBoxContainer/Control4" unique_id=959067101]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "D"
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="Control5" type="Control" parent="Keyboard/Keys/KeyVBox/HBoxContainer" unique_id=661794882]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/KeyVBox/HBoxContainer/Control5" unique_id=1940908196]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "E"
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="Control6" type="Control" parent="Keyboard/Keys/KeyVBox/HBoxContainer" unique_id=1674543137]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/KeyVBox/HBoxContainer/Control6" unique_id=2046140963]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "F"
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="Control7" type="Control" parent="Keyboard/Keys/KeyVBox/HBoxContainer" unique_id=1304011690]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/KeyVBox/HBoxContainer/Control7" unique_id=229413663]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "G"
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="Control8" type="Control" parent="Keyboard/Keys/KeyVBox/HBoxContainer" unique_id=46613809]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/KeyVBox/HBoxContainer/Control8" unique_id=853222623]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "H"
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="Control9" type="Control" parent="Keyboard/Keys/KeyVBox/HBoxContainer" unique_id=413902079]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/KeyVBox/HBoxContainer/Control9" unique_id=173812186]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "I"
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Keyboard/Keys/KeyVBox" unique_id=1257060467]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Keyboard/Keys/KeyVBox/HBoxContainer2" unique_id=466699778]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/KeyVBox/HBoxContainer2/Control" unique_id=1099714974]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "J"
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="Control2" type="Control" parent="Keyboard/Keys/KeyVBox/HBoxContainer2" unique_id=414910209]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/KeyVBox/HBoxContainer2/Control2" unique_id=1690716339]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "K"
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="Control3" type="Control" parent="Keyboard/Keys/KeyVBox/HBoxContainer2" unique_id=2111748565]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/KeyVBox/HBoxContainer2/Control3" unique_id=1028530087]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "L"
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="Control4" type="Control" parent="Keyboard/Keys/KeyVBox/HBoxContainer2" unique_id=30577525]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/KeyVBox/HBoxContainer2/Control4" unique_id=407925472]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "M"
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="Control5" type="Control" parent="Keyboard/Keys/KeyVBox/HBoxContainer2" unique_id=224653020]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/KeyVBox/HBoxContainer2/Control5" unique_id=1278802653]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "N"
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="Control6" type="Control" parent="Keyboard/Keys/KeyVBox/HBoxContainer2" unique_id=1653522902]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/KeyVBox/HBoxContainer2/Control6" unique_id=36328818]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "O"
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="Control7" type="Control" parent="Keyboard/Keys/KeyVBox/HBoxContainer2" unique_id=411857481]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/KeyVBox/HBoxContainer2/Control7" unique_id=645610484]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "P"
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="Control8" type="Control" parent="Keyboard/Keys/KeyVBox/HBoxContainer2" unique_id=1259739580]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/KeyVBox/HBoxContainer2/Control8" unique_id=1832659229]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Q"
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="Control9" type="Control" parent="Keyboard/Keys/KeyVBox/HBoxContainer2" unique_id=1533028756]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/KeyVBox/HBoxContainer2/Control9" unique_id=1889609627]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "R"
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Keyboard/Keys/KeyVBox" unique_id=370650911]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Keyboard/Keys/KeyVBox/HBoxContainer3" unique_id=1937555696]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/KeyVBox/HBoxContainer3/Control" unique_id=1251622306]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "S"
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="Control2" type="Control" parent="Keyboard/Keys/KeyVBox/HBoxContainer3" unique_id=366774578]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/KeyVBox/HBoxContainer3/Control2" unique_id=1660361654]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "T"
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="Control3" type="Control" parent="Keyboard/Keys/KeyVBox/HBoxContainer3" unique_id=710002589]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/KeyVBox/HBoxContainer3/Control3" unique_id=1027552910]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "U"
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="Control4" type="Control" parent="Keyboard/Keys/KeyVBox/HBoxContainer3" unique_id=1461216164]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/KeyVBox/HBoxContainer3/Control4" unique_id=1818213594]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "V"
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="Control5" type="Control" parent="Keyboard/Keys/KeyVBox/HBoxContainer3" unique_id=1181969862]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/KeyVBox/HBoxContainer3/Control5" unique_id=1695324753]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "W"
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="Control6" type="Control" parent="Keyboard/Keys/KeyVBox/HBoxContainer3" unique_id=1174269718]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/KeyVBox/HBoxContainer3/Control6" unique_id=156518410]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "X"
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="Control7" type="Control" parent="Keyboard/Keys/KeyVBox/HBoxContainer3" unique_id=1576432290]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/KeyVBox/HBoxContainer3/Control7" unique_id=717810251]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Y"
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="Control8" type="Control" parent="Keyboard/Keys/KeyVBox/HBoxContainer3" unique_id=1270816479]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/KeyVBox/HBoxContainer3/Control8" unique_id=761747949]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Z"
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="Control9" type="Control" parent="Keyboard/Keys/KeyVBox/HBoxContainer3" unique_id=928610999]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/KeyVBox/HBoxContainer3/Control9" unique_id=711112721]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "?"
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="Question" type="Label" parent="Keyboard/Keys" unique_id=2051434281]
+offset_left = -764.0
+offset_top = 236.0
+offset_right = -593.0
+offset_bottom = 278.0
+text = "Enter KEY:"
+label_settings = SubResource("LabelSettings_jsa7l")
+
+[node name="InputVBox" type="HBoxContainer" parent="Keyboard/Keys" unique_id=1122523747]
+offset_left = -775.0
+offset_top = 286.0
+offset_right = -311.0
+offset_bottom = 334.0
+
+[node name="Control" type="Control" parent="Keyboard/Keys/InputVBox" unique_id=2130618541]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/InputVBox/Control" unique_id=751215727]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Keyboard/Keys/InputVBox/Control" unique_id=457918736]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 39.0
+offset_right = 43.0
+offset_bottom = 43.0
+
+[node name="Control2" type="Control" parent="Keyboard/Keys/InputVBox" unique_id=760506538]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/InputVBox/Control2" unique_id=94817468]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Keyboard/Keys/InputVBox/Control2" unique_id=1670167663]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 39.0
+offset_right = 43.0
+offset_bottom = 43.0
+
+[node name="Control3" type="Control" parent="Keyboard/Keys/InputVBox" unique_id=256268536]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/InputVBox/Control3" unique_id=147483408]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Keyboard/Keys/InputVBox/Control3" unique_id=1133759436]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 39.0
+offset_right = 43.0
+offset_bottom = 43.0
+
+[node name="Control4" type="Control" parent="Keyboard/Keys/InputVBox" unique_id=1276962791]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/InputVBox/Control4" unique_id=2124053561]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Keyboard/Keys/InputVBox/Control4" unique_id=1837300287]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 39.0
+offset_right = 43.0
+offset_bottom = 43.0
+
+[node name="Control5" type="Control" parent="Keyboard/Keys/InputVBox" unique_id=905960611]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/InputVBox/Control5" unique_id=1577284442]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Keyboard/Keys/InputVBox/Control5" unique_id=1345198438]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 39.0
+offset_right = 43.0
+offset_bottom = 43.0
+
+[node name="Control6" type="Control" parent="Keyboard/Keys/InputVBox" unique_id=1401923365]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/InputVBox/Control6" unique_id=1850669282]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Keyboard/Keys/InputVBox/Control6" unique_id=1854066004]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 39.0
+offset_right = 43.0
+offset_bottom = 43.0
+
+[node name="Control7" type="Control" parent="Keyboard/Keys/InputVBox" unique_id=1275784025]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/InputVBox/Control7" unique_id=736628988]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Keyboard/Keys/InputVBox/Control7" unique_id=1689022687]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 39.0
+offset_right = 43.0
+offset_bottom = 43.0
+
+[node name="Control8" type="Control" parent="Keyboard/Keys/InputVBox" unique_id=963905565]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/InputVBox/Control8" unique_id=1670591148]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Keyboard/Keys/InputVBox/Control8" unique_id=1494306541]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 39.0
+offset_right = 43.0
+offset_bottom = 43.0
+
+[node name="Control9" type="Control" parent="Keyboard/Keys/InputVBox" unique_id=1534048566]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Keyboard/Keys/InputVBox/Control9" unique_id=586390572]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_ns1q6")
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Keyboard/Keys/InputVBox/Control9" unique_id=358087593]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 39.0
+offset_right = 43.0
+offset_bottom = 43.0
+
+[node name="Enter" type="Node2D" parent="Keyboard/Keys" unique_id=623406187]
+
+[node name="Selector" type="ColorRect" parent="Keyboard/Keys/Enter" unique_id=2077319652]
+visible = false
+modulate = Color(1, 1, 1, 0.509804)
+offset_left = -639.0
+offset_top = 547.0
+offset_right = -439.0
+offset_bottom = 595.0
+color = Color(0.2144, 0.6168466, 0.67, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Keyboard/Keys/Enter/Selector" unique_id=187048163]
+libraries/ = SubResource("AnimationLibrary_vl6bb")
+autoplay = &"loop"
+
+[node name="Question" type="Label" parent="Keyboard/Keys/Enter" unique_id=298740647]
+offset_left = -764.0
+offset_top = 548.0
+offset_right = -311.0
+offset_bottom = 590.0
+text = "ENTER"
+label_settings = SubResource("LabelSettings_jsa7l")
+horizontal_alignment = 1
+
+[node name="Notifications" type="Node2D" parent="." unique_id=594001425]
+
+[node name="HUD" type="Node2D" parent="." unique_id=1330928500]
+
+[node name="Money" type="Node2D" parent="HUD" unique_id=1081963171]
+position = Vector2(1307, 837)
+
+[node name="BG2" type="ColorRect" parent="HUD/Money" unique_id=1595359403]
+offset_left = 13.0
+offset_top = -13.0
+offset_right = 265.0
+offset_bottom = 47.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="BG" type="ColorRect" parent="HUD/Money" unique_id=1907501191]
+offset_left = 19.0
+offset_top = -7.0
+offset_right = 259.0
+offset_bottom = 41.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD/Money" unique_id=127665692]
+position = Vector2(286.5, 17)
+texture = ExtResource("20")
+hframes = 2
+frame = 1
+
+[node name="Money" type="Label" parent="HUD/Money" unique_id=635264042]
+modulate = Color(0.933333, 0.792157, 0.321569, 1)
+offset_left = -37.0
+offset_top = -7.0
+offset_right = 256.0
+offset_bottom = 49.0
+text = "$0"
+label_settings = SubResource("LabelSettings_2oe2l")
+horizontal_alignment = 2
+
+[node name="Label" type="Label" parent="HUD/Money" unique_id=1537270549]
+offset_left = 27.0
+offset_top = -7.0
+offset_right = 183.0
+offset_bottom = 49.0
+text = "Player:"
+label_settings = SubResource("LabelSettings_u0000")
+
+[node name="InputHint" type="Node2D" parent="HUD" unique_id=1023176184]
+position = Vector2(61, 837)
+
+[node name="BG2" type="ColorRect" parent="HUD/InputHint" unique_id=702397143]
+visible = false
+offset_left = -45.0
+offset_top = -13.0
+offset_right = 478.0
+offset_bottom = 47.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="BG" type="ColorRect" parent="HUD/InputHint" unique_id=161569317]
+visible = false
+offset_left = -39.0
+offset_top = -7.0
+offset_right = 472.0
+offset_bottom = 41.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD/InputHint" unique_id=1416450557]
+position = Vector2(230.49997, 17)
+texture = ExtResource("20")
+hframes = 2
+
+[node name="Label" type="RichTextLabel" parent="HUD/InputHint" unique_id=1372365267]
+offset_left = -31.0
+offset_top = -7.0
+offset_right = 882.0
+offset_bottom = 49.0
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/normal_font = ExtResource("3")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[color=202020]Interact:[color=000000] Z  [color=202020]Cancel:[/color] X  [color=202020]Info:[/color] C "
+
+[node name="Player" type="Node2D" parent="HUD" unique_id=1092335089]
+
+[node name="BarBG" type="ColorRect" parent="HUD/Player" unique_id=1390450689]
+offset_left = 148.0
+offset_top = 86.0
+offset_right = 290.0
+offset_bottom = 98.0
+color = Color(0, 0, 0, 1)
+
+[node name="Bar" type="ColorRect" parent="HUD/Player" unique_id=982114289]
+offset_left = 148.0
+offset_top = 86.0
+offset_right = 290.0
+offset_bottom = 98.0
+color = Color(0.0941176, 0.764706, 0.12549, 1)
+
+[node name="Shadow" type="ColorRect" parent="HUD/Player" unique_id=1380079757]
+offset_left = 148.0
+offset_top = 87.0
+offset_right = 290.0
+offset_bottom = 91.0
+color = Color(0, 0, 0, 0.290196)
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD/Player" unique_id=965637998]
+position = Vector2(0, 68)
+scale = Vector2(2.96, 2.96)
+texture = ExtResource("26")
+offset = Vector2(61, 0)
+
+[node name="Avatar" type="ColorRect" parent="HUD/Player" unique_id=1423971164]
+clip_children = 2
+offset_left = 6.0
+offset_top = 34.0
+offset_right = 89.0
+offset_bottom = 84.0
+color = Color(0.890196, 0.890196, 0.890196, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD/Player/Avatar" unique_id=1275332336]
+position = Vector2(39, 18)
+scale = Vector2(4, 4)
+texture = ExtResource("27")
+hframes = 3
+vframes = 4
+frame = 5
+
+[node name="Label" type="Label" parent="HUD/Player" unique_id=2096595173]
+offset_left = 101.0
+offset_top = 36.0
+offset_right = 295.0
+offset_bottom = 78.0
+text = "Red"
+label_settings = SubResource("LabelSettings_cyo2d")
+
+[node name="Clock" type="Node2D" parent="HUD" unique_id=323752579]
+visible = false
+position = Vector2(17, 135)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HUD/Clock" unique_id=1053154603]
+offset_right = 40.0
+offset_bottom = 40.0
+fill_mode = 4
+texture_under = SubResource("GradientTexture2D_5sxjm")
+texture_progress = SubResource("GradientTexture2D_i153o")
+
+[node name="Static" type="Node2D" parent="." unique_id=57910615]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Static" unique_id=86255804]
+position = Vector2(800, 450)
+texture = ExtResource("28")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Static" unique_id=2054086142]
+libraries/ = SubResource("AnimationLibrary_8q5a8")
+speed_scale = 0.5
+
+[node name="Message" type="Node2D" parent="." unique_id=1717061033]
+
+[node name="SpeechBox" type="Node2D" parent="Message" unique_id=228387964]
+visible = false
+z_index = 99
+position = Vector2(800, 450)
+scale = Vector2(2, 2)
+
+[node name="BG" type="ColorRect" parent="Message/SpeechBox" unique_id=1777571745]
+offset_left = -154.0
+offset_top = -78.0
+offset_right = 155.0
+offset_bottom = -10.0
+pivot_offset = Vector2(142, 111)
+color = Color(0.035, 0.0436667, 0.1, 0.901961)
+
+[node name="BgTexture" type="Sprite2D" parent="Message/SpeechBox" unique_id=494108056]
+position = Vector2(-0.499818, -44.5)
+scale = Vector2(1.11151, 0.844156)
+texture = ExtResource("30")
+
+[node name="Border" type="Node2D" parent="Message/SpeechBox" unique_id=764006022]
+position = Vector2(-11, 0)
+
+[node name="NW" type="Sprite2D" parent="Message/SpeechBox/Border" unique_id=208470920]
+z_index = 2
+position = Vector2(-134, -71)
+texture = ExtResource("31")
+hframes = 6
+vframes = 6
+frame = 3
+
+[node name="Top" type="Sprite2D" parent="Message/SpeechBox/Border" unique_id=1303262432]
+position = Vector2(13.5, -71)
+scale = Vector2(8.21875, 1)
+texture = ExtResource("31")
+hframes = 6
+vframes = 6
+frame = 4
+
+[node name="NE" type="Sprite2D" parent="Message/SpeechBox/Border" unique_id=932327813]
+z_index = 2
+position = Vector2(160, -71)
+texture = ExtResource("31")
+hframes = 6
+vframes = 6
+frame = 5
+
+[node name="Right" type="Sprite2D" parent="Message/SpeechBox/Border" unique_id=1385532418]
+position = Vector2(160, -42.25)
+scale = Vector2(1, 1.89062)
+texture = ExtResource("31")
+hframes = 6
+vframes = 6
+frame = 11
+
+[node name="Left" type="Sprite2D" parent="Message/SpeechBox/Border" unique_id=1398517258]
+position = Vector2(-134, -42)
+scale = Vector2(1, 1.875)
+texture = ExtResource("31")
+hframes = 6
+vframes = 6
+frame = 9
+
+[node name="SW" type="Sprite2D" parent="Message/SpeechBox/Border" unique_id=1640493195]
+z_index = 2
+position = Vector2(-134, -17)
+texture = ExtResource("31")
+hframes = 6
+vframes = 6
+frame = 15
+
+[node name="SE" type="Sprite2D" parent="Message/SpeechBox/Border" unique_id=742370752]
+z_index = 2
+position = Vector2(160, -17)
+texture = ExtResource("31")
+hframes = 6
+vframes = 6
+frame = 17
+
+[node name="Bottom" type="Sprite2D" parent="Message/SpeechBox/Border" unique_id=2134420204]
+position = Vector2(13, -17)
+scale = Vector2(8.25, 1)
+texture = ExtResource("31")
+hframes = 6
+vframes = 6
+frame = 16
+
+[node name="DialogueBorder" type="Sprite2D" parent="Message/SpeechBox" unique_id=2030787634]
+visible = false
+position = Vector2(1, -39)
+texture = ExtResource("32")
+
+[node name="Dialogue" type="RichTextLabel" parent="Message/SpeechBox" unique_id=616289946]
+modulate = Color(0.972549, 0.972549, 0.972549, 1)
+offset_left = -149.0
+offset_top = -72.5
+offset_right = 153.0
+offset_bottom = 17.5
+theme_override_fonts/normal_font = ExtResource("3")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+autowrap_mode = 2
+horizontal_alignment = 1
+
+[node name="ChoiceList" type="Node2D" parent="Message/SpeechBox" unique_id=1570966007]
+position = Vector2(16, -7)
+
+[node name="BFResult" type="Node2D" parent="." unique_id=1087526891]
+modulate = Color(1, 1, 1, 0)
+z_index = 91
+
+[node name="BG" type="ColorRect" parent="BFResult" unique_id=1626861205]
+offset_left = 524.0
+offset_top = 166.0
+offset_right = 1022.0
+offset_bottom = 645.0
+color = Color(0.035, 0.0425833, 0.1, 1)
+
+[node name="ResultBG" type="ColorRect" parent="BFResult" unique_id=1976654865]
+offset_left = 587.0
+offset_top = 210.0
+offset_right = 963.0
+offset_bottom = 311.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Result" type="Label" parent="BFResult" unique_id=406949332]
+offset_left = 587.0
+offset_top = 232.0
+offset_right = 963.0
+offset_bottom = 286.0
+text = "VICTORY"
+label_settings = SubResource("LabelSettings_8q5a8")
+horizontal_alignment = 1
+
+[node name="Party" type="Node2D" parent="BFResult" unique_id=261707142]
+position = Vector2(772, 343)
+
+[node name="PartyBG0" type="ColorRect" parent="BFResult/Party" unique_id=1381833291]
+offset_right = 48.0
+offset_bottom = 48.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="PartyBG1" type="ColorRect" parent="BFResult/Party" unique_id=1063799379]
+offset_top = 56.0
+offset_right = 48.0
+offset_bottom = 104.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="PartyBG2" type="ColorRect" parent="BFResult/Party" unique_id=1048853584]
+offset_top = 112.0
+offset_right = 48.0
+offset_bottom = 160.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="PartyBG3" type="ColorRect" parent="BFResult/Party" unique_id=284908093]
+offset_left = 56.0
+offset_right = 104.0
+offset_bottom = 48.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="PartyBG4" type="ColorRect" parent="BFResult/Party" unique_id=1747692313]
+offset_left = 56.0
+offset_top = 56.0
+offset_right = 104.0
+offset_bottom = 104.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="PartyBG5" type="ColorRect" parent="BFResult/Party" unique_id=797218840]
+offset_left = 56.0
+offset_top = 112.0
+offset_right = 104.0
+offset_bottom = 160.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Sprite0" type="Sprite2D" parent="BFResult/Party" unique_id=136465884]
+visible = false
+position = Vector2(24, 23)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Sprite1" type="Sprite2D" parent="BFResult/Party" unique_id=927980862]
+visible = false
+position = Vector2(24, 79)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Sprite2" type="Sprite2D" parent="BFResult/Party" unique_id=233901149]
+visible = false
+position = Vector2(24, 135)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Sprite3" type="Sprite2D" parent="BFResult/Party" unique_id=377660074]
+visible = false
+position = Vector2(80, 23)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Sprite4" type="Sprite2D" parent="BFResult/Party" unique_id=171626007]
+visible = false
+position = Vector2(80, 79)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Sprite5" type="Sprite2D" parent="BFResult/Party" unique_id=1792436913]
+visible = false
+position = Vector2(80, 135)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Box" type="Node2D" parent="BFResult" unique_id=2019413363]
+position = Vector2(884, 343)
+
+[node name="BoxBG" type="ColorRect" parent="BFResult/Box" unique_id=1243060732]
+offset_right = 79.0
+offset_bottom = 160.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Sprite0" type="Sprite2D" parent="BFResult/Box" unique_id=516869223]
+visible = false
+position = Vector2(19, 15)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Sprite1" type="Sprite2D" parent="BFResult/Box" unique_id=1148108716]
+visible = false
+position = Vector2(59, 15)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Sprite2" type="Sprite2D" parent="BFResult/Box" unique_id=373870873]
+visible = false
+position = Vector2(19, 47)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Sprite3" type="Sprite2D" parent="BFResult/Box" unique_id=1160559829]
+visible = false
+position = Vector2(59, 47)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Sprite4" type="Sprite2D" parent="BFResult/Box" unique_id=1495178602]
+visible = false
+position = Vector2(19, 79)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Sprite5" type="Sprite2D" parent="BFResult/Box" unique_id=720276788]
+visible = false
+position = Vector2(59, 79)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Sprite6" type="Sprite2D" parent="BFResult/Box" unique_id=636796652]
+visible = false
+position = Vector2(19, 111)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Sprite7" type="Sprite2D" parent="BFResult/Box" unique_id=1034452800]
+visible = false
+position = Vector2(59, 111)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Sprite8" type="Sprite2D" parent="BFResult/Box" unique_id=369500955]
+visible = false
+position = Vector2(19, 143)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Sprite9" type="Sprite2D" parent="BFResult/Box" unique_id=1762671943]
+visible = false
+position = Vector2(59, 143)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Stats" type="Node2D" parent="BFResult" unique_id=1029078813]
+position = Vector2(587, 343)
+
+[node name="ResultBG" type="ColorRect" parent="BFResult/Stats" unique_id=822349089]
+offset_right = 161.0
+offset_bottom = 160.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="ResultsLabel" type="Label" parent="BFResult/Stats" unique_id=842956288]
+modulate = Color(0.972549, 0.972549, 0.972549, 1)
+offset_right = 115.0
+offset_bottom = 159.0
+text = "Battles:
+Victories:
+Defeats:
+"
+label_settings = SubResource("LabelSettings_k0hpf")
+horizontal_alignment = 2
+
+[node name="ResultsValue" type="Label" parent="BFResult/Stats" unique_id=1108167094]
+offset_left = 120.0
+offset_right = 235.0
+offset_bottom = 159.0
+text = "{0}
+{1}
+{2}"
+label_settings = SubResource("LabelSettings_k0hpf")
+
+[node name="Button" type="Node2D" parent="BFResult" unique_id=1169958541]
+position = Vector2(0, 325)
+
+[node name="BG" type="ColorRect" parent="BFResult/Button" unique_id=1502229843]
+offset_left = 672.0
+offset_top = 210.0
+offset_right = 867.0
+offset_bottom = 258.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Selector" type="ColorRect" parent="BFResult/Button" unique_id=634525024]
+visible = false
+modulate = Color(1, 1, 1, 0.509804)
+offset_left = 672.0
+offset_top = 210.0
+offset_right = 867.0
+offset_bottom = 258.0
+color = Color(0.215686, 0.615686, 0.670588, 0.509804)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BFResult/Button/Selector" unique_id=999404599]
+libraries/ = SubResource("AnimationLibrary_squei")
+autoplay = &"loop"
+
+[node name="Label" type="Label" parent="BFResult/Button" unique_id=844082476]
+modulate = Color(0.972549, 0.972549, 0.972549, 1)
+offset_left = 672.0
+offset_top = 216.0
+offset_right = 867.0
+offset_bottom = 252.0
+text = "OK"
+label_settings = SubResource("LabelSettings_eh382")
+horizontal_alignment = 1
+
+[node name="DefeatedBy" type="Node2D" parent="BFResult" unique_id=841666024]
+visible = false
+show_behind_parent = true
+position = Vector2(506, 0)
+
+[node name="BG" type="ColorRect" parent="BFResult/DefeatedBy" unique_id=1175336256]
+offset_left = 524.0
+offset_top = 311.0
+offset_right = 774.0
+offset_bottom = 645.0
+color = Color(0.035, 0.0425833, 0.1, 1)
+
+[node name="ResultBG" type="ColorRect" parent="BFResult/DefeatedBy" unique_id=168318564]
+offset_left = 540.0
+offset_top = 327.0
+offset_right = 758.0
+offset_bottom = 392.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Result" type="Label" parent="BFResult/DefeatedBy" unique_id=1208369441]
+offset_left = 465.0
+offset_top = 335.0
+offset_right = 841.0
+offset_bottom = 389.0
+text = "Defeated by:"
+label_settings = SubResource("LabelSettings_krlnb")
+horizontal_alignment = 1
+
+[node name="Party" type="Node2D" parent="BFResult/DefeatedBy" unique_id=1959121996]
+position = Vector2(621, 424)
+
+[node name="PartyBG0" type="ColorRect" parent="BFResult/DefeatedBy/Party" unique_id=1130145976]
+offset_right = 48.0
+offset_bottom = 48.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="PartyBG1" type="ColorRect" parent="BFResult/DefeatedBy/Party" unique_id=1407216681]
+offset_top = 56.0
+offset_right = 48.0
+offset_bottom = 104.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="PartyBG2" type="ColorRect" parent="BFResult/DefeatedBy/Party" unique_id=1245489175]
+offset_top = 112.0
+offset_right = 48.0
+offset_bottom = 160.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="PartyBG3" type="ColorRect" parent="BFResult/DefeatedBy/Party" unique_id=1912974457]
+offset_left = 56.0
+offset_right = 104.0
+offset_bottom = 48.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="PartyBG4" type="ColorRect" parent="BFResult/DefeatedBy/Party" unique_id=378988244]
+offset_left = 56.0
+offset_top = 56.0
+offset_right = 104.0
+offset_bottom = 104.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="PartyBG5" type="ColorRect" parent="BFResult/DefeatedBy/Party" unique_id=844958603]
+offset_left = 56.0
+offset_top = 112.0
+offset_right = 104.0
+offset_bottom = 160.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Sprite0" type="Sprite2D" parent="BFResult/DefeatedBy/Party" unique_id=879143718]
+visible = false
+position = Vector2(24, 23)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Sprite1" type="Sprite2D" parent="BFResult/DefeatedBy/Party" unique_id=565991006]
+visible = false
+position = Vector2(24, 79)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Sprite2" type="Sprite2D" parent="BFResult/DefeatedBy/Party" unique_id=669413760]
+visible = false
+position = Vector2(24, 135)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Sprite3" type="Sprite2D" parent="BFResult/DefeatedBy/Party" unique_id=13903693]
+visible = false
+position = Vector2(80, 23)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Sprite4" type="Sprite2D" parent="BFResult/DefeatedBy/Party" unique_id=868106147]
+visible = false
+position = Vector2(80, 79)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Sprite5" type="Sprite2D" parent="BFResult/DefeatedBy/Party" unique_id=580940613]
+visible = false
+position = Vector2(80, 135)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="PartyBG6" type="ColorRect" parent="BFResult/DefeatedBy" unique_id=1407429699]
+clip_children = 2
+offset_left = 565.0
+offset_top = 424.0
+offset_right = 613.0
+offset_bottom = 472.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="BFResult/DefeatedBy/PartyBG6" unique_id=1246517826]
+position = Vector2(26, 24.00003)
+scale = Vector2(3, 3)
+texture = ExtResource("33")
+hframes = 3
+vframes = 4
+frame = 5
+
+[node name="TrainersDefeated" type="Node2D" parent="BFResult" unique_id=517775394]
+
+[node name="BG" type="ColorRect" parent="BFResult/TrainersDefeated" unique_id=1521637263]
+offset_left = 524.0
+offset_top = 653.0
+offset_right = 1022.0
+offset_bottom = 697.0
+color = Color(0.035, 0.0425833, 0.1, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BFResult/TrainersDefeated" unique_id=1833975994]
+offset_left = 525.0
+offset_top = 655.0
+offset_right = 1017.0
+offset_bottom = 695.0
+alignment = 1
+
+[node name="MM" type="Node2D" parent="." unique_id=263685542]
+z_index = 99
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="MM" unique_id=1899693657]
+offset_right = 1600.0
+offset_bottom = 745.0
+label_settings = SubResource("LabelSettings_tpwq0")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="GUIPlayer" type="AudioStreamPlayer" parent="." unique_id=575722514]
+stream = ExtResource("34")
+volume_db = -15.0
+
+[node name="CutscenePlayer" type="AudioStreamPlayer" parent="." unique_id=1477978162]
+volume_db = -15.0
+
+[node name="GBC" parent="." unique_id=1163153531 instance=ExtResource("35")]
+position = Vector2(799, 455)
+scale = Vector2(1, 1)
+
+[node name="Enemy" parent="GBC/GBCBattle" index="0"]
+hframes = 3
+
+[node name="BALL" parent="GBC/GBCBattle/InputBox" index="2"]
+text = "POWER"
+
+[node name="RUN" parent="GBC/GBCBattle/InputBox" index="3"]
+text = "WEALTH"
+
+[node name="HEALTH" type="Label" parent="GBC/GBCBattle/InputBox" index="4" unique_id=78343645]
+offset_left = 222.0
+offset_top = 247.0
+offset_right = 1008.0
+offset_bottom = 423.0
+text = "HEALTH"
+label_settings = SubResource("LabelSettings_f0yyu")
+autowrap_mode = 2
+
+[node name="YOU" type="Label" parent="GBC/GBCBattle/InputBox" index="5" unique_id=890682296]
+offset_left = 222.0
+offset_top = 336.0
+offset_right = 1008.0
+offset_bottom = 512.0
+text = "YOU"
+label_settings = SubResource("LabelSettings_f0yyu")
+autowrap_mode = 2
+
+[node name="Options" type="Node2D" parent="." unique_id=90756963]
+visible = false
+z_index = 40
+
+[node name="BG" type="ColorRect" parent="Options" unique_id=1273491005]
+offset_left = 497.0
+offset_top = 172.0
+offset_right = 1130.0
+offset_bottom = 646.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Header" type="ColorRect" parent="Options" unique_id=507923794]
+offset_left = 672.0
+offset_top = 191.0
+offset_right = 954.0
+offset_bottom = 254.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="Label" type="Label" parent="Options/Header" unique_id=90476563]
+layout_mode = 0
+offset_left = -175.0
+offset_top = 1.0
+offset_right = 458.0
+offset_bottom = 57.0
+text = "Options"
+label_settings = SubResource("LabelSettings_n3wdn")
+horizontal_alignment = 1
+
+[node name="Selector" type="ColorRect" parent="Options" unique_id=258948741]
+z_index = 1
+offset_left = 547.0
+offset_top = 279.0
+offset_right = 1077.0
+offset_bottom = 329.0
+color = Color(0.26666668, 0.7647059, 0.83137256, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Options/Selector" unique_id=515071035]
+libraries/ = SubResource("AnimationLibrary_5sxjm")
+autoplay = &"loop"
+
+[node name="Items" type="Node2D" parent="Options" unique_id=322725174]
+
+[node name="BGMVolume" type="ColorRect" parent="Options/Items" unique_id=256175437]
+offset_left = 547.0
+offset_top = 279.0
+offset_right = 1077.0
+offset_bottom = 329.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="Label" type="Label" parent="Options/Items/BGMVolume" unique_id=377882389]
+z_index = 2
+layout_mode = 0
+offset_top = -5.0
+offset_right = 265.0
+offset_bottom = 51.0
+text = "BGM Volume:"
+label_settings = SubResource("LabelSettings_n3wdn")
+horizontal_alignment = 2
+
+[node name="BarBG" type="ColorRect" parent="Options/Items/BGMVolume" unique_id=1118503994]
+z_index = 2
+layout_mode = 0
+offset_left = 288.0
+offset_top = 15.0
+offset_right = 511.0
+offset_bottom = 43.0
+color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+
+[node name="BarShadow" type="ColorRect" parent="Options/Items/BGMVolume" unique_id=345706195]
+z_index = 2
+layout_mode = 0
+offset_left = 292.0
+offset_top = 19.0
+offset_right = 507.0
+offset_bottom = 39.0
+color = Color(0, 0, 0, 1)
+
+[node name="Bar" type="ColorRect" parent="Options/Items/BGMVolume" unique_id=1783884112]
+z_index = 2
+layout_mode = 0
+offset_left = 292.0
+offset_top = 19.0
+offset_right = 507.0
+offset_bottom = 39.0
+color = Color(0.2627451, 0.40784314, 0.8, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Options/Items/BGMVolume/Bar" unique_id=1900196129]
+libraries/ = SubResource("AnimationLibrary_3m7cq")
+
+[node name="SEVolume" type="ColorRect" parent="Options/Items" unique_id=479043533]
+offset_left = 547.0
+offset_top = 339.0
+offset_right = 1077.0
+offset_bottom = 389.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="Label" type="Label" parent="Options/Items/SEVolume" unique_id=567575343]
+z_index = 2
+layout_mode = 0
+offset_top = -5.0
+offset_right = 265.0
+offset_bottom = 51.0
+text = "SE Volume:"
+label_settings = SubResource("LabelSettings_n3wdn")
+horizontal_alignment = 2
+
+[node name="BarBG" type="ColorRect" parent="Options/Items/SEVolume" unique_id=1411329535]
+z_index = 2
+layout_mode = 0
+offset_left = 288.0
+offset_top = 15.0
+offset_right = 511.0
+offset_bottom = 43.0
+color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+
+[node name="BarShadow" type="ColorRect" parent="Options/Items/SEVolume" unique_id=358163143]
+z_index = 2
+layout_mode = 0
+offset_left = 292.0
+offset_top = 19.0
+offset_right = 507.0
+offset_bottom = 39.0
+color = Color(0, 0, 0, 1)
+
+[node name="Bar" type="ColorRect" parent="Options/Items/SEVolume" unique_id=1082117369]
+z_index = 2
+layout_mode = 0
+offset_left = 292.0
+offset_top = 19.0
+offset_right = 507.0
+offset_bottom = 39.0
+color = Color(0.2627451, 0.40784314, 0.8, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Options/Items/SEVolume/Bar" unique_id=484783171]
+libraries/ = SubResource("AnimationLibrary_3m7cq")
+
+[node name="Fullscreen" type="ColorRect" parent="Options/Items" unique_id=1576213781]
+offset_left = 547.0
+offset_top = 399.0
+offset_right = 1077.0
+offset_bottom = 449.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="Label" type="Label" parent="Options/Items/Fullscreen" unique_id=1966766758]
+z_index = 2
+layout_mode = 0
+offset_top = -7.0
+offset_right = 530.0
+offset_bottom = 49.0
+text = "Fullscreen: ON"
+label_settings = SubResource("LabelSettings_n3wdn")
+horizontal_alignment = 1
+
+[node name="VSync" type="ColorRect" parent="Options/Items" unique_id=894507892]
+offset_left = 547.0
+offset_top = 459.0
+offset_right = 1077.0
+offset_bottom = 509.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="Label" type="Label" parent="Options/Items/VSync" unique_id=985367418]
+z_index = 2
+layout_mode = 0
+offset_top = -7.0
+offset_right = 530.0
+offset_bottom = 49.0
+text = "V-Sync: ON"
+label_settings = SubResource("LabelSettings_n3wdn")
+horizontal_alignment = 1
+
+[node name="ExportSave" type="ColorRect" parent="Options/Items" unique_id=1239476654]
+offset_left = 547.0
+offset_top = 519.0
+offset_right = 1077.0
+offset_bottom = 569.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="Label" type="Label" parent="Options/Items/ExportSave" unique_id=829253730]
+z_index = 2
+layout_mode = 0
+offset_top = -8.0
+offset_right = 530.0
+offset_bottom = 48.0
+text = "Export Save File"
+label_settings = SubResource("LabelSettings_n3wdn")
+horizontal_alignment = 1
+
+[node name="ImportSave" type="ColorRect" parent="Options/Items" unique_id=9106355]
+offset_left = 547.0
+offset_top = 579.0
+offset_right = 1077.0
+offset_bottom = 629.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="Label" type="Label" parent="Options/Items/ImportSave" unique_id=1409912386]
+z_index = 2
+layout_mode = 0
+offset_top = -7.0
+offset_right = 530.0
+offset_bottom = 49.0
+text = "Import Save File"
+label_settings = SubResource("LabelSettings_n3wdn")
+horizontal_alignment = 1
+
+[node name="ImportBrowserHint" type="Node2D" parent="Options" unique_id=65075825]
+
+[node name="BG2" type="ColorRect" parent="Options/ImportBrowserHint" unique_id=1445201325]
+offset_left = 497.0
+offset_top = 662.0
+offset_right = 1130.0
+offset_bottom = 745.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Label" type="Label" parent="Options/ImportBrowserHint" unique_id=1078832561]
+z_index = 2
+offset_left = 561.0
+offset_top = 672.0
+offset_right = 1087.0
+offset_bottom = 846.0
+text = "If you're experiencing INPUT LAG, try changing the V-SYNC setting!"
+label_settings = SubResource("LabelSettings_hb178")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Trainer" type="Node2D" parent="." unique_id=921438487]
+visible = false
+z_index = 40
+
+[node name="BG" type="ColorRect" parent="Trainer" unique_id=1208367215]
+offset_left = 497.0
+offset_top = 172.0
+offset_right = 1130.0
+offset_bottom = 646.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Header" type="ColorRect" parent="Trainer" unique_id=804921308]
+offset_left = 672.0
+offset_top = 191.0
+offset_right = 954.0
+offset_bottom = 254.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="Label" type="Label" parent="Trainer/Header" unique_id=464907918]
+layout_mode = 0
+offset_left = -175.0
+offset_top = 1.0
+offset_right = 458.0
+offset_bottom = 57.0
+text = "Collection"
+label_settings = SubResource("LabelSettings_n3wdn")
+horizontal_alignment = 1
+
+[node name="Items" type="Node2D" parent="Trainer" unique_id=1115251783]
+
+[node name="StarterDecks" type="Node2D" parent="Trainer/Items" unique_id=971160564]
+position = Vector2(-25, 0)
+
+[node name="BG2" type="ColorRect" parent="Trainer/Items/StarterDecks" unique_id=59734583]
+offset_left = 544.0
+offset_top = 292.0
+offset_right = 830.0
+offset_bottom = 463.0
+color = Color(0, 0, 0, 1)
+
+[node name="BG" type="ColorRect" parent="Trainer/Items/StarterDecks" unique_id=945213154]
+offset_left = 547.0
+offset_top = 295.0
+offset_right = 827.0
+offset_bottom = 460.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="Label" type="Label" parent="Trainer/Items/StarterDecks" unique_id=1649102742]
+offset_left = 547.0
+offset_top = 299.0
+offset_right = 827.0
+offset_bottom = 348.0
+text = "Starter Decks"
+label_settings = SubResource("LabelSettings_frvl6")
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Trainer/Items/StarterDecks" unique_id=1642473848]
+custom_minimum_size = Vector2(24, 24)
+offset_left = 580.0
+offset_top = 340.0
+offset_right = 811.0
+offset_bottom = 452.0
+columns = 8
+
+[node name="LC" type="Node2D" parent="Trainer/Items" unique_id=1117096423]
+position = Vector2(279, 0)
+
+[node name="BG2" type="ColorRect" parent="Trainer/Items/LC" unique_id=1300857489]
+offset_left = 544.0
+offset_top = 292.0
+offset_right = 830.0
+offset_bottom = 463.0
+color = Color(0, 0, 0, 1)
+
+[node name="BG" type="ColorRect" parent="Trainer/Items/LC" unique_id=1767574748]
+offset_left = 547.0
+offset_top = 295.0
+offset_right = 827.0
+offset_bottom = 460.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="Label" type="Label" parent="Trainer/Items/LC" unique_id=400649159]
+offset_left = 547.0
+offset_top = 299.0
+offset_right = 827.0
+offset_bottom = 348.0
+text = "League Challenge"
+label_settings = SubResource("LabelSettings_frvl6")
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Trainer/Items/LC" unique_id=1292536033]
+custom_minimum_size = Vector2(24, 24)
+offset_left = 603.99994
+offset_top = 338.0
+offset_right = 834.99994
+offset_bottom = 450.0
+columns = 12
+
+[node name="Extra" type="Node2D" parent="Trainer/Items" unique_id=279501833]
+
+[node name="BG2" type="ColorRect" parent="Trainer/Items/Extra" unique_id=752817330]
+offset_left = 823.0
+offset_top = 476.0
+offset_right = 884.0
+offset_bottom = 537.0
+color = Color(0, 0, 0, 1)
+
+[node name="BG" type="ColorRect" parent="Trainer/Items/Extra" unique_id=459129728]
+offset_left = 826.0
+offset_top = 479.0
+offset_right = 881.0
+offset_bottom = 534.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="Mewtwo" type="Sprite2D" parent="Trainer/Items/Extra" unique_id=1967347830]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(854, 507)
+texture = ExtResource("36")
+
+[node name="MoveReplaceUI" type="Node2D" parent="." unique_id=513600993]
+visible = false
+position = Vector2(1910, 3)
+
+[node name="ColorRect" type="ColorRect" parent="MoveReplaceUI" unique_id=4329354]
+offset_left = -953.0
+offset_top = 7.0
+offset_right = -320.0
+offset_bottom = 481.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="ItemHeader2" type="ColorRect" parent="MoveReplaceUI" unique_id=755713000]
+visible = false
+offset_left = -612.0
+offset_top = 89.0
+offset_right = -330.0
+offset_bottom = 152.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="NewMove" type="Label" parent="MoveReplaceUI/ItemHeader2" unique_id=873549508]
+layout_mode = 0
+offset_top = 2.0
+offset_right = 282.0
+offset_bottom = 58.0
+text = "Delete Move"
+label_settings = SubResource("LabelSettings_n3wdn")
+horizontal_alignment = 1
+
+[node name="ItemHeader" type="ColorRect" parent="MoveReplaceUI" unique_id=674612091]
+offset_left = -945.0
+offset_top = 15.0
+offset_right = -663.0
+offset_bottom = 78.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="NewMove" type="Label" parent="MoveReplaceUI/ItemHeader" unique_id=853456086]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 2.0
+offset_right = 292.0
+offset_bottom = 61.0
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 32
+text = "Replace a move with Ice Beam?"
+autowrap_mode = 2
+
+[node name="PokemonInfo" type="ColorRect" parent="MoveReplaceUI" unique_id=701079576]
+offset_left = -610.0
+offset_top = 87.0
+offset_right = -328.0
+offset_bottom = 287.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="Label" type="Label" parent="MoveReplaceUI/PokemonInfo" unique_id=1507613690]
+visible = false
+layout_mode = 0
+offset_top = 2.0
+offset_right = 282.0
+offset_bottom = 58.0
+text = "Jynx"
+label_settings = SubResource("LabelSettings_n3wdn")
+horizontal_alignment = 1
+
+[node name="PokeSprite" type="Sprite2D" parent="MoveReplaceUI/PokemonInfo" unique_id=574144747]
+modulate = Color(1, 1, 1, 0.705882)
+show_behind_parent = true
+z_index = 1
+position = Vector2(64, 83)
+scale = Vector2(4, 4)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 68
+
+[node name="ColorSprite" type="Sprite2D" parent="MoveReplaceUI/PokemonInfo" unique_id=962653059]
+modulate = Color(1, 1, 1, 0.705882)
+show_behind_parent = true
+z_index = 1
+position = Vector2(202, 92)
+scale = Vector2(3, 3)
+texture = ExtResource("11")
+
+[node name="PlayerHeader" type="ColorRect" parent="MoveReplaceUI" unique_id=1173496306]
+offset_left = -610.0
+offset_top = 15.0
+offset_right = -328.0
+offset_bottom = 78.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="Label" type="Label" parent="MoveReplaceUI/PlayerHeader" unique_id=1966592578]
+layout_mode = 0
+offset_top = 2.0
+offset_right = 282.0
+offset_bottom = 58.0
+text = "Jynx"
+label_settings = SubResource("LabelSettings_n3wdn")
+horizontal_alignment = 1
+
+[node name="BG" type="ColorRect" parent="MoveReplaceUI" unique_id=1491950008]
+offset_left = -945.0
+offset_top = 86.0
+offset_right = -663.0
+offset_bottom = 473.0
+color = Color(0.035, 0.0425833, 0.1, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Selector" type="ColorRect" parent="MoveReplaceUI" unique_id=1965275654]
+modulate = Color(1, 1, 1, 0.509804)
+offset_left = -940.0
+offset_top = 99.0
+offset_right = -674.0
+offset_bottom = 151.0
+color = Color(0.2144, 0.6168466, 0.67, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MoveReplaceUI/Selector" unique_id=572155008]
+libraries/ = SubResource("AnimationLibrary_vl6bb")
+autoplay = &"loop"
+
+[node name="ItemList" type="VBoxContainer" parent="MoveReplaceUI" unique_id=1222745446]
+offset_left = -921.0
+offset_top = 100.0
+offset_right = -686.0
+offset_bottom = 450.0
+
+[node name="ItemInfo" type="Node2D" parent="MoveReplaceUI" unique_id=1624127782]
+show_behind_parent = true
+position = Vector2(-1929, -35)
+
+[node name="BG" type="ColorRect" parent="MoveReplaceUI/ItemInfo" unique_id=943330935]
+offset_left = 984.0
+offset_top = 121.0
+offset_right = 1266.0
+offset_bottom = 253.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="BG2" type="ColorRect" parent="MoveReplaceUI/ItemInfo" unique_id=743055425]
+offset_left = 992.0
+offset_top = 129.0
+offset_right = 1258.0
+offset_bottom = 245.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Label" type="Label" parent="MoveReplaceUI/ItemInfo" unique_id=346655044]
+offset_left = 1008.0
+offset_top = 137.0
+offset_right = 1242.0
+offset_bottom = 237.0
+text = "ayayayayayay"
+label_settings = SubResource("LabelSettings_ajg0y")
+autowrap_mode = 2
+
+[node name="VList" type="VBoxContainer" parent="MoveReplaceUI" unique_id=395890314]
+offset_left = -925.0
+offset_top = 89.0
+offset_right = -713.0
+offset_bottom = 445.0
+
+[node name="Move0" type="Label" parent="MoveReplaceUI/VList" unique_id=1204852619]
+layout_mode = 2
+text = "Water Gun"
+label_settings = SubResource("LabelSettings_mj540")
+
+[node name="Move1" type="Label" parent="MoveReplaceUI/VList" unique_id=950070093]
+layout_mode = 2
+text = "Drain Kiss"
+label_settings = SubResource("LabelSettings_mj540")
+
+[node name="MoveReplaceUiNew" type="Node2D" parent="." unique_id=1246635789]
+visible = false
+position = Vector2(-449, 64)
+script = ExtResource("37_hb178")
+
+[node name="Status" type="Node2D" parent="MoveReplaceUiNew" unique_id=454651455]
+show_behind_parent = true
+position = Vector2(596, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="MoveReplaceUiNew/Status" unique_id=344130172]
+position = Vector2(843, 280)
+texture = ExtResource("4")
+
+[node name="MoveInfoOld" type="Node2D" parent="MoveReplaceUiNew/Status" unique_id=351277671]
+position = Vector2(2, 24)
+
+[node name="BG" type="Sprite2D" parent="MoveReplaceUiNew/Status/MoveInfoOld" unique_id=2084228788]
+clip_children = 2
+position = Vector2(553, 363)
+texture = ExtResource("5")
+hframes = 2
+
+[node name="CardTexture" type="Sprite2D" parent="MoveReplaceUiNew/Status/MoveInfoOld/BG" unique_id=1762630944]
+material = SubResource("CanvasItemMaterial_krlnb")
+position = Vector2(1, -1)
+scale = Vector2(0.63849735, 0.6150082)
+texture = ExtResource("6")
+
+[node name="BG2" type="Sprite2D" parent="MoveReplaceUiNew/Status/MoveInfoOld" unique_id=592683827]
+position = Vector2(553, 363)
+texture = ExtResource("5")
+hframes = 2
+frame = 1
+
+[node name="MoveName" type="Label" parent="MoveReplaceUiNew/Status/MoveInfoOld" unique_id=711900705]
+offset_left = 460.0
+offset_top = 289.0
+offset_right = 600.0
+offset_bottom = 317.0
+text = "Flamethrower"
+label_settings = SubResource("LabelSettings_vw1v7")
+
+[node name="MoveDesc" type="Label" parent="MoveReplaceUiNew/Status/MoveInfoOld" unique_id=1936244679]
+texture_filter = 2
+offset_left = 436.00006
+offset_top = 342.0
+offset_right = 706.0002
+offset_bottom = 464.85718
+scale = Vector2(0.9, 0.9)
+text = "ATK:{0}   AP:{1}
+Deals more damage the lower HP the user is."
+label_settings = SubResource("LabelSettings_55qkw")
+autowrap_mode = 3
+
+[node name="ColorBorder" type="Sprite2D" parent="MoveReplaceUiNew/Status/MoveInfoOld" unique_id=741622698]
+position = Vector2(442, 302)
+texture = SubResource("GradientTexture2D_krlnb")
+
+[node name="MoveColor" type="Sprite2D" parent="MoveReplaceUiNew/Status/MoveInfoOld" unique_id=2100722727]
+position = Vector2(441, 304)
+texture = ExtResource("7")
+
+[node name="MoveColorBG" type="Sprite2D" parent="MoveReplaceUiNew/Status/MoveInfoOld/MoveColor" unique_id=374089204]
+modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("7")
+
+[node name="CostContainer" type="HBoxContainer" parent="MoveReplaceUiNew/Status/MoveInfoOld" unique_id=1522335080]
+offset_left = 457.0
+offset_top = 322.0
+offset_right = 497.0
+offset_bottom = 340.0
+
+[node name="MoveInfoNew" type="Node2D" parent="MoveReplaceUiNew/Status" unique_id=1575465198]
+position = Vector2(2, -190)
+
+[node name="BG" type="Sprite2D" parent="MoveReplaceUiNew/Status/MoveInfoNew" unique_id=1997172998]
+clip_children = 2
+position = Vector2(553, 363)
+texture = ExtResource("5")
+hframes = 2
+
+[node name="CardTexture" type="Sprite2D" parent="MoveReplaceUiNew/Status/MoveInfoNew/BG" unique_id=549163493]
+material = SubResource("CanvasItemMaterial_krlnb")
+position = Vector2(1, -1)
+scale = Vector2(0.63849735, 0.6150082)
+texture = ExtResource("6")
+
+[node name="BG2" type="Sprite2D" parent="MoveReplaceUiNew/Status/MoveInfoNew" unique_id=1115696796]
+position = Vector2(553, 363)
+texture = ExtResource("5")
+hframes = 2
+frame = 1
+
+[node name="MoveName" type="Label" parent="MoveReplaceUiNew/Status/MoveInfoNew" unique_id=1640053153]
+offset_left = 460.0
+offset_top = 289.0
+offset_right = 600.0
+offset_bottom = 317.0
+text = "Water Gun"
+label_settings = SubResource("LabelSettings_vw1v7")
+
+[node name="MoveDesc" type="Label" parent="MoveReplaceUiNew/Status/MoveInfoNew" unique_id=910611570]
+texture_filter = 2
+offset_left = 436.00006
+offset_top = 342.0
+offset_right = 706.0002
+offset_bottom = 464.85718
+scale = Vector2(0.9, 0.9)
+text = "ATK:{0}   AP:{1}
+Deals more damage the lower HP the user is."
+label_settings = SubResource("LabelSettings_55qkw")
+autowrap_mode = 3
+
+[node name="ColorBorder" type="Sprite2D" parent="MoveReplaceUiNew/Status/MoveInfoNew" unique_id=674768238]
+position = Vector2(442, 302)
+texture = SubResource("GradientTexture2D_krlnb")
+
+[node name="MoveColor" type="Sprite2D" parent="MoveReplaceUiNew/Status/MoveInfoNew" unique_id=642748068]
+position = Vector2(441, 304)
+texture = ExtResource("38_5sxjm")
+
+[node name="MoveColorBG" type="Sprite2D" parent="MoveReplaceUiNew/Status/MoveInfoNew/MoveColor" unique_id=1985631142]
+modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("7")
+
+[node name="CostContainer" type="HBoxContainer" parent="MoveReplaceUiNew/Status/MoveInfoNew" unique_id=1246921679]
+offset_left = 457.0
+offset_top = 322.0
+offset_right = 497.0
+offset_bottom = 340.0
+
+[node name="DisableHint" type="Node2D" parent="MoveReplaceUiNew/Status" unique_id=120835594]
+visible = false
+position = Vector2(0, -8)
+
+[node name="ColorRect" type="ColorRect" parent="MoveReplaceUiNew/Status/DisableHint" unique_id=1546593670]
+offset_left = 698.0
+offset_top = 489.0
+offset_right = 990.0
+offset_bottom = 529.0
+color = Color(0.15686275, 0.17254902, 0.2901961, 1)
+
+[node name="Label" type="Label" parent="MoveReplaceUiNew/Status/DisableHint" unique_id=110288718]
+offset_left = 702.0
+offset_top = 493.0
+offset_right = 988.0
+offset_bottom = 521.0
+text = "Press INFO to disable move"
+label_settings = SubResource("LabelSettings_x4ny0")
+
+[node name="BGBorder" type="ColorRect" parent="MoveReplaceUiNew/Status" unique_id=1074854015]
+visible = false
+offset_left = 702.0
+offset_top = 86.0
+offset_right = 984.0
+offset_bottom = 473.0
+color = Color(0.76862746, 0.6431373, 0.27058825, 1)
+
+[node name="BG" type="ColorRect" parent="MoveReplaceUiNew/Status" unique_id=147427293]
+offset_left = 707.0
+offset_top = 91.0
+offset_right = 979.0
+offset_bottom = 468.0
+color = Color(0.35000002, 0.42583346, 1, 1)
+
+[node name="CardTexture" type="Sprite2D" parent="MoveReplaceUiNew/Status" unique_id=632494994]
+material = SubResource("CanvasItemMaterial_krlnb")
+position = Vector2(842.99994, 279.49997)
+scale = Vector2(0.63849735, 0.6150082)
+texture = ExtResource("6")
+
+[node name="BGTexture" type="Sprite2D" parent="MoveReplaceUiNew/Status" unique_id=1243375852]
+visible = false
+self_modulate = Color(1, 1, 1, 0.54902)
+clip_children = 2
+position = Vector2(843, 282.5)
+scale = Vector2(3.35714, 3.72115)
+texture = ExtResource("8")
+hframes = 6
+
+[node name="ColorRect" type="ColorRect" parent="MoveReplaceUiNew/Status/BGTexture" unique_id=697835545]
+modulate = Color(1, 1, 1, 0.686275)
+offset_left = -59.6071
+offset_top = -153.693
+offset_right = -37.6071
+offset_bottom = 35.307205
+rotation = 0.349066
+pivot_offset = Vector2(7.18907, 92.3782)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MoveReplaceUiNew/Status/BGTexture" unique_id=884565354]
+libraries/ = SubResource("AnimationLibrary_j7g5w")
+autoplay = &"shine"
+
+[node name="Points" type="Node2D" parent="MoveReplaceUiNew/Status" unique_id=1589514222]
+position = Vector2(736, 81)
+
+[node name="AP" type="Node2D" parent="MoveReplaceUiNew/Status/Points" unique_id=2088958532]
+position = Vector2(140, 9)
+
+[node name="Border" type="ColorRect" parent="MoveReplaceUiNew/Status/Points/AP" unique_id=722265314]
+modulate = Color(0.7, 0.7, 0.7, 1)
+offset_left = 11.0
+offset_top = 138.0
+offset_right = 99.0
+offset_bottom = 176.0
+color = Color(0, 0, 0, 1)
+
+[node name="APBG" type="ColorRect" parent="MoveReplaceUiNew/Status/Points/AP" unique_id=701201970]
+modulate = Color(0.46, 0.46, 0.46, 1)
+offset_left = 13.0
+offset_top = 140.0
+offset_right = 97.0
+offset_bottom = 174.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="APBox1" type="HBoxContainer" parent="MoveReplaceUiNew/Status/Points/AP" unique_id=783071983]
+offset_left = 17.0
+offset_top = 143.0
+offset_right = 57.0
+offset_bottom = 183.0
+
+[node name="APBox2" type="HBoxContainer" parent="MoveReplaceUiNew/Status/Points/AP" unique_id=536770961]
+offset_left = 17.0
+offset_top = 159.0
+offset_right = 93.0
+offset_bottom = 199.0
+
+[node name="PP" type="Node2D" parent="MoveReplaceUiNew/Status/Points" unique_id=670614519]
+position = Vector2(140, 49)
+
+[node name="Border" type="ColorRect" parent="MoveReplaceUiNew/Status/Points/PP" unique_id=1585240798]
+modulate = Color(0.7, 0.7, 0.7, 1)
+offset_left = 11.0
+offset_top = 138.0
+offset_right = 99.0
+offset_bottom = 176.0
+color = Color(0, 0, 0, 1)
+
+[node name="APBG" type="ColorRect" parent="MoveReplaceUiNew/Status/Points/PP" unique_id=1407821364]
+modulate = Color(0.46, 0.46, 0.46, 1)
+offset_left = 13.0
+offset_top = 140.0
+offset_right = 97.0
+offset_bottom = 174.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="PPBox1" type="HBoxContainer" parent="MoveReplaceUiNew/Status/Points/PP" unique_id=1688649367]
+offset_left = 17.0
+offset_top = 143.0
+offset_right = 57.0
+offset_bottom = 183.0
+
+[node name="PPBox2" type="HBoxContainer" parent="MoveReplaceUiNew/Status/Points/PP" unique_id=2002967955]
+offset_left = 17.0
+offset_top = 159.0
+offset_right = 93.0
+offset_bottom = 199.0
+
+[node name="Stats" type="Node2D" parent="MoveReplaceUiNew/Status" unique_id=48851639]
+
+[node name="SpriteShadow" type="Sprite2D" parent="MoveReplaceUiNew/Status/Stats" unique_id=1507522379]
+position = Vector2(845.49994, 184)
+scale = Vector2(1.5156246, 1.5)
+texture = SubResource("GradientTexture2D_42wvc")
+
+[node name="SpriteBGBorder" type="ColorRect" parent="MoveReplaceUiNew/Status/Stats" unique_id=588420783]
+offset_left = 797.0
+offset_top = 134.0
+offset_right = 882.0
+offset_bottom = 219.0
+color = Color(0.77, 0.644875, 0.26950002, 1)
+
+[node name="SpriteBG" type="ColorRect" parent="MoveReplaceUiNew/Status/Stats" unique_id=1319547861]
+clip_children = 2
+offset_left = 799.0
+offset_top = 136.0
+offset_right = 880.0
+offset_bottom = 217.0
+
+[node name="ScrollBG" type="Sprite2D" parent="MoveReplaceUiNew/Status/Stats/SpriteBG" unique_id=1642908913]
+position = Vector2(34.75, -47.860214)
+scale = Vector2(0.50829387, 0.5082938)
+texture = ExtResource("9")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MoveReplaceUiNew/Status/Stats/SpriteBG/ScrollBG" unique_id=1283480169]
+libraries/ = SubResource("AnimationLibrary_7s3n7")
+autoplay = &"loop"
+
+[node name="SpriteShadow" type="Sprite2D" parent="MoveReplaceUiNew/Status/Stats/SpriteBG" unique_id=1704248280]
+position = Vector2(43.49997, 58.000008)
+scale = Vector2(1.421875, 0.56249976)
+texture = SubResource("GradientTexture2D_6647j")
+
+[node name="Bars" type="Node2D" parent="MoveReplaceUiNew/Status/Stats" unique_id=360801579]
+position = Vector2(-80, 93)
+
+[node name="ExpBG" type="ColorRect" parent="MoveReplaceUiNew/Status/Stats/Bars" unique_id=148646041]
+offset_left = 966.0
+offset_top = 29.0
+offset_right = 1056.0
+offset_bottom = 34.0
+color = Color(0, 0, 0, 1)
+
+[node name="ExpBar" type="ColorRect" parent="MoveReplaceUiNew/Status/Stats/Bars" unique_id=1977179604]
+offset_left = 967.0
+offset_top = 30.0
+offset_right = 1055.0
+offset_bottom = 33.0
+color = Color(0.286275, 0.572549, 0.984314, 1)
+
+[node name="ExpShadow" type="ColorRect" parent="MoveReplaceUiNew/Status/Stats/Bars" unique_id=1327806404]
+offset_left = 967.0
+offset_top = 30.0
+offset_right = 1055.0
+offset_bottom = 31.0
+color = Color(0, 0, 0, 0.364706)
+
+[node name="HealthBG" type="ColorRect" parent="MoveReplaceUiNew/Status/Stats/Bars" unique_id=666306595]
+offset_left = 885.0
+offset_top = 135.0
+offset_right = 963.0
+offset_bottom = 153.0
+color = Color(0, 0, 0, 1)
+
+[node name="HealthBar" type="ColorRect" parent="MoveReplaceUiNew/Status/Stats/Bars" unique_id=1901135629]
+modulate = Color(0, 0.572549, 0, 1)
+offset_left = 887.0
+offset_top = 137.0
+offset_right = 961.0
+offset_bottom = 151.0
+
+[node name="HealthShadow" type="ColorRect" parent="MoveReplaceUiNew/Status/Stats/Bars" unique_id=2124770072]
+offset_left = 887.0
+offset_top = 137.0
+offset_right = 961.0
+offset_bottom = 141.0
+color = Color(0, 0, 0, 0.364706)
+
+[node name="ATKBG" type="ColorRect" parent="MoveReplaceUiNew/Status/Stats/Bars" unique_id=391096393]
+offset_left = 885.0
+offset_top = 163.0
+offset_right = 963.0
+offset_bottom = 181.0
+color = Color(0, 0, 0, 1)
+
+[node name="ATKBar" type="ColorRect" parent="MoveReplaceUiNew/Status/Stats/Bars" unique_id=1687274098]
+modulate = Color(0.568627, 0.0588235, 0, 1)
+offset_left = 887.0
+offset_top = 165.0
+offset_right = 961.0
+offset_bottom = 179.0
+
+[node name="ATKShadow" type="ColorRect" parent="MoveReplaceUiNew/Status/Stats/Bars" unique_id=1370732445]
+offset_left = 887.0
+offset_top = 165.0
+offset_right = 961.0
+offset_bottom = 169.0
+color = Color(0, 0, 0, 0.364706)
+
+[node name="SPDBG" type="ColorRect" parent="MoveReplaceUiNew/Status/Stats/Bars" unique_id=311326326]
+offset_left = 885.0
+offset_top = 191.0
+offset_right = 963.0
+offset_bottom = 209.0
+color = Color(0, 0, 0, 1)
+
+[node name="SPDBar" type="ColorRect" parent="MoveReplaceUiNew/Status/Stats/Bars" unique_id=1672174400]
+modulate = Color(0, 0.152941, 0.568627, 1)
+offset_left = 887.0
+offset_top = 193.0
+offset_right = 961.0
+offset_bottom = 207.0
+
+[node name="SPDShadow" type="ColorRect" parent="MoveReplaceUiNew/Status/Stats/Bars" unique_id=199102285]
+offset_left = 887.0
+offset_top = 193.0
+offset_right = 961.0
+offset_bottom = 197.0
+color = Color(0, 0, 0, 0.364706)
+
+[node name="Sprite" type="Sprite2D" parent="MoveReplaceUiNew/Status/Stats" unique_id=600111777]
+position = Vector2(839, 173)
+scale = Vector2(2, 2)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="ColorBorder" type="Sprite2D" parent="MoveReplaceUiNew/Status/Stats" unique_id=1563110203]
+position = Vector2(730, 107)
+texture = SubResource("GradientTexture2D_krlnb")
+
+[node name="Color" type="Sprite2D" parent="MoveReplaceUiNew/Status/Stats" unique_id=1864056228]
+position = Vector2(729, 109)
+texture = ExtResource("11")
+
+[node name="Name" type="Label" parent="MoveReplaceUiNew/Status/Stats" unique_id=1101957140]
+offset_left = 750.0
+offset_top = 93.0
+offset_right = 872.0
+offset_bottom = 121.0
+text = "Feraligator"
+label_settings = SubResource("LabelSettings_kmpwa")
+
+[node name="Level" type="Label" parent="MoveReplaceUiNew/Status/Stats" unique_id=994328783]
+offset_left = 881.0
+offset_top = 93.0
+offset_right = 975.0
+offset_bottom = 121.0
+pivot_offset = Vector2(70, 18)
+text = "lv: 9"
+label_settings = SubResource("LabelSettings_dfdik")
+horizontal_alignment = 2
+
+[node name="HP" type="Label" parent="MoveReplaceUiNew/Status/Stats" unique_id=1005527112]
+offset_left = 725.0
+offset_top = 221.0
+offset_right = 837.0
+offset_bottom = 249.0
+pivot_offset = Vector2(38, 19)
+text = "hp: 100"
+label_settings = SubResource("LabelSettings_dfdik")
+
+[node name="ATK" type="Label" parent="MoveReplaceUiNew/Status/Stats" unique_id=807059361]
+offset_left = 713.0
+offset_top = 249.0
+offset_right = 825.0
+offset_bottom = 277.0
+pivot_offset = Vector2(38, 19)
+text = "atk: 100"
+label_settings = SubResource("LabelSettings_dfdik")
+
+[node name="SPD" type="Label" parent="MoveReplaceUiNew/Status/Stats" unique_id=733683948]
+offset_left = 713.0
+offset_top = 277.0
+offset_right = 825.0
+offset_bottom = 305.0
+pivot_offset = Vector2(38, 19)
+text = "spd: 100"
+label_settings = SubResource("LabelSettings_dfdik")
+
+[node name="EvoBG OLD" type="ColorRect" parent="MoveReplaceUiNew/Status/Stats" unique_id=228546233]
+visible = false
+modulate = Color(0.7, 0.7, 0.7, 1)
+offset_left = 751.0
+offset_top = 279.0
+offset_right = 935.0
+offset_bottom = 310.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="EvolutionOld" type="Label" parent="MoveReplaceUiNew/Status/Stats" unique_id=32942961]
+visible = false
+modulate = Color(1, 1, 1, 0.45098)
+offset_left = 773.0
+offset_top = 279.0
+offset_right = 943.0
+offset_bottom = 307.0
+text = "evolution: lv9"
+label_settings = SubResource("LabelSettings_dfdik")
+
+[node name="EvoBorder" type="ColorRect" parent="MoveReplaceUiNew/Status/Stats" unique_id=1172493115]
+modulate = Color(0.7, 0.7, 0.7, 1)
+offset_left = 714.0
+offset_top = 134.0
+offset_right = 787.0
+offset_bottom = 162.0
+color = Color(0, 0, 0, 1)
+
+[node name="EvoBG" type="ColorRect" parent="MoveReplaceUiNew/Status/Stats" unique_id=1716659070]
+modulate = Color(0.46, 0.46, 0.46, 1)
+offset_left = 716.0
+offset_top = 136.0
+offset_right = 785.0
+offset_bottom = 160.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="Evolution" type="Label" parent="MoveReplaceUiNew/Status/Stats" unique_id=2123801944]
+modulate = Color(1, 1, 1, 0.45098)
+offset_left = 722.0
+offset_top = 132.0
+offset_right = 796.0
+offset_bottom = 160.0
+text = "evo:9"
+label_settings = SubResource("LabelSettings_squei")
+
+[node name="Rarity" type="Sprite2D" parent="MoveReplaceUiNew/Status" unique_id=987659393]
+position = Vector2(910, 110)
+texture = ExtResource("12")
+hframes = 5
+
+[node name="Moves" type="Node2D" parent="MoveReplaceUiNew/Status" unique_id=960984448]
+
+[node name="Move1" parent="MoveReplaceUiNew/Status/Moves" unique_id=816868588 instance=ExtResource("13")]
+position = Vector2(0, 52)
+
+[node name="AnimationPlayer" parent="MoveReplaceUiNew/Status/Moves/Move1/Switch/Selector" index="0"]
+autoplay = &"Playing"
+
+[node name="Move2" parent="MoveReplaceUiNew/Status/Moves" unique_id=837373856 instance=ExtResource("13")]
+position = Vector2(0, 106)
+
+[node name="Move3" parent="MoveReplaceUiNew/Status/Moves" unique_id=1439423662 instance=ExtResource("13")]
+position = Vector2(0, 160)
+
+[node name="Party" type="Node2D" parent="MoveReplaceUiNew/Status" unique_id=1216833108]
+visible = false
+show_behind_parent = true
+position = Vector2(-585, -2)
+
+[node name="Options" type="Node2D" parent="MoveReplaceUiNew/Status/Party" unique_id=450114027]
+position = Vector2(0, -128)
+
+[node name="OptionsBG" type="ColorRect" parent="MoveReplaceUiNew/Status/Party/Options" unique_id=1872272861]
+offset_left = 1000.0
+offset_top = 477.0
+offset_right = 1282.0
+offset_bottom = 601.0
+color = Color(0.035, 0.0425833, 0.1, 1)
+
+[node name="BG1" type="ColorRect" parent="MoveReplaceUiNew/Status/Party/Options" unique_id=694679178]
+offset_left = 1016.0
+offset_top = 482.0
+offset_right = 1268.0
+offset_bottom = 513.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="BG2" type="ColorRect" parent="MoveReplaceUiNew/Status/Party/Options" unique_id=1064601200]
+offset_left = 1016.0
+offset_top = 524.0
+offset_right = 1268.0
+offset_bottom = 555.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="BG3" type="ColorRect" parent="MoveReplaceUiNew/Status/Party/Options" unique_id=1474311059]
+visible = false
+offset_left = 1016.0
+offset_top = 566.0
+offset_right = 1268.0
+offset_bottom = 597.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="AutoBattle" type="RichTextLabel" parent="MoveReplaceUiNew/Status/Party/Options" unique_id=1857346412]
+offset_left = 1023.0
+offset_top = 482.0
+offset_right = 1269.0
+offset_bottom = 522.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/normal_font = ExtResource("3")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Auto Battle: [color=999999]OFF[/color]"
+
+[node name="PreBattle" type="RichTextLabel" parent="MoveReplaceUiNew/Status/Party/Options" unique_id=1050499741]
+offset_left = 1023.0
+offset_top = 524.0
+offset_right = 1269.0
+offset_bottom = 564.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/normal_font = ExtResource("3")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Pre-Battle: [color=379dab]FORMATION[/color]"
+
+[node name="StartBattle" type="RichTextLabel" parent="MoveReplaceUiNew/Status/Party/Options" unique_id=890396737]
+visible = false
+offset_left = 1016.0
+offset_top = 566.0
+offset_right = 1268.0
+offset_bottom = 606.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.67, 0.67, 0.67, 0.4745098)
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 6
+theme_override_fonts/normal_font = ExtResource("3")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "START BATTLE"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MoveReplaceUiNew/Status/Party/Options/StartBattle" unique_id=14089415]
+libraries/ = SubResource("AnimationLibrary_hb178")
+autoplay = &"loop"
+speed_scale = 0.5
+
+[node name="BFOptions" type="Node2D" parent="MoveReplaceUiNew/Status/Party/Options" unique_id=794335332]
+show_behind_parent = true
+
+[node name="OptionsBG" type="ColorRect" parent="MoveReplaceUiNew/Status/Party/Options/BFOptions" unique_id=1901929607]
+offset_left = 1000.0
+offset_top = 477.0
+offset_right = 1282.0
+offset_bottom = 601.0
+color = Color(0.035, 0.0425833, 0.1, 1)
+
+[node name="BG1" type="ColorRect" parent="MoveReplaceUiNew/Status/Party/Options/BFOptions" unique_id=1482075980]
+offset_left = 1016.0
+offset_top = 482.0
+offset_right = 1268.0
+offset_bottom = 513.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="BG2" type="ColorRect" parent="MoveReplaceUiNew/Status/Party/Options/BFOptions" unique_id=1095787296]
+offset_left = 1016.0
+offset_top = 524.0
+offset_right = 1268.0
+offset_bottom = 555.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="BG3" type="ColorRect" parent="MoveReplaceUiNew/Status/Party/Options/BFOptions" unique_id=120636493]
+offset_left = 1016.0
+offset_top = 566.0
+offset_right = 1268.0
+offset_bottom = 597.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="Shop" type="RichTextLabel" parent="MoveReplaceUiNew/Status/Party/Options/BFOptions" unique_id=1618994445]
+modulate = Color(0.933333, 0.792157, 0.321569, 1)
+offset_left = 1016.0
+offset_top = 482.0
+offset_right = 1268.0
+offset_bottom = 522.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/normal_font = ExtResource("3")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "SHOP"
+horizontal_alignment = 1
+
+[node name="ItemShop" type="RichTextLabel" parent="MoveReplaceUiNew/Status/Party/Options/BFOptions" unique_id=2099048488]
+offset_left = 1016.0
+offset_top = 524.0
+offset_right = 1268.0
+offset_bottom = 564.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/normal_font = ExtResource("3")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "ITEMS"
+horizontal_alignment = 1
+
+[node name="Quit" type="RichTextLabel" parent="MoveReplaceUiNew/Status/Party/Options/BFOptions" unique_id=732975953]
+offset_left = 1016.0
+offset_top = 566.0
+offset_right = 1268.0
+offset_bottom = 606.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/normal_font = ExtResource("3")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "QUIT GAME"
+horizontal_alignment = 1
+
+[node name="BG" type="ColorRect" parent="MoveReplaceUiNew/Status/Party" unique_id=42447907]
+visible = false
+offset_left = 1000.0
+offset_top = 86.0
+offset_right = 1282.0
+offset_bottom = 473.0
+color = Color(0.035, 0.0425833, 0.1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="MoveReplaceUiNew/Status/Party" unique_id=1032438292]
+position = Vector2(1141, 280)
+texture = ExtResource("14")
+
+[node name="Selector" type="ColorRect" parent="MoveReplaceUiNew/Status/Party" unique_id=1083696396]
+offset_left = 1017.0
+offset_top = 108.0
+offset_right = 1268.0
+offset_bottom = 137.0
+color = Color(0.2144, 0.6168466, 0.67, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MoveReplaceUiNew/Status/Party/Selector" unique_id=589392950]
+libraries/ = SubResource("AnimationLibrary_vl6bb")
+autoplay = &"loop"
+
+[node name="VList" type="VBoxContainer" parent="MoveReplaceUiNew/Status/Party" unique_id=133119442]
+offset_left = 1053.0
+offset_top = 107.0
+offset_right = 1221.0
+offset_bottom = 463.0
+
+[node name="Formation" type="Node2D" parent="MoveReplaceUiNew/Status/Party" unique_id=335917189]
+show_behind_parent = true
+position = Vector2(596, 0)
+
+[node name="Affinities" type="Node2D" parent="MoveReplaceUiNew/Status/Party/Formation" unique_id=220093996]
+position = Vector2(0, -128)
+
+[node name="AffBG" type="ColorRect" parent="MoveReplaceUiNew/Status/Party/Formation/Affinities" unique_id=205858732]
+offset_left = 404.0
+offset_top = 477.0
+offset_right = 686.0
+offset_bottom = 601.0
+color = Color(0.035, 0.0425833, 0.1, 1)
+
+[node name="SlotBG" type="ColorRect" parent="MoveReplaceUiNew/Status/Party/Formation/Affinities" unique_id=645236930]
+offset_left = 422.0
+offset_top = 494.0
+offset_right = 537.0
+offset_bottom = 587.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="SlotBG2" type="ColorRect" parent="MoveReplaceUiNew/Status/Party/Formation/Affinities" unique_id=1655444771]
+offset_left = 552.0
+offset_top = 494.0
+offset_right = 667.0
+offset_bottom = 587.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="MoveReplaceUiNew/Status/Party/Formation/Affinities" unique_id=350446616]
+position = Vector2(545, 539)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("15")
+
+[node name="BG" type="Sprite2D" parent="MoveReplaceUiNew/Status/Party/Formation" unique_id=1696746278]
+position = Vector2(545, 280)
+texture = ExtResource("16")
+
+[node name="BG OLD" type="ColorRect" parent="MoveReplaceUiNew/Status/Party/Formation" unique_id=439903009]
+visible = false
+offset_left = 404.0
+offset_top = 86.0
+offset_right = 686.0
+offset_bottom = 473.0
+color = Color(0.035, 0.0425833, 0.1, 1)
+
+[node name="Slots" type="Node2D" parent="MoveReplaceUiNew/Status/Party/Formation" unique_id=367844797]
+
+[node name="Slot1" type="Node2D" parent="MoveReplaceUiNew/Status/Party/Formation/Slots" unique_id=1463383287]
+position = Vector2(441, 116)
+
+[node name="SlotBG" type="ColorRect" parent="MoveReplaceUiNew/Status/Party/Formation/Slots/Slot1" unique_id=694751225]
+visible = false
+offset_right = 90.0
+offset_bottom = 90.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="Sprite" type="Sprite2D" parent="MoveReplaceUiNew/Status/Party/Formation/Slots/Slot1" unique_id=1540961980]
+position = Vector2(45, 45)
+scale = Vector2(2, 2)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Slot2" type="Node2D" parent="MoveReplaceUiNew/Status/Party/Formation/Slots" unique_id=2119258187]
+position = Vector2(441, 230)
+
+[node name="SlotBG" type="ColorRect" parent="MoveReplaceUiNew/Status/Party/Formation/Slots/Slot2" unique_id=830922919]
+visible = false
+offset_right = 90.0
+offset_bottom = 90.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="Sprite" type="Sprite2D" parent="MoveReplaceUiNew/Status/Party/Formation/Slots/Slot2" unique_id=68782670]
+position = Vector2(45, 45)
+scale = Vector2(2, 2)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Slot3" type="Node2D" parent="MoveReplaceUiNew/Status/Party/Formation/Slots" unique_id=718326744]
+position = Vector2(441, 344)
+
+[node name="SlotBG" type="ColorRect" parent="MoveReplaceUiNew/Status/Party/Formation/Slots/Slot3" unique_id=272646698]
+visible = false
+offset_right = 90.0
+offset_bottom = 90.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="Sprite" type="Sprite2D" parent="MoveReplaceUiNew/Status/Party/Formation/Slots/Slot3" unique_id=1313827870]
+position = Vector2(45, 45)
+scale = Vector2(2, 2)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Slot4" type="Node2D" parent="MoveReplaceUiNew/Status/Party/Formation/Slots" unique_id=553165468]
+position = Vector2(555, 116)
+
+[node name="SlotBG" type="ColorRect" parent="MoveReplaceUiNew/Status/Party/Formation/Slots/Slot4" unique_id=177794055]
+visible = false
+offset_right = 90.0
+offset_bottom = 90.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="Sprite" type="Sprite2D" parent="MoveReplaceUiNew/Status/Party/Formation/Slots/Slot4" unique_id=834805294]
+position = Vector2(45, 45)
+scale = Vector2(2, 2)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Slot5" type="Node2D" parent="MoveReplaceUiNew/Status/Party/Formation/Slots" unique_id=1141330072]
+position = Vector2(555, 230)
+
+[node name="SlotBG" type="ColorRect" parent="MoveReplaceUiNew/Status/Party/Formation/Slots/Slot5" unique_id=1912568474]
+visible = false
+offset_right = 90.0
+offset_bottom = 90.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="Sprite" type="Sprite2D" parent="MoveReplaceUiNew/Status/Party/Formation/Slots/Slot5" unique_id=282495115]
+position = Vector2(45, 45)
+scale = Vector2(2, 2)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Slot6" type="Node2D" parent="MoveReplaceUiNew/Status/Party/Formation/Slots" unique_id=1883296127]
+position = Vector2(555, 344)
+
+[node name="SlotBG" type="ColorRect" parent="MoveReplaceUiNew/Status/Party/Formation/Slots/Slot6" unique_id=1171624919]
+visible = false
+offset_right = 90.0
+offset_bottom = 90.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="Sprite" type="Sprite2D" parent="MoveReplaceUiNew/Status/Party/Formation/Slots/Slot6" unique_id=1147305236]
+position = Vector2(45, 45)
+scale = Vector2(2, 2)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 2
+
+[node name="Selector" type="ColorRect" parent="MoveReplaceUiNew/Status/Party/Formation" unique_id=565070166]
+visible = false
+offset_left = 441.0
+offset_top = 116.0
+offset_right = 531.0
+offset_bottom = 206.0
+color = Color(0.2144, 0.6168466, 0.67, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MoveReplaceUiNew/Status/Party/Formation/Selector" unique_id=1892462847]
+libraries/ = SubResource("AnimationLibrary_vl6bb")
+autoplay = &"loop"
+
+[node name="Sprite" type="Sprite2D" parent="MoveReplaceUiNew/Status/Party/Formation/Selector" unique_id=1974161561]
+visible = false
+self_modulate = Color(1, 1, 1, 0.784314)
+z_index = 2
+position = Vector2(60, 29)
+scale = Vector2(2, 2)
+texture = ExtResource("10")
+hframes = 15
+vframes = 84
+frame = 6
+
+[editable path="UI/Status/Moves/Move1"]
+[editable path="Shop/CardList/CardShopCard"]
+[editable path="GetCard/Booster"]
+[editable path="Starters/DeckDetails/DeckItem"]
+[editable path="GBC"]
+[editable path="MoveReplaceUiNew/Status/Moves/Move1"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cc8axil6c06o1"
+path="res://.godot/imported/USUM Mewtwo Battle Music (HQ).mp3-0e73dedf80506b8cf5376eb96a5c6813.mp3str"
+
+[deps]
+
+source_file="res://Files/BGMs/USUM Mewtwo Battle Music (HQ).mp3"
+dest_files=["res://.godot/imported/USUM Mewtwo Battle Music (HQ).mp3-0e73dedf80506b8cf5376eb96a5c6813.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

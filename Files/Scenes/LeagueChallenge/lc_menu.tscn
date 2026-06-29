@@ -1,0 +1,304 @@
+[gd_scene load_steps=20 format=3 uid="uid://b10qxyrn2pg3o"]
+
+[ext_resource type="Script" uid="uid://cu62uc82kec4s" path="res://Files/Scenes/LeagueChallenge/lc_menu.gd" id="1"]
+[ext_resource type="Script" uid="uid://y2d384whq6im" path="res://Files/Data/LC_pools.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://bs60meiq8d26s" path="res://Files/Sprites/deck_bg.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://7it0q5cf0o5y" path="res://Files/Sprites/Characters/Brock.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://bxvvop028gwgs" path="res://Files/Sprites/UI/UIDeckName.png" id="5"]
+[ext_resource type="FontFile" uid="uid://bbcfrt4x2slms" path="res://Files/Fonts/pokemon-ds-font.ttf" id="6"]
+[ext_resource type="Texture2D" uid="uid://bcfr7sxvjtr6s" path="res://Files/Sprites/badges.png" id="7"]
+[ext_resource type="PackedScene" uid="uid://b4ryqlheg15bu" path="res://Files/Scenes/Level/Menu/party_pokemon_item.tscn" id="8"]
+[ext_resource type="Texture2D" uid="uid://b0j26ltmj22dw" path="res://Files/Sprites/UI/UIBox.png" id="9"]
+
+[sub_resource type="Animation" id="Animation_7eafg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BGSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(46, 148)]
+}
+
+[sub_resource type="Animation" id="Animation_7wn24"]
+resource_name = "loop"
+length = 3.0
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BGSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(46, 148), Vector2(46, 4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xiued"]
+_data = {
+&"RESET": SubResource("Animation_7eafg"),
+&"loop": SubResource("Animation_7wn24")
+}
+
+[sub_resource type="Gradient" id="Gradient_jrefm"]
+offsets = PackedFloat32Array(0, 0.6723164)
+colors = PackedColorArray(1, 1, 1, 0.43137255, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3nh4r"]
+gradient = SubResource("Gradient_jrefm")
+fill = 1
+fill_from = Vector2(0.5, 0.4)
+fill_to = Vector2(0.51282054, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="Animation" id="Animation_dfdik"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.215686, 0.615686, 0.670588, 0.509804)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(60, 29)]
+}
+
+[sub_resource type="Animation" id="Animation_kmpwa"]
+resource_name = "loop"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.215686, 0.615686, 0.670588, 0.509804), Color(0.215686, 0.615686, 0.670588, 0.823529)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(60, 29), Vector2(60, 21)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vl6bb"]
+_data = {
+&"RESET": SubResource("Animation_dfdik"),
+&"loop": SubResource("Animation_kmpwa")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_gnmqi"]
+font = ExtResource("6")
+font_size = 48
+outline_size = 8
+outline_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ss8ph"]
+font = ExtResource("6")
+font_size = 48
+font_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+shadow_size = 5
+shadow_color = Color(1, 1, 1, 1)
+
+[node name="LC_menu" type="Node2D"]
+z_index = 31
+script = ExtResource("1")
+
+[node name="LCData" type="Node" parent="."]
+script = ExtResource("2")
+
+[node name="BG" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 107.0
+offset_top = 138.0
+offset_right = 1138.0
+offset_bottom = 874.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = 161.0
+offset_top = 222.0
+offset_right = 1084.0
+offset_bottom = 798.0
+columns = 12
+
+[node name="DeckDetails" type="Node2D" parent="."]
+position = Vector2(1035, 64)
+
+[node name="BG" type="ColorRect" parent="DeckDetails"]
+offset_left = 135.0
+offset_top = 74.0
+offset_right = 470.0
+offset_bottom = 546.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="TrainerPreview" type="Node2D" parent="DeckDetails"]
+
+[node name="ColorRect2" type="ColorRect" parent="DeckDetails/TrainerPreview"]
+offset_left = 162.0
+offset_top = 96.0
+offset_right = 447.0
+offset_bottom = 422.0
+
+[node name="ColorRect" type="ColorRect" parent="DeckDetails/TrainerPreview"]
+offset_left = 165.0
+offset_top = 99.0
+offset_right = 443.0
+offset_bottom = 418.0
+color = Color(0.0235294, 0.0235294, 0.0392157, 1)
+
+[node name="BG" type="ColorRect" parent="DeckDetails/TrainerPreview"]
+clip_children = 2
+offset_left = 166.0
+offset_top = 102.0
+offset_right = 258.0
+offset_bottom = 205.66666
+scale = Vector2(3, 3)
+color = Color(0.0235294, 0.0235294, 0.0392157, 1)
+
+[node name="BGSprite" type="Sprite2D" parent="DeckDetails/TrainerPreview/BG"]
+position = Vector2(46, 148)
+texture = ExtResource("3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DeckDetails/TrainerPreview/BG"]
+libraries = {
+&"": SubResource("AnimationLibrary_xiued")
+}
+autoplay = "loop"
+
+[node name="Light" type="Sprite2D" parent="DeckDetails/TrainerPreview"]
+position = Vector2(304, 256)
+scale = Vector2(4.21875, 4.90625)
+texture = SubResource("GradientTexture2D_3nh4r")
+
+[node name="Sprite2D" type="Sprite2D" parent="DeckDetails/TrainerPreview"]
+position = Vector2(306, 212.00003)
+scale = Vector2(6, 6)
+texture = ExtResource("4")
+hframes = 3
+vframes = 4
+frame = 11
+
+[node name="Nameplate" type="Sprite2D" parent="DeckDetails/TrainerPreview"]
+position = Vector2(306, 359)
+scale = Vector2(3, 3)
+texture = ExtResource("5")
+
+[node name="Label" type="RichTextLabel" parent="DeckDetails/TrainerPreview"]
+offset_left = 165.0
+offset_top = 325.0
+offset_right = 443.0
+offset_bottom = 381.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/normal_font = ExtResource("6")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "Brock"
+horizontal_alignment = 1
+
+[node name="Badge" type="Sprite2D" parent="DeckDetails/TrainerPreview"]
+z_index = 3
+position = Vector2(211, 265)
+scale = Vector2(2, 2)
+texture = ExtResource("7")
+hframes = 7
+vframes = 7
+
+[node name="VList" type="VBoxContainer" parent="DeckDetails"]
+offset_left = 216.0
+offset_top = 433.0
+offset_right = 384.0
+offset_bottom = 789.0
+
+[node name="PartyPokemonItem" parent="DeckDetails/VList" instance=ExtResource("8")]
+layout_mode = 2
+
+[node name="Selector" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0.509804)
+offset_left = -90.0
+offset_top = -92.0
+offset_right = -26.0
+offset_bottom = -28.0
+color = Color(0.215686, 0.615686, 0.670588, 0.509804)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Selector"]
+libraries = {
+&"": SubResource("AnimationLibrary_vl6bb")
+}
+autoplay = "loop"
+
+[node name="Money" type="Node2D" parent="."]
+position = Vector2(1202, 628)
+
+[node name="BG2" type="ColorRect" parent="Money"]
+offset_left = 13.0
+offset_top = -13.0
+offset_right = 265.0
+offset_bottom = 47.0
+color = Color(0.0352941, 0.0431373, 0.101961, 1)
+
+[node name="BG" type="ColorRect" parent="Money"]
+offset_left = 19.0
+offset_top = -7.0
+offset_right = 259.0
+offset_bottom = 41.0
+color = Color(0.156863, 0.172549, 0.290196, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Money"]
+position = Vector2(286.5, 17)
+texture = ExtResource("9")
+hframes = 2
+frame = 1
+
+[node name="Money" type="Label" parent="Money"]
+modulate = Color(0.47843137, 0.7764706, 1, 1)
+offset_left = -37.0
+offset_top = -7.0
+offset_right = 256.0
+offset_bottom = 49.0
+text = "$0"
+label_settings = SubResource("LabelSettings_gnmqi")
+horizontal_alignment = 2
+
+[node name="Label" type="Label" parent="Money"]
+offset_left = 27.0
+offset_top = -7.0
+offset_right = 183.0
+offset_bottom = 49.0
+text = "Player BP:"
+label_settings = SubResource("LabelSettings_ss8ph")

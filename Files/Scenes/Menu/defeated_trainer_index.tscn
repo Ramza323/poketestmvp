@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bonxrb2yf80iu"]
+
+[ext_resource type="Texture2D" uid="uid://rfgmcnu80mv4" path="res://Files/Sprites/Characters/Joey.png" id="1"]
+
+[node name="DefeatedTrainerIndex" type="Control"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(13, 20)
+texture = ExtResource("1")
+hframes = 3
+vframes = 4
+frame = 5

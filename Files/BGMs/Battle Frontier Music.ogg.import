@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cgbni4tpv2qce"
+path="res://.godot/imported/Battle Frontier Music.ogg-77be0f287495dd417461454d140cdf31.oggvorbisstr"
+
+[deps]
+
+source_file="res://Files/BGMs/Battle Frontier Music.ogg"
+dest_files=["res://.godot/imported/Battle Frontier Music.ogg-77be0f287495dd417461454d140cdf31.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

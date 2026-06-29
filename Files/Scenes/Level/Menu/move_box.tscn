@@ -1,0 +1,121 @@
+[gd_scene load_steps=8 format=3 uid="uid://d1ls800gnv2cy"]
+
+[ext_resource type="Texture2D" uid="uid://c46b31lt53ira" path="res://Files/Sprites/UI/MoveSelector.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://cdxe4aeviqj5j" path="res://Files/Sprites/UI/MoveSwitch.png" id="2"]
+[ext_resource type="FontFile" uid="uid://bbcfrt4x2slms" path="res://Files/Fonts/pokemon-ds-font.ttf" id="3"]
+
+[sub_resource type="Animation" id="Animation_a5psc"]
+resource_name = "Playing"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.2144, 0.6168466, 0.67, 1), Color(0.36, 0.92533326, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3p316"]
+resource_name = "new_animation"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lhcha"]
+_data = {
+&"Playing": SubResource("Animation_a5psc"),
+&"new_animation": SubResource("Animation_3p316")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_vl6bb"]
+font = ExtResource("3")
+font_size = 32
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="Move1" type="Node2D"]
+
+[node name="MoveBG OLD" type="ColorRect" parent="."]
+modulate = Color(0.7, 0.7, 0.7, 1)
+offset_left = 711.0
+offset_top = 261.0
+offset_right = 975.0
+offset_bottom = 300.0
+color = Color(0.1566, 0.172163, 0.29, 1)
+
+[node name="MoveBG" type="Sprite2D" parent="."]
+position = Vector2(843, 279)
+texture = ExtResource("1")
+
+[node name="SwitchBG" type="ColorRect" parent="."]
+offset_left = 725.0
+offset_top = 282.0
+offset_right = 954.0
+offset_bottom = 298.0
+color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[node name="SwitchBG2" type="ColorRect" parent="."]
+offset_left = 728.0
+offset_top = 285.0
+offset_right = 951.0
+offset_bottom = 295.0
+color = Color(0, 0, 0, 1)
+
+[node name="Switch OLD" type="ColorRect" parent="."]
+visible = false
+offset_left = 728.0
+offset_top = 285.0
+offset_right = 810.0
+offset_bottom = 295.0
+color = Color(0.1275, 0.3825, 0.51, 1)
+
+[node name="Switch" type="Sprite2D" parent="."]
+clip_children = 2
+position = Vector2(896, 289)
+texture = ExtResource("2")
+hframes = 2
+
+[node name="Selector" type="ColorRect" parent="Switch"]
+visible = false
+offset_left = -185.0
+offset_top = -29.0
+offset_right = 79.0
+offset_bottom = 10.0
+color = Color(0.31672698, 0.8336495, 0.9019224, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Switch/Selector"]
+libraries = {
+&"": SubResource("AnimationLibrary_lhcha")
+}
+autoplay = "Playing"
+
+[node name="Switch2" type="Sprite2D" parent="Switch"]
+texture = ExtResource("2")
+hframes = 2
+frame = 1
+
+[node name="Option1" type="Label" parent="."]
+texture_filter = 2
+offset_left = 706.0
+offset_top = 253.0
+offset_right = 846.0
+offset_bottom = 281.0
+scale = Vector2(0.9, 0.9)
+pivot_offset = Vector2(95, 28)
+text = "Flamethrower"
+label_settings = SubResource("LabelSettings_vl6bb")
+horizontal_alignment = 1
+
+[node name="Option2" type="Label" parent="."]
+texture_filter = 2
+offset_left = 836.0
+offset_top = 253.0
+offset_right = 976.0
+offset_bottom = 281.0
+scale = Vector2(0.9, 0.9)
+pivot_offset = Vector2(45, 28)
+text = "Flamethrower"
+label_settings = SubResource("LabelSettings_vl6bb")
+horizontal_alignment = 1

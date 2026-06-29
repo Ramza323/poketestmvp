@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://blpbk6jf4wwtn"]
+
+[node name="CollectionIndex" type="Control"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="BG2" type="ColorRect" parent="."]
+z_index = 2
+layout_mode = 0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 18.0
+offset_bottom = 18.0
+color = Color(0, 0, 0, 1)
+
+[node name="BG" type="ColorRect" parent="."]
+z_index = 2
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+color = Color(0.1254902, 0.1254902, 0.1254902, 1)

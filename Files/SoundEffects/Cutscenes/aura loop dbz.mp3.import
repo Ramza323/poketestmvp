@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bvebp6gjxb0dw"
+path="res://.godot/imported/aura loop dbz.mp3-634e3ffd2372702fe5ce23d74754dc58.mp3str"
+
+[deps]
+
+source_file="res://Files/SoundEffects/Cutscenes/aura loop dbz.mp3"
+dest_files=["res://.godot/imported/aura loop dbz.mp3-634e3ffd2372702fe5ce23d74754dc58.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
