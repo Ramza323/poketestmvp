@@ -1,6 +1,6 @@
 {
   "project": "Pokemon Roguelite Fan Game",
-  "description": "Juego roguelite web inspirado en PokeRogue + Pokemon Overlord. Batalla auto por filas (Overlord), mapa tipo Slay the Spire, Pokédex persistente (PokeRogue). Stack: Phaser 3 + TypeScript + Vite.",
+  "description": "Juego roguelite web inspirado en PokeRogue + Pokemon Overlord. sistema de batalla como pokemon overlord donde cada pokemon tiene ataques y habilidades y tiene su turno para elegir su accion (Overlord), mapa tipo Slay the Spire, Pokédex persistente (PokeRogue). Stack: Phaser 3 + TypeScript + Vite.",
   "rules": [
     "Una feature a la vez (max 1 en in_progress)",
     "Tests obligatorios (vitest) para cerrar cualquier feature de lógica",
@@ -13,7 +13,7 @@
       "id": "F01",
       "phase": 1,
       "title": "Setup del proyecto: Vite + Phaser 3 + TypeScript",
-      "status": "pending",
+      "status": "done",
       "description": "Inicializar el proyecto con Vite, Phaser 3 y TypeScript. Configurar vitest para tests. Verificar que el juego arranca con una escena vacía.",
       "acceptance_criteria": [
         "npm run dev levanta el servidor sin errores",
@@ -23,8 +23,12 @@
         "tsconfig.json con strict mode activado"
       ],
       "files_to_create": [
-        "package.json", "vite.config.ts", "tsconfig.json",
-        "index.html", "src/main.ts", "src/scenes/BootScene.ts",
+        "package.json",
+        "vite.config.ts",
+        "tsconfig.json",
+        "index.html",
+        "src/main.ts",
+        "src/scenes/BootScene.ts",
         "tests/setup.test.ts"
       ]
     },
@@ -32,8 +36,8 @@
       "id": "F02",
       "phase": 1,
       "title": "Sistema de assets: carga de sprites Pokemon",
-      "status": "pending",
-      "description": "Sistema para cargar y acceder a los sprites PNG de las carpetas Pokemon/ y Shiny/. Los sprites siguen el patrón NUMBER.png, NUMBER-shiny.png, NUMBER-form.png.",
+      "status": "done",
+      "description": "Sistema para cargar y acceder a los sprites PNG de las carpetas Pokemon/  Los sprites siguen el patrón NUMBER.png, NUMBER-shiny.png, NUMBER-form.png, NUMBER-form-shiny.png.",
       "acceptance_criteria": [
         "AssetLoader.ts carga sprites por ID de Pokemon",
         "Soporta formas: base, shiny, mega, gmax, formas regionales",
@@ -50,8 +54,8 @@
       "id": "F03",
       "phase": 1,
       "title": "Datos Gen 1: 151 Pokemon con stats, tipos y rareza",
-      "status": "pending",
-      "description": "Archivo de datos con los 151 Pokemon de Gen 1. Cada Pokemon incluye stats base, tipos, rareza (1-5), slots de movimientos iniciales, rasgo/habilidad y datos de evolución.",
+      "status": "done",
+      "description": "Archivo de datos con los 151 Pokemon de Gen 1. Cada Pokemon incluye stats base, tipos, rareza (1-5), slots de movimientos iniciales, rasgo/habilidad y datos de evolución, los pokemon deben de tener los stats de ataque, ataque especial, defensa especial, defensa, velocidad y hp, en la franquicia pokemon un pokemon sube hasta nivel 100, aca se hara el calculo proporcional para que el nivel maximo sea el 10, la rareza va del 1 al 5, donde la rareza 4 es para Shiny, la rareza 5 son para formas especiales en shiny, ejemplo un charizard normal seria rareza 3, un charizard shiny seria rareza 4 o mega charizardx serian 4 y un charizard megax shiny seria 5. aparte dada la rareza, miremos como manejamos los stats, por que por ejemplo un charizard solo para dar un ejemplo, siendo charizard nivel 10 tendria 100 de ataque, los shiny seran 20% mas fuertes es decir el charizard shiny tendra 120 en este ejemplo",
       "acceptance_criteria": [
         "gen1.ts exporta exactamente 151 entradas (id 1-151)",
         "Cada Pokemon tiene: id, name, types, rarity, baseStats (hp/atk/def/spatk/spdef/spd), slots, trait, learnset, evolve",
@@ -69,8 +73,8 @@
       "id": "F04",
       "phase": 1,
       "title": "Datos de movimientos Gen 1",
-      "status": "pending",
-      "description": "Catálogo de movimientos (moves) usados por los 151 Pokemon. Cada move tiene tipo, categoría (físico/especial/status), potencia, precisión y efecto.",
+      "status": "done",
+      "description": "Catálogo de movimientos (moves) usados por los 151 Pokemon. Cada move tiene tipo, categoría (físico/especial/status), potencia, precisión y efecto, se deben tener propuestas pensadas para el juevo, es decir ataques con efectos que afecten filas columnas o empunen a objetivos hacia otra fila, etc de este tipo, de igual manera las habilidades pasivas, que jueguen con estos espacios, o que invoquen otros pokemon etc.",
       "acceptance_criteria": [
         "moves.ts exporta al menos 80 movimientos de Gen 1",
         "Cada move tiene: id, name, type, category, power, accuracy, effect",
@@ -87,7 +91,7 @@
       "id": "F05",
       "phase": 1,
       "title": "Sistema de IVs y stats calculados",
-      "status": "pending",
+      "status": "done",
       "description": "Función para generar IVs aleatorios al capturar un Pokemon, y función para calcular stats reales a partir de stats base + IVs + nivel.",
       "acceptance_criteria": [
         "generateIVs() retorna objeto con 6 valores en rango [0, 31]",
@@ -99,6 +103,47 @@
       "files_to_create": [
         "src/systems/IVSystem.ts",
         "tests/iv-system.test.ts"
+      ]
+    },
+    {
+      "id": "F05b",
+      "phase": 1,
+      "title": "Sistema de PP y AP por Pokemon",
+      "status": "done",
+      "description": "Cada Pokemon tiene dos recursos que se fijan al capturarlo: PP (Power Points, cuántas veces puede usar sus moves por batalla) y AP (Action Points, cuántas veces puede activar sus habilidades pasivas activables por batalla). Estos valores tienen un rango por especie (ej: Bulbasaur salvaje tiene entre 3-4 PP y 2 AP base). El valor exacto se determina al encontrar/capturar el Pokemon, como los IVs. Si el jugador captura dos Bulbasaur, uno con 3 PP y otro con 4 PP e ivs, en el menú de perfil puede elegir cuál llevar a la batalla. Los Pokemon shiny tienen un bonus garantizado de +1 PP y +1 AP sobre su valor base máximo. Los moves también tienen un costo en PP (cuántos PP consume cada uso). Las habilidades pasivas con apCost > 0 se activan gastando AP; las de apCost = 0 son siempre activas sin costo.",
+      "acceptance_criteria": [
+        "PokemonData tiene ppRange: [min, max] y baseAp: number",
+        "Los moves tienen pp: number (costo por uso) y los passives tienen apCost: number",
+        "generatePP(ppRange) retorna un valor entero en [min, max]",
+        "generateAP(baseAp, isShiny) retorna baseAp+1 si shiny, baseAp si no",
+        "Un Pokemon capturado con PP=4 puede ser seleccionado sobre uno capturado con PP=3",
+        "Test: shiny siempre tiene PP >= ppRange[1] + 1 y AP >= baseAp + 1",
+        "Test: PP generado siempre está dentro del rango de la especie",
+        "Test: moves con power > 0 tienen pp > 0",
+        "Test: passives tienen apCost >= 0"
+      ],
+      "design_notes": {
+        "pp_ranges_example": {
+          "Bulbasaur": [3, 4],
+          "Charmander": [3, 4],
+          "Pikachu": [4, 5],
+          "Magikarp": [2, 3],
+          "Mewtwo": [12, 14],
+          "charizard-mega": [10, 12]
+        },
+        "ap_base_example": {
+          "Bulbasaur": 2,
+          "Charizard": 3,
+          "Mewtwo": 5
+        },
+        "ap_cost_scale": "0 = pasiva siempre activa | 1-2 = pasiva fuerte | 3 = pasiva muy poderosa",
+        "move_pp_cost": "El costo en PP escala con la potencia del move sin límite superior: power 1-40 = 1 PP | power 41-70 = 2 PP | power 71-100 = 3 PP | power 101-130 = 4 PP | power 131-160 = 5 PP | power 161+ = 6 PP. Moves de status cuestan 1 PP. Moves muy económicos (quick-attack, tackle) pueden costar 1 PP aunque sean usables muchas veces; moves signature de legendarios pueden costar 8-10 PP.",
+        "shiny_bonus": "PP mínimo = ppRange[1] + 1, AP = baseAp + 1, stats +20% como ya existe",
+        "struggle": "cuando quede por ejemplo 1 PP y no se puedan elegir ataques por que no se tiene puntos, se usara el movimiento struggle ( hay que implementarlo, sera un movimiento debil"
+      },
+      "files_to_create": [
+        "src/systems/PPAPSystem.ts",
+        "tests/ppap-system.test.ts"
       ]
     },
     {
@@ -204,18 +249,23 @@
     {
       "id": "F11",
       "phase": 4,
-      "title": "Motor de auto-batalla: lógica core",
+      "title": "Motor de batalla turn-based: lógica core",
       "status": "pending",
-      "description": "Sistema de batalla automática. Los Pokemon actúan por orden de velocidad. El frontal ataca primero; el trasero tiene -30% velocidad. Calcula daño con tipos y stats. La batalla se simula completa y luego se anima.",
+      "description": "Sistema de batalla por turnos controlado por el jugador. ANTES de iniciar la batalla (en pre-batalla / F10), el jugador configura los 3 slots de cada Pokemon: elige cuál de las 2 opciones de slot1, cuál pasiva de slot2, y cuál de las 2 opciones de slot3. Una vez iniciada la batalla, esa configuración es fija. DURANTE la batalla, en cada turno el jugador solo elige para cada Pokemon activo: usar el move del slot1 o el move del slot3. La pasiva del slot2 actúa automáticamente según sus condiciones (apCost se descuenta del AP del Pokemon cuando se dispara). El rival usa IA simple (escoge entre sus slot1/slot3 aleatoria o por heurística). La batalla termina cuando: (a) todos los Pokemon rivales llegan a 0 HP, o (b) ningún Pokemon de cualquier equipo puede actuar porque todos sus moves (slot1 y slot3) tienen PP agotados.",
       "acceptance_criteria": [
-        "BattleEngine.simulate(teamA, teamB) retorna lista de eventos ordenados",
-        "Orden de turno determinado por speed stat",
-        "Fila trasera: speed *= 0.7",
-        "Daño: potencia * atk/def con multiplicador de tipo (x2, x0.5, x0)",
-        "Batalla termina cuando todos los Pokemon de un equipo llegan a 0 HP",
-        "Test: Pokemon con speed mayor actúa antes",
+        "BattleEngine.startTurn(playerChoices, aiChoices) recibe por cada Pokemon activo: 'slot1' | 'slot3'",
+        "Cada uso de un move resta el ppCost del move al PP actual del Pokemon",
+        "La pasiva de slot2 se dispara automáticamente según su trigger (no es elegible por turno)",
+        "Activar pasiva con apCost > 0 descuenta AP del Pokemon cuando se dispara automáticamente",
+        "Pokemon cuyos slot1 y slot3 tienen PP = 0 no puede actuar ese turno",
+        "Orden de acción por turno: speed stat desc (fila trasera speed *= 0.7)",
+        "Batalla termina condición A: todos los Pokemon rivales con HP = 0",
+        "Batalla termina condición B: ningún Pokemon de ningún equipo puede actuar (slot1 y slot3 sin PP)",
+        "Daño: potencia * atk/def con multiplicador de tipo (x2, x0.5, x0) + efectos del move",
+        "Test: Pokemon con speed mayor actúa antes en el turno",
         "Test: ventaja de tipo dobla el daño",
-        "Test: fila trasera protegida mientras haya Pokemon frontal"
+        "Test: batalla termina por PP agotados si ninguno puede actuar",
+        "Test: fila trasera recibe -30% daño mientras haya Pokemon frontal vivo"
       ],
       "files_to_create": [
         "src/systems/BattleEngine.ts",
@@ -332,10 +382,10 @@
       "phase": 6,
       "title": "Sistema de shinies",
       "status": "pending",
-      "description": "Al capturar un Pokemon, tiene una pequeña probabilidad de ser shiny (1/512). Los shinies usan los sprites de la carpeta Shiny/ y quedan marcados en la colección permanente.",
+      "description": "Al generarse un Pokemon, tiene una pequeña probabilidad de ser shiny (1/512). Los shinies usan los sprites de la carpeta Pokemon/ con la 'formula'  NUMBER-shiny.png, NUMBER-form-shiny.png  y quedan marcados en la colección permanente.",
       "acceptance_criteria": [
-        "Probabilidad de shiny: 1/512 por captura",
-        "Shiny usa sprite de carpeta assets/shiny/",
+        "Probabilidad de shiny: 1/512 por generacion",
+        "Shiny usa sprite de carpeta assets/Pokemon/",
         "Indicador visual en el sprite (destellos dorados)",
         "Pokédex muestra indicador shiny si alguno fue capturado",
         "Test: en 10000 capturas simuladas, ratio shiny ≈ 1/512 (±20%)"

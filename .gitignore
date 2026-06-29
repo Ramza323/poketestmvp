@@ -29,3 +29,5 @@ npm-debug.log*
 
 # Scripts temporales
 copy_shinies.ps1
+# Vite cache
+.vite/

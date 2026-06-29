@@ -33,6 +33,18 @@ en progress/explore_phaser_sprites.md. No devuelvas el contenido en tu respuesta
 | Feature media (3-5 archivos) | 1 implementador + 1 revisor |
 | Feature compleja o desconocida | 2-3 exploradores → implementador → revisor |
 
+## Regla de integración continua con BattleScene
+
+Al cerrar cada feature, además de pasar los tests, **conectar el resultado a la BattleScene de prueba** para validar comportamientos visualmente. No avanzar al siguiente feature sin que el anterior sea observable en escena.
+
+Ejemplos de integración por feature:
+- Stats / IVs → Pokemon en BattleScene con stats calculados reales
+- PP / AP → barras de PP y AP visibles en la UI de batalla
+- Moves con efectos → efectos aplicados y logueados en el combate
+- Battle engine turn-based → reemplazar el MVP auto-battle por el motor real
+
+Esto evita descubrir problemas de diseño tardíamente cuando ya hay 10 features encima.
+
 ## Excepciones (puedes actuar directamente)
 
 - Preguntas de exploración sin código
