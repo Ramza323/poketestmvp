@@ -8,8 +8,8 @@ extends Node2D
 var unit_scene = load("res://Files/Scenes/Battle/UnitScene.tscn")
 var point_scene = load("res://Files/Scenes/Battle/PointUnit.tscn")
 
-var player_team_ref = [null, "zoroark", null, null, null, null]
-var enemy_team_ref = [null, "heracross", null, null, null, null]
+var player_team_ref = ["charizard_mega_x", ["pikachu", 4, {"is_shiny": true}], ["snorlax_gmax", 5, {"is_shiny": true}], null, null, null]
+var enemy_team_ref  = ["venusaur_mega", ["gengar", 4, {"is_shiny": true}], "mewtwo_mega_x", null, null, null]
 
 var player_team = [null, null, null, null, null, null]
 var enemy_team = [null, null, null, null, null, null]
@@ -143,6 +143,11 @@ var bf_result = "defeat"
 
 func _ready():
     $GUIPlayer.volume_linear = 0.177 * globals.options["se_volume"]
+
+    if globals.test_mode:
+        print("[rl_pkmn] dex entries loaded: ", rl_pkmn.dex.size())
+        var sample = rl_pkmn.dex.get("bulbasaur", {})
+        print("[rl_pkmn] bulbasaur pp_range=%s base_ap=%s" % [sample.get("pp_range","?"), sample.get("base_ap","?")])
 
     if not globals.test_mode:
         party_selector = globals.ui.get_node("Status/Party/Selector")
@@ -561,6 +566,11 @@ func setup_unit(unit, unit_dict, reseting = false):
     unit.power = globals.level_scale(dex_data["power"], unit.level) + unit_dict["bonus_power"]
     unit.speed = globals.level_scale(dex_data["speed"], unit.level) + unit_dict["bonus_speed"]
 
+    if unit_dict.get("is_shiny", false):
+        unit.health = roundi(unit.health * 1.2)
+        unit.power  = roundi(unit.power  * 1.2)
+        unit.speed  = roundi(unit.speed  * 1.2)
+
     unit.original_power = unit.power
 
     unit.unit_trait = dex_data["trait"]
@@ -593,7 +603,16 @@ func setup_unit(unit, unit_dict, reseting = false):
     unit.cur_hp = float(unit.max_hp)
 
 
-    unit.get_node("Sprite").get_node("Sprite2D").frame = unit.sprite
+    var _sprite_node: Sprite2D = unit.get_node("Sprite/Sprite2D")
+    var _is_shiny: bool = unit_dict.get("is_shiny", false)
+    if sprite_loader.get_id(unit_dict["species"]) != -1:
+        var _sprite_form: String = dex_data.get("sprite_form", "")
+        sprite_loader.apply_to_sprite_by_name(_sprite_node, unit_dict["species"], _is_shiny, _sprite_form)
+        var _actual_form := _sprite_form if _sprite_form != "" else ("shiny" if _is_shiny else "base")
+        print("[sprite] %s → PNG (id=%d, form=%s)" % [unit_dict["species"], sprite_loader.get_id(unit_dict["species"]), _actual_form])
+    else:
+        _sprite_node.frame = unit.sprite
+        print("[sprite] %s → spritesheet viejo (frame=%d)" % [unit_dict["species"], unit.sprite])
     unit.get_node("UnitUI/LvLabel").text = "lv{0}".format([unit.level])
     unit.get_node("UnitUI/ColorIcon").texture = load("res://Files/Sprites/ColorIcons/{0}.png".format([unit.color]))
     unit.get_node("Card/CardSprite").modulate = Color(poke_types.colors[unit.color][3])
@@ -844,7 +863,12 @@ func ref_setup_unit(unit, dex_data):
     unit.cur_hp = float(unit.max_hp)
 
 
-    unit.get_node("Sprite").get_node("Sprite2D").frame = unit.sprite
+    var _ref_sprite: Sprite2D = unit.get_node("Sprite/Sprite2D")
+    var _ref_species: String = dex_data["name"].to_lower()
+    if sprite_loader.get_id(_ref_species) != -1:
+        sprite_loader.apply_to_sprite_by_name(_ref_sprite, _ref_species)
+    else:
+        _ref_sprite.frame = unit.sprite
     unit.get_node("UnitUI/ColorIcon").texture = load("res://Files/Sprites/ColorIcons/{0}.png".format([unit.color]))
 
     unit.get_node("Card/CardSprite").modulate = Color(poke_types.colors[unit.color][0])

@@ -1,0 +1,330 @@
+{
+  "project": "Pokemon Roguelite Fan Game",
+  "description": "Juego roguelite web inspirado en PokeRogue + Pokemon Overlord. sistema de batalla como pokemon overlord donde cada pokemon tiene ataques y habilidades y tiene su turno para elegir su accion (Overlord), mapa tipo Slay the Spire, Pokédex persistente (PokeRogue). Stack: Godot.",
+  "rules": [
+    "Una feature a la vez (max 1 en in_progress)",
+    "REGLA OBLIGATORIA antes de cualquier feature: revisar el proyecto Godot para ver qué ya existe e implementado, luego PREGUNTAR al usuario qué se debe hacer exactamente con esa feature",
+    "Estados válidos: pending | in_progress | done | blocked",
+    "Actualizar feature_list.json continuamente, no retroactivamente",
+    "Al arrancar cada feature: 1) explorar archivos .gd/.tscn/.tres relevantes, 2) reportar qué existe, 3) esperar confirmación del usuario antes de tocar nada"
+  ],
+  "features": [
+    {
+      "id": "F02",
+      "phase": 1,
+      "title": "Sistema de assets: carga de sprites Pokemon",
+      "status": "done",
+      "description": "Sistema para cargar y acceder a los sprites PNG de las carpetas Pokemon/  Los sprites siguen el patrón NUMBER.png, NUMBER-shiny.png, NUMBER-form.png, NUMBER-form-shiny.png.",
+      "acceptance_criteria": [
+        "AssetLoader carga sprites por ID de Pokemon",
+        "Soporta formas: base, shiny, mega, gmax, formas regionales",
+        "Sprite fallback si el archivo no existe",
+        "Test: getSpritePath(1) === 'assets/pokemon/1.png'",
+        "Test: getSpritePath(1, 'shiny') === 'assets/pokemon/1-shiny.png'"
+      ]
+    },
+    {
+      "id": "F03",
+      "phase": 1,
+      "title": "Datos Gen 1: 151 Pokemon con stats, tipos y rareza",
+      "status": "done",
+      "description": "Archivo de datos con los 151 Pokemon de Gen 1. Cada Pokemon incluye stats base, tipos, rareza (1-5), slots de movimientos iniciales, rasgo/habilidad y datos de evolución, los pokemon deben de tener los stats de ataque, ataque especial, defensa especial, defensa, velocidad y hp, en la franquicia pokemon un pokemon sube hasta nivel 100, aca se hara el calculo proporcional para que el nivel maximo sea el 10, la rareza va del 1 al 5, donde la rareza 4 es para Shiny, la rareza 5 son para formas especiales en shiny, ejemplo un charizard normal seria rareza 3, un charizard shiny seria rareza 4 o mega charizardx serian 4 y un charizard megax shiny seria 5. aparte dada la rareza, miremos como manejamos los stats, por que por ejemplo un charizard solo para dar un ejemplo, siendo charizard nivel 10 tendria 100 de ataque, los shiny seran 20% mas fuertes es decir el charizard shiny tendra 120 en este ejemplo",
+      "acceptance_criteria": [
+        "Exporta exactamente 151 entradas (id 1-151)",
+        "Cada Pokemon tiene: id, name, types, rarity, baseStats (hp/atk/def/spatk/spdef/spd), slots, trait, learnset, evolve",
+        "Test: todos tienen al menos 1 move en slot1",
+        "Test: stats de hp >= 1 para todos",
+        "Test: evolve.level > 0 cuando existe cadena evolutiva"
+      ]
+    },
+    {
+      "id": "F04",
+      "phase": 1,
+      "title": "Datos de movimientos Gen 1",
+      "status": "pending",
+      "description": "Catálogo de movimientos (moves) usados por los 151 Pokemon. Cada move tiene tipo, categoría (físico/especial/status), potencia, precisión y efecto, se deben tener propuestas pensadas para el juevo, es decir ataques con efectos que afecten filas columnas o empunen a objetivos hacia otra fila, etc de este tipo, de igual manera las habilidades pasivas, que jueguen con estos espacios, o que invoquen otros pokemon etc.",
+      "acceptance_criteria": [
+        "Al menos 80 movimientos de Gen 1",
+        "Cada move tiene: id, name, type, category, power, accuracy, effect",
+        "Test: todos los moves referenciados en gen1 existen en moves",
+        "Test: moves de categoría 'status' tienen power === 0"
+      ]
+    },
+    {
+      "id": "F05",
+      "phase": 1,
+      "title": "Sistema de IVs y stats calculados",
+      "status": "pending",
+      "description": "Función para generar IVs aleatorios al capturar un Pokemon, y función para calcular stats reales a partir de stats base + IVs + nivel.",
+      "acceptance_criteria": [
+        "generateIVs() retorna objeto con 6 valores en rango [0, 31]",
+        "calculateStat(base, iv, level) es determinista",
+        "Test: mismo seed siempre genera mismos IVs",
+        "Test: stat calculado crece con el nivel",
+        "Test: IV=31 siempre da stat mayor que IV=0"
+      ]
+    },
+    {
+      "id": "F05b",
+      "phase": 1,
+      "title": "Sistema de PP y AP por Pokemon",
+      "status": "done",
+      "description": "Cada Pokemon tiene dos recursos que se fijan al capturarlo: PP (Power Points, cuántas veces puede usar sus moves por batalla) y AP (Action Points, cuántas veces puede activar sus habilidades pasivas activables por batalla). Estos valores tienen un rango por especie (ej: Bulbasaur salvaje tiene entre 3-4 PP y 2 AP base). El valor exacto se determina al encontrar/capturar el Pokemon, como los IVs. Si el jugador captura dos Bulbasaur, uno con 3 PP y otro con 4 PP e ivs, en el menú de perfil puede elegir cuál llevar a la batalla. Los Pokemon shiny tienen un bonus garantizado de +1 PP y +1 AP sobre su valor base máximo. Los moves también tienen un costo en PP (cuántos PP consume cada uso). Las habilidades pasivas con apCost > 0 se activan gastando AP; las de apCost = 0 son siempre activas sin costo.",
+      "acceptance_criteria": [
+        "PokemonData tiene ppRange: [min, max] y baseAp: number",
+        "Los moves tienen pp: number (costo por uso) y los passives tienen apCost: number",
+        "generatePP(ppRange) retorna un valor entero en [min, max]",
+        "generateAP(baseAp, isShiny) retorna baseAp+1 si shiny, baseAp si no",
+        "Un Pokemon capturado con PP=4 puede ser seleccionado sobre uno capturado con PP=3",
+        "Test: shiny siempre tiene PP >= ppRange[1] + 1 y AP >= baseAp + 1",
+        "Test: PP generado siempre está dentro del rango de la especie",
+        "Test: moves con power > 0 tienen pp > 0",
+        "Test: passives tienen apCost >= 0"
+      ],
+      "design_notes": {
+        "pp_ranges_example": {
+          "Bulbasaur": [3, 4],
+          "Charmander": [3, 4],
+          "Pikachu": [4, 5],
+          "Magikarp": [2, 3],
+          "Mewtwo": [12, 14],
+          "charizard-mega": [10, 12]
+        },
+        "ap_base_example": {
+          "Bulbasaur": 2,
+          "Charizard": 3,
+          "Mewtwo": 5
+        },
+        "ap_cost_scale": "0 = pasiva siempre activa | 1-2 = pasiva fuerte | 3 = pasiva muy poderosa",
+        "move_pp_cost": "El costo en PP escala con la potencia del move sin límite superior: power 1-40 = 1 PP | power 41-70 = 2 PP | power 71-100 = 3 PP | power 101-130 = 4 PP | power 131-160 = 5 PP | power 161+ = 6 PP. Moves de status cuestan 1 PP. Moves muy económicos (quick-attack, tackle) pueden costar 1 PP aunque sean usables muchas veces; moves signature de legendarios pueden costar 8-10 PP.",
+        "shiny_bonus": "PP mínimo = ppRange[1] + 1, AP = baseAp + 1, stats +20% como ya existe",
+        "struggle": "cuando quede por ejemplo 1 PP y no se puedan elegir ataques por que no se tiene puntos, se usara el movimiento struggle ( hay que implementarlo, sera un movimiento debil"
+      }
+    },
+    {
+      "id": "F06",
+      "phase": 2,
+      "title": "Escena: Pantalla Pokédex / Selección de starter",
+      "status": "pending",
+      "description": "Pantalla de selección estilo PokeRogue: grid de sprites (coloreados=capturado, silueta oscura=no capturado), filtros por tipo/gen, panel de detalle al seleccionar. Al iniciar un nuevo run, el jugador elige su Pokemon inicial de su colección.",
+      "acceptance_criteria": [
+        "Grid muestra los 151 Pokemon de Gen 1",
+        "Pokemon no capturados aparecen como silueta oscura",
+        "Click en Pokemon capturado muestra panel de detalle (sprite, stats, moves)",
+        "Filtros funcionales: por tipo y por estado (capturado/no capturado)",
+        "Botón 'Elegir' disponible solo para Pokemon capturados",
+        "Al inicio del juego: Bulbasaur, Charmander y Squirtle están siempre disponibles"
+      ]
+    },
+    {
+      "id": "F07",
+      "phase": 2,
+      "title": "Pantalla de gestión del equipo (3 Pokemon + formación)",
+      "status": "pending",
+      "description": "UI para seleccionar los 3 Pokemon del equipo activo y asignarlos a filas (frontal/trasera). Se accede antes de entrar al mapa del run.",
+      "acceptance_criteria": [
+        "Muestra el equipo actual con slots vacíos si no hay Pokemon",
+        "Drag-and-drop o click para asignar Pokemon a fila frontal o trasera",
+        "Máximo 3 Pokemon: 1-2 en frontal, 1 en trasera (o configuración flexible)",
+        "Muestra stats calculados al nivel actual",
+        "Botón 'Entrar al mapa' habilita solo con al menos 1 Pokemon en equipo"
+      ]
+    },
+    {
+      "id": "F08",
+      "phase": 3,
+      "title": "Generador de mapa roguelite (árbol Slay the Spire)",
+      "status": "pending",
+      "description": "Generador de mapa estilo Slay the Spire: árbol vertical con bifurcaciones, nodos de diferentes tipos. El jugador elige su ruta. El mapa se genera aleatoriamente al inicio de cada run.",
+      "acceptance_criteria": [
+        "generateMap(seed) produce un árbol con 15 nodos en 5 filas",
+        "Tipos de nodo: battle(50%), elite(15%), shop(15%), event(10%), boss(10% solo última fila)",
+        "El boss solo aparece en la última fila",
+        "Siempre existe al menos un camino del inicio al boss",
+        "Test: misma seed produce mismo mapa",
+        "Test: árbol no tiene ciclos"
+      ]
+    },
+    {
+      "id": "F09",
+      "phase": 3,
+      "title": "Escena: Visualización y navegación del mapa",
+      "status": "pending",
+      "description": "Render visual del mapa generado. El jugador puede ver los nodos, sus tipos (íconos), y hacer click en los nodos accesibles desde su posición actual.",
+      "acceptance_criteria": [
+        "Mapa renderiza correctamente en pantalla",
+        "Nodos conectados con líneas/paths",
+        "Nodo actual marcado claramente",
+        "Solo los nodos adyacentes al actual son clickeables",
+        "Íconos distintos por tipo de nodo",
+        "Nodos visitados se muestran oscurecidos"
+      ]
+    },
+    {
+      "id": "F10",
+      "phase": 4,
+      "title": "Pantalla pre-batalla: configuración de slots",
+      "status": "pending",
+      "description": "Antes de cada batalla, el jugador ve el equipo rival y configura los 3 slots de cada Pokemon (elige qué move va en cada slot de las opciones disponibles según el learnset y nivel).",
+      "acceptance_criteria": [
+        "Muestra equipo rival (sprites + tipos) antes de configurar",
+        "Para cada Pokemon del equipo, muestra los 3 slots con sus opciones",
+        "El jugador puede cambiar la selección de cada slot",
+        "Slot 1: ataque principal, Slot 2: habilidad/efecto, Slot 3: ataque secundario",
+        "Botón 'Iniciar batalla' activo solo cuando todos los slots están configurados",
+        "Configuración de slots se guarda para la siguiente batalla (no resetea)"
+      ]
+    },
+    {
+      "id": "F11",
+      "phase": 4,
+      "title": "Motor de batalla turn-based: lógica core",
+      "status": "pending",
+      "description": "Sistema de batalla por turnos controlado por el jugador. ANTES de iniciar la batalla (en pre-batalla / F10), el jugador configura los 3 slots de cada Pokemon: elige cuál de las 2 opciones de slot1, cuál pasiva de slot2, y cuál de las 2 opciones de slot3. Una vez iniciada la batalla, esa configuración es fija. DURANTE la batalla, en cada turno el jugador solo elige para cada Pokemon activo: usar el move del slot1 o el move del slot3. La pasiva del slot2 actúa automáticamente según sus condiciones (apCost se descuenta del AP del Pokemon cuando se dispara). El rival usa IA simple (escoge entre sus slot1/slot3 aleatoria o por heurística). La batalla termina cuando: (a) todos los Pokemon rivales llegan a 0 HP, o (b) ningún Pokemon de cualquier equipo puede actuar porque todos sus moves (slot1 y slot3) tienen PP agotados.",
+      "acceptance_criteria": [
+        "BattleEngine.startTurn recibe por cada Pokemon activo: 'slot1' | 'slot3'",
+        "Cada uso de un move resta el ppCost del move al PP actual del Pokemon",
+        "La pasiva de slot2 se dispara automáticamente según su trigger (no es elegible por turno)",
+        "Activar pasiva con apCost > 0 descuenta AP del Pokemon cuando se dispara automáticamente",
+        "Pokemon cuyos slot1 y slot3 tienen PP = 0 no puede actuar ese turno",
+        "Orden de acción por turno: speed stat desc (fila trasera speed *= 0.7)",
+        "Batalla termina condición A: todos los Pokemon rivales con HP = 0",
+        "Batalla termina condición B: ningún Pokemon de ningún equipo puede actuar (slot1 y slot3 sin PP)",
+        "Daño: potencia * atk/def con multiplicador de tipo (x2, x0.5, x0) + efectos del move",
+        "Test: Pokemon con speed mayor actúa antes en el turno",
+        "Test: ventaja de tipo dobla el daño",
+        "Test: batalla termina por PP agotados si ninguno puede actuar",
+        "Test: fila trasera recibe -30% daño mientras haya Pokemon frontal vivo"
+      ]
+    },
+    {
+      "id": "F12",
+      "phase": 4,
+      "title": "Escena de batalla: animación y visualización",
+      "status": "pending",
+      "description": "Render visual de la batalla. Muestra los sprites en sus filas, anima los ataques (tweens), barra de HP, logs de combate. Reproduce los eventos generados por BattleEngine.",
+      "acceptance_criteria": [
+        "Arena con fila frontal y trasera para cada equipo (4 posiciones)",
+        "HP bars actualizadas en tiempo real durante animación",
+        "Sprite 'sacude' al recibir daño",
+        "Sprite desaparece (fade out) al llegar a 0 HP",
+        "Log de batalla muestra los eventos: '¡Charmander usó Ember! -12 HP'",
+        "Botón de velocidad (1x / 2x / Auto) para controlar velocidad de animación",
+        "Al terminar: muestra resultado (victoria/derrota) + botón continuar"
+      ]
+    },
+    {
+      "id": "F13",
+      "phase": 4,
+      "title": "Sistema de captura post-batalla",
+      "status": "pending",
+      "description": "Al ganar una batalla, el jugador tiene probabilidad de capturar aleatoriamente 1 Pokemon del equipo rival. El Pokemon capturado se añade a la Pokédex permanente y al inventario del run.",
+      "acceptance_criteria": [
+        "Pantalla post-batalla muestra posible captura (1 Pokemon del rival al azar)",
+        "Probabilidad de captura basada en rareza (común=60%, raro=30%, legendario=10%)",
+        "Si se captura: Pokemon se añade a colección permanente",
+        "Si ya estaba capturado: se marca con contador de capturas",
+        "Animación simple de 'captura' (pokeball shrink/appear)",
+        "Puede elegir agregar al equipo del run o solo a la colección"
+      ]
+    },
+    {
+      "id": "F14",
+      "phase": 5,
+      "title": "Nodo tienda: comprar Pokemon e items",
+      "status": "pending",
+      "description": "Al entrar a un nodo de tienda, el jugador puede gastar moneda del run para comprar Pokemon aleatorios o items que mejoran stats.",
+      "acceptance_criteria": [
+        "Tienda muestra 3 Pokemon aleatorios disponibles para comprar",
+        "Precio basado en rareza del Pokemon",
+        "2-3 items aleatorios disponibles (mejoras de stat)",
+        "Items de baja rareza benefician más a Pokemon comunes (como en Overlord)",
+        "Botón refrescar tienda (gasta moneda)",
+        "Pokemon comprado se agrega al equipo si hay espacio, sino a la caja"
+      ]
+    },
+    {
+      "id": "F15",
+      "phase": 5,
+      "title": "Nodos de evento aleatorio",
+      "status": "pending",
+      "description": "Nodos de evento con texto narrativo y opciones de decisión. Las decisiones pueden dar recompensas, Pokemon, items, o penalizaciones.",
+      "acceptance_criteria": [
+        "Pool de al menos 10 eventos distintos",
+        "Cada evento tiene 2-3 opciones",
+        "Resultados variables (aleatorios con seed)",
+        "Algunos eventos son contextuales (solo si tienes cierto Pokemon)",
+        "Render de texto con opciones clickeables"
+      ]
+    },
+    {
+      "id": "F16",
+      "phase": 6,
+      "title": "Persistencia y Pokédex permanente",
+      "status": "pending",
+      "description": "Sistema de guardado. Persiste: Pokédex (qué Pokemon han sido capturados), colección de shinies, moneda meta, estadísticas de runs.",
+      "acceptance_criteria": [
+        "SaveSystem.save(state) y SaveSystem.load() funcionan correctamente",
+        "Pokédex guarda: id, capturado (bool), cantidad capturada, shiny (bool)",
+        "Datos no se corrompen al cerrar/reabrir el juego",
+        "Test: save → reload → datos intactos",
+        "Versioning del save (para futuras migraciones)"
+      ]
+    },
+    {
+      "id": "F17",
+      "phase": 6,
+      "title": "Sistema de shinies",
+      "status": "pending",
+      "description": "Al generarse un Pokemon, tiene una pequeña probabilidad de ser shiny (1/512). Los shinies usan los sprites NUMBER-shiny.png y quedan marcados en la colección permanente.",
+      "acceptance_criteria": [
+        "Probabilidad de shiny: 1/512 por generacion",
+        "Shiny usa sprite -shiny.png",
+        "Indicador visual en el sprite (destellos dorados)",
+        "Pokédex muestra indicador shiny si alguno fue capturado",
+        "Test: en 10000 capturas simuladas, ratio shiny ≈ 1/512 (±20%)"
+      ]
+    },
+    {
+      "id": "F18",
+      "phase": 6,
+      "title": "Moneda meta y desbloqueos",
+      "status": "pending",
+      "description": "Sistema de moneda que se gana al completar runs. Se puede gastar en una tienda meta para desbloquear biomas, starters adicionales y cosméticos.",
+      "acceptance_criteria": [
+        "Se gana moneda meta al terminar un run (más según dificultad alcanzada)",
+        "Tienda meta con al menos 5 items desbloqueables",
+        "Desbloqueos persisten",
+        "UI de tienda meta accesible desde el menú principal"
+      ]
+    },
+    {
+      "id": "F19",
+      "phase": 6,
+      "title": "Sistema de logros",
+      "status": "pending",
+      "description": "Achievements que se desbloquean por hitos del juego (primera captura, primera victoria, capturar todos los starters, etc.).",
+      "acceptance_criteria": [
+        "Al menos 15 logros definidos",
+        "Notificación visual al desbloquear un logro",
+        "Pantalla de logros accesible desde el menú",
+        "Logros guardados",
+        "Algunos logros dan recompensas de moneda meta"
+      ]
+    },
+    {
+      "id": "F20",
+      "phase": 7,
+      "title": "Evoluciones durante el run",
+      "status": "pending",
+      "description": "Los Pokemon evolucionan al alcanzar su nivel de evolución durante un run. La evolución cambia sprite, sube stats y puede desbloquear nuevos moves en los slots.",
+      "acceptance_criteria": [
+        "Al subir de nivel al nivel correcto, el Pokemon evoluciona automáticamente post-batalla",
+        "Animación de evolución (fade-out sprite base, fade-in sprite evolución)",
+        "Stats recalculados con base stats de la evolución",
+        "Nuevos moves pueden aparecer en los slots disponibles",
+        "La forma evolucionada queda registrada en la Pokédex"
+      ]
+    }
+  ]
+}

@@ -302,8 +302,29 @@ var bf_party = [null, null, null, null, null, null]
 var versus_mode = false
 var versus_menu
 
+# Roguelike: best captured stats per species (pp is the only varying stat)
+var rl_captured := {
+    "caterpie": { "pp": 2 },
+    "pidgey":   { "pp": 2 },
+}
+
 func generate_pokemon(species, level, params: = {}):
-    var dex_copy = pkmn.dex[species].duplicate(true)
+    var dex_copy: Dictionary
+    var source_rarity: int
+
+    if pkmn.dex.has(species):
+        dex_copy = pkmn.dex[species].duplicate(true)
+        source_rarity = dex_copy["rarity"]
+    elif rl_pkmn.dex.has(species):
+        dex_copy = rl_pkmn.dex[species].duplicate(true)
+        # rl_pkmn usa base_ap y pp_range — agregar aliases que espera setup_unit
+        dex_copy["ap"] = dex_copy.get("base_ap", 2)
+        var pr = dex_copy.get("pp_range", [3, 4])
+        dex_copy["pp"] = randi_range(pr[0], pr[1])
+        source_rarity = dex_copy["rarity"]
+    else:
+        push_error("generate_pokemon: especie '%s' no encontrada en pkmn ni en rl_pkmn" % species)
+        return {}
 
     # slot1
     var pool1 = dex_copy["slot1"].duplicate()
@@ -319,12 +340,11 @@ func generate_pokemon(species, level, params: = {}):
     var pool3 = dex_copy["slot3"].duplicate()
     pool3.shuffle()
     dex_copy["slot3"] = pool3.slice(0, 2)
-    
-    # 🔹 Selección (0 o 1)
+
     var slot1 = params.get("slot1", randi() % 2)
     var slot2 = params.get("slot2", randi() % 2)
     var slot3 = params.get("slot3", randi() % 2)
-    
+
     var bonus_ap = params.get("bonus_ap", 0)
     var bonus_pp = params.get("bonus_pp", 0)
     var bonus_health = params.get("bonus_health", 0)
@@ -332,36 +352,37 @@ func generate_pokemon(species, level, params: = {}):
     var bonus_speed = params.get("bonus_speed", 0)
 
     var cur_exp = params.get("exp", 0)
-    var max_exp = (100.0 * (float(pkmn.dex[species]["rarity"]) / 10 + 1))
+    var max_exp = (100.0 * (float(source_rarity) / 10 + 1))
 
     for i in range(level):
-        # lvl rapido
         max_exp *= 0.1
 
     if level == 9: cur_exp = max_exp
 
-    var cost = (pkmn.dex[species]["rarity"] * 50) + (level * 5) + randi_range(-4, 4) - 20
+    var cost = (source_rarity * 50) + (level * 5) + randi_range(-4, 4) - 20
     
 
     return {
-        "species": species, 
-        "dex": dex_copy, 
-        "lv": level, 
-        "exp": cur_exp, 
-        "max_exp": max_exp, 
-        "id": randi(), 
+        "species": species,
+        "dex": dex_copy,
+        "lv": level,
+        "exp": cur_exp,
+        "max_exp": max_exp,
+        "id": randi(),
 
-        "bonus_ap": bonus_ap, 
-        "bonus_pp": bonus_pp, 
-        "bonus_health": bonus_health, 
-        "bonus_power": bonus_power, 
-        "bonus_speed": bonus_speed, 
+        "is_shiny": params.get("is_shiny", false),
 
-        "slot1_selected": slot1, 
-        "slot2_selected": slot2, 
-        "slot3_selected": slot3, 
+        "bonus_ap": bonus_ap,
+        "bonus_pp": bonus_pp,
+        "bonus_health": bonus_health,
+        "bonus_power": bonus_power,
+        "bonus_speed": bonus_speed,
 
-        "cost": cost, 
+        "slot1_selected": slot1,
+        "slot2_selected": slot2,
+        "slot3_selected": slot3,
+
+        "cost": cost,
     }
 
 func level_scale(stat, level):

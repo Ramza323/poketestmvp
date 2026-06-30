@@ -32,6 +32,8 @@ moves="*res://Files/Data/move_list.gd"
 poke_types="*res://Files/Data/poke_types.gd"
 item="*res://Files/Data/items.gd"
 LC_pools="*res://Files/Data/LC_pools.gd"
+sprite_loader="*res://Files/Data/sprite_loader.gd"
+rl_pkmn="*res://Files/Data/roguelite_dex.gd"
 
 [debug]
 

@@ -266,7 +266,7 @@ horizontal_alignment = 1
 [node name="Play2" type="Label" parent="Menu/MenuList" unique_id=1565992972]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-text = "????"
+text = "RogueLike"
 label_settings = SubResource("LabelSettings_gopad")
 horizontal_alignment = 1
 

@@ -72,42 +72,19 @@ func menu_input():
             globals.core.change_scene(load("res://Files/Scenes/Level/level_scene.tscn"))
             return
         
-        #if menu_index == 1:
-            #play_accept_SE()
-            #globals.bf_box = []
-            #globals.bf_party = [null, null, null, null, null, null]
-            #globals.bf_mode = true
-            #screen_tint.color = Color("202020a5")
-            #menu_selector.hide()
-            #await globals.ui.show_starters()
-            #state = locked
-#
-            #battle_scene.process_mode = Node.PROCESS_MODE_DISABLED
-            #while globals.ui.state != globals.ui.off:
-                #await wait(0.01)
-#
-            #if globals.bf_box == []:
-                #await wait(0.3)
-                #globals.bf_mode = false
-                #screen_tint.color = Color("00000000")
-                #menu_selector.show()
-                #state = menu
-                #battle_scene.process_mode = Node.PROCESS_MODE_INHERIT
-                #return
-#
-            #battle_scene.process_mode = Node.PROCESS_MODE_DISABLED
-            #globals.auto_battle = false
-            #globals.mewtwo_mode = false
-            #globals.versus_mode = false
-            #globals.bf_mode = true
-            #globals.normal_mode = false
-            #globals.LC_mode = false
-            #globals.test_mode = false
-            #state = locked
-#
-            #globals.core.change_scene(bf_scene)
-            ##globals.core.change_scene(load("res://Files/Scenes/RogueLike/roguelike.tscn"))
-            #return
+        if menu_index == 1:
+            play_accept_SE()
+            battle_scene.process_mode = Node.PROCESS_MODE_DISABLED
+            globals.auto_battle = false
+            globals.mewtwo_mode = false
+            globals.versus_mode = false
+            globals.bf_mode = false
+            globals.normal_mode = false
+            globals.LC_mode = false
+            globals.test_mode = false
+            state = locked
+            globals.core.change_scene(load("res://Files/Scenes/RogueLike/roguelike.tscn"))
+            return
 
         elif menu_index == 2:
             globals.mewtwo_mode = false
@@ -307,9 +284,9 @@ func battle_preview():
     globals.auto_battle = true
 
 
-    encounters.dict[2].shuffle()
-    battle_scene.player_team_ref = encounters.dict[2][0]
-    battle_scene.enemy_team_ref = encounters.dict[2][1]
+    # Equipo fijo Gen 1 para probar el nuevo sprite system
+    battle_scene.player_team_ref = ["charizard_mega_x", ["pikachu", 4, {"is_shiny": true}], ["snorlax_gmax", 5, {"is_shiny": true}], null, null, null]
+    battle_scene.enemy_team_ref  = ["venusaur_mega", ["gengar", 4, {"is_shiny": true}], "mewtwo_mega_x", null, null, null]
     $BattleScene / GUIPlayer.volume_linear = 0
 
 @onready var gui_player: AudioStreamPlayer = $GUIPlayer

@@ -259,7 +259,12 @@ var save_dict = {
 
         "suspended_game":
             {
-        }, 
+        },
+
+        "rl_captured": {
+            "caterpie": { "pp": 2 },
+            "pidgey":   { "pp": 2 },
+        },
     }
 
 
@@ -277,6 +282,7 @@ func save_data():
         save_dict["event_flags"] = globals.event_flags.duplicate()
         save_dict["options"] = globals.options.duplicate()
         save_dict["suspended_game"] = globals.suspended_game.duplicate()
+        save_dict["rl_captured"] = globals.rl_captured.duplicate(true)
 
     var file = FileAccess.open(save_location, FileAccess.WRITE)
 
@@ -308,6 +314,8 @@ func load_data():
     globals.event_flags = saved_data["event_flags"]
     globals.options = saved_data["options"]
     globals.suspended_game = saved_data["suspended_game"]
+    if saved_data.has("rl_captured"):
+        globals.rl_captured = saved_data["rl_captured"]
 
 func initialize():
     var file = FileAccess.open(save_location, FileAccess.WRITE)

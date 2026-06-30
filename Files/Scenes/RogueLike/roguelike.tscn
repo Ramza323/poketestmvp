@@ -1,3 +1,6 @@
 [gd_scene format=3 uid="uid://bu5bcf3xc2kuf"]
 
+[ext_resource type="Script" path="res://Files/Scenes/RogueLike/roguelike.gd" id="1"]
+
 [node name="Roguelike" type="Node2D" unique_id=348537243]
+script = ExtResource("1")

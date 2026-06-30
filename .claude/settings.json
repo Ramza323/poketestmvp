@@ -1,0 +1,37 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd 'C:\\Users\\tiago\\OneDrive\\Desktop\\PokeRogue' && npm test --reporter=verbose 2>&1 | tail -5",
+            "description": "Corre tests rápido tras cada edición de código"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash 'C:\\Users\\tiago\\OneDrive\\Desktop\\PokeRogue\\init.sh'",
+            "description": "Verificación completa del entorno al cerrar sesión"
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Bash(bash init.sh*)",
+      "Bash(npm test*)",
+      "Bash(npm run build*)",
+      "Bash(npm run dev*)",
+      "Bash(npm install*)",
+      "Bash(node*)"
+    ]
+  }
+}
