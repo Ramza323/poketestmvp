@@ -579,7 +579,8 @@ func setup_unit(unit, unit_dict, reseting = false):
     unit.unit_trait = dex_data["trait"]
 
     if unit_dict["slot1_selected"] < 2:
-        unit.atk1 = dex_data["slot1"][unit_dict["slot1_selected"]]
+        var _s1 = dex_data["slot1"][unit_dict["slot1_selected"]]
+        unit.atk1 = _s1 if moves.active.has(_s1) else "struggle"
     else:
         unit.atk1 = "struggle"
 
@@ -589,7 +590,8 @@ func setup_unit(unit, unit_dict, reseting = false):
         unit.passive = "none"
 
     if unit_dict["slot3_selected"] < 2:
-        unit.atk2 = dex_data["slot3"][unit_dict["slot3_selected"]]
+        var _s3 = dex_data["slot3"][unit_dict["slot3_selected"]]
+        unit.atk2 = _s3 if moves.active.has(_s3) else "struggle"
     else:
         unit.atk2 = "struggle"
 
