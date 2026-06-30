@@ -84,7 +84,11 @@ var _ev_data: Dictionary = {}
 
 func _ready() -> void:
     _font = load(FONT_PATH)
-    _map  = _generate_map(randi())
+    if not globals.rl_map_state.is_empty():
+        _map = globals.rl_map_state
+        globals.rl_map_state = {}
+    else:
+        _map = _generate_map(randi())
     _accessible = _get_accessible()
     _build_ui()
     queue_redraw()
@@ -287,11 +291,12 @@ func _enter_node() -> void:
     _update_info()
 
     match node["type"]:
-        "battle": _show_info("Batalla Normal", "Un Pokemon salvaje aparece.\n(Sistema de batalla en construccion)")
-        "elite":  _show_info("Entrenador Elite", "Un entrenador poderoso te desafia.\n(Sistema de batalla en construccion)")
-        "shop":   _show_info("Tienda", "Un comerciante aparece.\n(Tienda en construccion)")
-        "event":  _run_random_event()
-        "boss":   _show_info("JEFE FINAL", "El guardian de Kanto aparece...\n(Sistema de batalla en construccion)")
+        "battle", "elite", "boss":
+            _launch_battle(node["type"], r)
+        "shop":
+            _show_info("Tienda", "Un comerciante aparece.\n(Tienda en construccion)")
+        "event":
+            _run_random_event()
 
 # ── Events ───────────────────────────────────────────────────────────────────
 
@@ -420,6 +425,14 @@ func _mystery_ball() -> void:
     else:
         _show_info("Pokeball misteriosa",
             "Era una trampa del Equipo Rocket!\nPor suerte solo pierdes un poco de tiempo.")
+
+# ── Battle launch ────────────────────────────────────────────────────────────
+
+func _launch_battle(node_type: String, floor: int) -> void:
+    globals.rl_enemy_team  = rl_pools.generate_enemy_team(floor, node_type)
+    globals.rl_map_state   = _map.duplicate(true)
+    globals.rl_mode        = true
+    globals.core.change_scene(load("res://Files/Scenes/Battle/BattleScene.tscn"))
 
 # ── UI construction ───────────────────────────────────────────────────────────
 

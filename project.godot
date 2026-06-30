@@ -34,6 +34,7 @@ item="*res://Files/Data/items.gd"
 LC_pools="*res://Files/Data/LC_pools.gd"
 sprite_loader="*res://Files/Data/sprite_loader.gd"
 rl_pkmn="*res://Files/Data/roguelite_dex.gd"
+rl_pools="*res://Files/Data/rl_pools.gd"
 
 [debug]
 

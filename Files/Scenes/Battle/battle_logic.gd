@@ -443,7 +443,10 @@ func flash_player_healthbar():
 
 
 func setup_teams():
-    if not globals.test_mode:
+    if globals.rl_mode:
+        setup_team(globals.bf_party, 0)
+        setup_team(globals.rl_enemy_team, 1)
+    elif not globals.test_mode:
         if not globals.mewtwo_mode:
             setup_team(globals.player_data.player_party, 0)
         else:
@@ -3934,6 +3937,11 @@ func end_battle():
             break
 
     if globals.test_mode: return
+
+    if globals.rl_mode:
+        globals.rl_mode = false
+        globals.core.change_scene(load("res://Files/Scenes/RogueLike/roguelike_map.tscn"))
+        return
 
     if globals.mewtwo_mode:
         globals.player_data.player_box = []

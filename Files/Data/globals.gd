@@ -298,6 +298,10 @@ var bf_mode = false
 var bf_box = []
 var bf_party = [null, null, null, null, null, null]
 
+var rl_mode = false
+var rl_enemy_team = []
+var rl_map_state: Dictionary = {}
+
 
 var versus_mode = false
 var versus_menu
