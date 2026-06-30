@@ -437,6 +437,7 @@ func _launch_battle(node_type: String, floor: int) -> void:
     globals.rl_enemy_team  = rl_pools.generate_enemy_team(floor, node_type)
     globals.rl_map_state   = _map.duplicate(true)
     globals.rl_mode        = true
+    globals.test_mode      = true
     globals.core.change_scene(load("res://Files/Scenes/Battle/BattleScene.tscn"))
 
 # ── UI construction ───────────────────────────────────────────────────────────

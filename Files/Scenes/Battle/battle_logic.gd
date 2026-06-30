@@ -149,11 +149,11 @@ func _ready():
         var sample = rl_pkmn.dex.get("bulbasaur", {})
         print("[rl_pkmn] bulbasaur pp_range=%s base_ap=%s" % [sample.get("pp_range","?"), sample.get("base_ap","?")])
 
-    if not globals.test_mode and not globals.rl_mode:
+    if not globals.test_mode:
         party_selector = globals.ui.get_node("Status/Party/Selector")
         await wait(0.1)
 
-    if globals.bf_mode and not globals.rl_mode:
+    if globals.bf_mode:
         encounters = $"../Encounters"
         quit_confirm_menu = $"../QuitConfirm"
         quit_confirm_buttons = $"../QuitConfirm/Buttons"
@@ -162,7 +162,7 @@ func _ready():
         await setup_bf_mode()
 
 
-    if not globals.test_mode and not globals.bf_mode and not globals.rl_mode:
+    if not globals.test_mode and not globals.bf_mode:
         $Stage.frame = globals.hotel.game_level + 1
         if globals.gbc: $Stage.frame = 0
 
@@ -173,7 +173,7 @@ func _ready():
 
     await animate_unit_spawns()
     if display_mode: return
-    if globals.pre_battle_formation and not globals.test_mode and not globals.rl_mode:
+    if globals.pre_battle_formation and not globals.test_mode:
 
             setup_team_formation()
 
@@ -511,7 +511,7 @@ func setup_unit(unit, unit_dict, reseting = false):
     if unit.team == 2:
         bonus_lv = 0
 
-        if not globals.test_mode and not globals.bf_mode and not globals.rl_mode:
+        if not globals.test_mode and not globals.bf_mode:
             if globals.hotel.game_level == 0:
                 if globals.player_data.battles_fought in [advance_times[0] - 2, advance_times[0] - 1]:
                     bonus_lv = 1
@@ -3936,12 +3936,12 @@ func end_battle():
             await missingno_event(i)
             break
 
-    if globals.test_mode: return
-
     if globals.rl_mode:
         globals.rl_mode = false
         globals.core.change_scene(load("res://Files/Scenes/RogueLike/roguelike_map.tscn"))
         return
+
+    if globals.test_mode: return
 
     if globals.mewtwo_mode:
         globals.player_data.player_box = []
