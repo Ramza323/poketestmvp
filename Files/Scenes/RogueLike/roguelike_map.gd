@@ -104,12 +104,15 @@ func _generate_map(seed: int) -> Dictionary:
         for c in COLS:
             var type: String
             if r == ROWS - 1:
-                type = "boss" if c == 1 else "elite"
+                type = "boss"
             else:
                 type = _pick_type(rng)
             row.append({ "type": type, "row": r, "col": c, "connections": [], "visited": false })
         rows.append(row)
     _gen_connections(rows, rng)
+    # All pre-boss nodes connect only to the single center boss
+    for c in COLS:
+        rows[ROWS - 2][c]["connections"] = [1]
     return { "seed": seed, "rows": rows, "current_row": -1, "current_col": -1 }
 
 func _pick_type(rng: RandomNumberGenerator) -> String:
@@ -189,6 +192,8 @@ func _draw() -> void:
     # Nodes
     for r in ROWS:
         for c in COLS:
+            if r == ROWS - 1 and c != 1:
+                continue
             var node: Dictionary = _map["rows"][r][c]
             var pos: Vector2    = Vector2(float(COL_X[c]), float(ROW_Y[r]))
             var base_col: Color = TYPE_COLOR[node["type"]]
